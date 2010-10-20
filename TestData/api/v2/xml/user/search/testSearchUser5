@@ -1,0 +1,1353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users type="array">
+  <user>
+    <name>jeresig</name>
+    <location>Boston, MA</location>
+    <followers type="integer">1906</followers>
+    <language>JavaScript</language>
+    <fullname>John Resig</fullname>
+    <username>jeresig</username>
+    <id>user-1615</id>
+    <repos type="integer">13</repos>
+    <type>user</type>
+    <pushed>2010-10-16T02:15:08.331Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-02-28T16:48:23Z</created>
+  </user>
+  <user>
+    <name>jnunemaker</name>
+    <location>South Bend, IN</location>
+    <followers type="integer">564</followers>
+    <fullname>John Nunemaker</fullname>
+    <username>jnunemaker</username>
+    <language>Ruby</language>
+    <id>user-235</id>
+    <repos type="integer">44</repos>
+    <type>user</type>
+    <pushed>2010-09-09T03:15:06.778Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-02-13T18:00:42Z</created>
+  </user>
+  <user>
+    <name>jbarnette</name>
+    <location>98107</location>
+    <followers type="integer">136</followers>
+    <language>Ruby</language>
+    <fullname>John Barnette</fullname>
+    <username>jbarnette</username>
+    <id>user-3117</id>
+    <repos type="integer">40</repos>
+    <type>user</type>
+    <pushed>2010-10-12T19:15:08.905Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-03-14T19:14:15Z</created>
+  </user>
+  <user>
+    <name>jmettraux</name>
+    <location>Perry Wharf (+9)</location>
+    <followers type="integer">126</followers>
+    <fullname>John Mettraux</fullname>
+    <username>jmettraux</username>
+    <language>Ruby</language>
+    <id>user-3624</id>
+    <repos type="integer">56</repos>
+    <type>user</type>
+    <pushed>2010-09-28T08:15:10.026Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-03-22T01:37:42Z</created>
+  </user>
+  <user>
+    <name>jdalton</name>
+    <location></location>
+    <followers type="integer">70</followers>
+    <language>JavaScript</language>
+    <fullname>John-David Dalton</fullname>
+    <username>jdalton</username>
+    <id>user-4303</id>
+    <repos type="integer">10</repos>
+    <type>user</type>
+    <pushed>2010-10-18T14:15:08.148Z</pushed>
+    <score type="float">1.5559703</score>
+    <record nil="true"></record>
+    <created>2008-04-02T18:54:07Z</created>
+  </user>
+  <user>
+    <name>beppu</name>
+    <location>Los Angeles, CA</location>
+    <followers type="integer">59</followers>
+    <language>Perl</language>
+    <fullname>John Beppu</fullname>
+    <username>beppu</username>
+    <id>user-4425</id>
+    <repos type="integer">21</repos>
+    <type>user</type>
+    <pushed>2010-10-11T17:15:09.086Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-04-03T02:15:58Z</created>
+  </user>
+  <user>
+    <name>johnboxall</name>
+    <location>Vancouver, Canada</location>
+    <followers type="integer">58</followers>
+    <language>Python</language>
+    <fullname>John Boxall</fullname>
+    <username>johnboxall</username>
+    <id>user-28967</id>
+    <repos type="integer">30</repos>
+    <type>user</type>
+    <pushed>2010-10-18T06:15:08.572Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-10-14T21:00:45Z</created>
+  </user>
+  <user>
+    <name>jwiegley</name>
+    <location>Road Warrior!</location>
+    <followers type="integer">50</followers>
+    <fullname>John Wiegley</fullname>
+    <language>Emacs Lisp</language>
+    <username>jwiegley</username>
+    <id>user-8460</id>
+    <repos type="integer">45</repos>
+    <type>user</type>
+    <pushed>2010-07-27T05:52:46.577Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-04-25T08:14:46Z</created>
+  </user>
+  <user>
+    <name>jlong</name>
+    <location>Cary, NC</location>
+    <followers type="integer">42</followers>
+    <fullname>John W. Long</fullname>
+    <username>jlong</username>
+    <language>Ruby</language>
+    <id>user-4173</id>
+    <repos type="integer">20</repos>
+    <type>user</type>
+    <pushed>2010-10-05T02:15:08.828Z</pushed>
+    <score type="float">1.5559703</score>
+    <record nil="true"></record>
+    <created>2008-03-31T17:26:25Z</created>
+  </user>
+  <user>
+    <name>jflam</name>
+    <location>Redmond, WA</location>
+    <followers type="integer">42</followers>
+    <fullname>John Lam</fullname>
+    <username>jflam</username>
+    <language>Ruby</language>
+    <id>user-8877</id>
+    <repos type="integer">13</repos>
+    <type>user</type>
+    <pushed>2010-10-05T09:15:14.605Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-04-29T21:57:56Z</created>
+  </user>
+  <user>
+    <name>jtrupiano</name>
+    <location>Baltimore, MD</location>
+    <followers type="integer">41</followers>
+    <fullname>John Trupiano</fullname>
+    <username>jtrupiano</username>
+    <language>Ruby</language>
+    <id>user-12331</id>
+    <repos type="integer">39</repos>
+    <type>user</type>
+    <pushed>2010-09-08T16:15:07.428Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-06-02T17:01:14Z</created>
+  </user>
+  <user>
+    <name>johnsheehan</name>
+    <location>MN</location>
+    <followers type="integer">39</followers>
+    <fullname>John Sheehan</fullname>
+    <username>johnsheehan</username>
+    <language>C#</language>
+    <id>user-101556</id>
+    <repos type="integer">4</repos>
+    <type>user</type>
+    <pushed>2010-10-03T08:15:08.891Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2009-07-04T03:51:57Z</created>
+  </user>
+  <user>
+    <name>joho</name>
+    <location>Melbourne, Australia</location>
+    <followers type="integer">38</followers>
+    <fullname>John Barton</fullname>
+    <username>joho</username>
+    <language>Ruby</language>
+    <id>user-4092</id>
+    <repos type="integer">23</repos>
+    <type>user</type>
+    <pushed>2010-10-02T09:15:10.064Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-03-29T00:06:09Z</created>
+  </user>
+  <user>
+    <name>duelinmarkers</name>
+    <location>Brooklyn, NY</location>
+    <followers type="integer">30</followers>
+    <fullname>John Hume</fullname>
+    <username>duelinmarkers</username>
+    <language>Ruby</language>
+    <id>user-9761</id>
+    <repos type="integer">9</repos>
+    <type>user</type>
+    <pushed>2010-08-31T00:15:07.485Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-05-09T05:26:44Z</created>
+  </user>
+  <user>
+    <name>johnl</name>
+    <location>Leeds, UK</location>
+    <followers type="integer">29</followers>
+    <fullname>John Leach</fullname>
+    <username>johnl</username>
+    <language>Ruby</language>
+    <id>user-5997</id>
+    <repos type="integer">16</repos>
+    <type>user</type>
+    <pushed>2010-09-07T20:15:07.822Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-04-09T11:38:38Z</created>
+  </user>
+  <user>
+    <name>hukl</name>
+    <location>Berlin</location>
+    <followers type="integer">27</followers>
+    <fullname>John-P. Bader</fullname>
+    <username>hukl</username>
+    <language>Ruby</language>
+    <id>user-25157</id>
+    <repos type="integer">28</repos>
+    <type>user</type>
+    <pushed>2010-10-03T15:15:09.032Z</pushed>
+    <score type="float">1.5559703</score>
+    <record nil="true"></record>
+    <created>2008-09-18T10:56:01Z</created>
+  </user>
+  <user>
+    <name>sneeu</name>
+    <location>Edinburgh, Scotland</location>
+    <followers type="integer">27</followers>
+    <language>Python</language>
+    <fullname>John Sutherland</fullname>
+    <username>sneeu</username>
+    <id>user-3464</id>
+    <repos type="integer">27</repos>
+    <type>user</type>
+    <pushed>2010-10-13T14:15:08.272Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-03-20T14:38:39Z</created>
+  </user>
+  <user>
+    <name>hornbeck</name>
+    <location>Lawton, OK</location>
+    <followers type="integer">24</followers>
+    <fullname>John Hornbeck</fullname>
+    <username>hornbeck</username>
+    <language>Ruby</language>
+    <id>user-49</id>
+    <repos type="integer">6</repos>
+    <type>user</type>
+    <pushed>2010-09-21T00:15:08.645Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-01-25T21:49:23Z</created>
+  </user>
+  <user>
+    <name>javasoze</name>
+    <location>Mountain View, CA</location>
+    <followers type="integer">24</followers>
+    <fullname>John Wang</fullname>
+    <username>javasoze</username>
+    <language>Java</language>
+    <id>user-168714</id>
+    <repos type="integer">6</repos>
+    <type>user</type>
+    <pushed>2010-09-25T23:15:08.612Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2009-12-17T00:47:15Z</created>
+  </user>
+  <user>
+    <name>woodie</name>
+    <location>Menlo Park, CA</location>
+    <followers type="integer">23</followers>
+    <fullname>John Woodell</fullname>
+    <language>Ruby</language>
+    <username>woodie</username>
+    <id>user-17495</id>
+    <repos type="integer">17</repos>
+    <type>user</type>
+    <pushed>2010-07-27T06:13:49.256Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-07-19T00:33:20Z</created>
+  </user>
+  <user>
+    <name>JohnLangford</name>
+    <location></location>
+    <followers type="integer">19</followers>
+    <fullname></fullname>
+    <username>JohnLangford</username>
+    <language>C++</language>
+    <id>user-79590</id>
+    <repos type="integer">1</repos>
+    <type>user</type>
+    <pushed>2010-09-17T15:15:09.077Z</pushed>
+    <score type="float">2.1124268</score>
+    <record nil="true"></record>
+    <created>2009-04-30T14:32:23Z</created>
+  </user>
+  <user>
+    <name>jgoodsen</name>
+    <location>New York City</location>
+    <followers type="integer">18</followers>
+    <language>JavaScript</language>
+    <fullname>John Goodsen</fullname>
+    <username>jgoodsen</username>
+    <id>user-16525</id>
+    <repos type="integer">8</repos>
+    <type>user</type>
+    <pushed>2010-10-19T20:15:11.929Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-07-09T14:31:19Z</created>
+  </user>
+  <user>
+    <name>Gojohnnyboi</name>
+    <location></location>
+    <followers type="integer">18</followers>
+    <language>C</language>
+    <fullname>John Heaton</fullname>
+    <username>Gojohnnyboi</username>
+    <id>user-159331</id>
+    <repos type="integer">5</repos>
+    <type>user</type>
+    <pushed>2010-10-19T23:15:09.386Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2009-11-29T00:18:06Z</created>
+  </user>
+  <user>
+    <name>banister</name>
+    <location>New Zealand</location>
+    <followers type="integer">17</followers>
+    <language>Ruby</language>
+    <fullname>John Mair</fullname>
+    <username>banister</username>
+    <id>user-17518</id>
+    <repos type="integer">17</repos>
+    <type>user</type>
+    <pushed>2010-10-08T09:15:09.086Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-07-19T11:18:47Z</created>
+  </user>
+  <user>
+    <name>retr0h</name>
+    <location></location>
+    <followers type="integer">17</followers>
+    <language>Ruby</language>
+    <fullname>John Dewey</fullname>
+    <username>retr0h</username>
+    <id>user-9895</id>
+    <repos type="integer">20</repos>
+    <type>user</type>
+    <pushed>2010-10-12T13:15:09.63Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-05-10T20:19:11Z</created>
+  </user>
+  <user>
+    <name>wiseman</name>
+    <location>Los Angeles</location>
+    <followers type="integer">16</followers>
+    <username>wiseman</username>
+    <language>Common Lisp</language>
+    <fullname>John Wiseman</fullname>
+    <id>user-52466</id>
+    <repos type="integer">20</repos>
+    <type>user</type>
+    <pushed>2010-10-06T07:15:09.016Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2009-02-06T22:38:56Z</created>
+  </user>
+  <user>
+    <name>jm3</name>
+    <location>California</location>
+    <followers type="integer">16</followers>
+    <language>Ruby</language>
+    <fullname>John Manoogian III</fullname>
+    <username>jm3</username>
+    <id>user-12213</id>
+    <repos type="integer">22</repos>
+    <type>user</type>
+    <pushed>2010-10-12T23:15:08.497Z</pushed>
+    <score type="float">1.5559703</score>
+    <record nil="true"></record>
+    <created>2008-06-01T17:31:52Z</created>
+  </user>
+  <user>
+    <name>johncblandii</name>
+    <location>Houston, TX</location>
+    <followers type="integer">16</followers>
+    <language>ColdFusion</language>
+    <fullname>John C. Bland II</fullname>
+    <username>johncblandii</username>
+    <id>user-134952</id>
+    <repos type="integer">12</repos>
+    <type>user</type>
+    <pushed>2010-10-14T23:15:09.287Z</pushed>
+    <score type="float">1.5559703</score>
+    <record nil="true"></record>
+    <created>2009-10-04T19:01:53Z</created>
+  </user>
+  <user>
+    <name>johnbender</name>
+    <location>Santa Monica, CA</location>
+    <followers type="integer">16</followers>
+    <language>Ruby</language>
+    <fullname>John Bender</fullname>
+    <username>johnbender</username>
+    <id>user-23505</id>
+    <repos type="integer">12</repos>
+    <type>user</type>
+    <pushed>2010-10-15T07:15:08.936Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-09-07T04:53:32Z</created>
+  </user>
+  <user>
+    <name>jacius</name>
+    <location>Illinois, USA</location>
+    <followers type="integer">15</followers>
+    <fullname>John Croisant</fullname>
+    <username>jacius</username>
+    <language>Ruby</language>
+    <id>user-10655</id>
+    <repos type="integer">13</repos>
+    <type>user</type>
+    <pushed>2010-09-01T01:15:07.824Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-05-18T06:50:37Z</created>
+  </user>
+      <name>jeresig</name>
+    <location>Boston, MA</location>
+    <followers type="integer">1906</followers>
+    <language>JavaScript</language>
+    <fullname>John Resig</fullname>
+    <username>jeresig</username>
+    <id>user-1615</id>
+    <repos type="integer">13</repos>
+    <type>user</type>
+    <pushed>2010-10-16T02:15:08.331Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-02-28T16:48:23Z</created>
+  </user>
+  <user>
+    <name>jnunemaker</name>
+    <location>South Bend, IN</location>
+    <followers type="integer">564</followers>
+    <fullname>John Nunemaker</fullname>
+    <username>jnunemaker</username>
+    <language>Ruby</language>
+    <id>user-235</id>
+    <repos type="integer">44</repos>
+    <type>user</type>
+    <pushed>2010-09-09T03:15:06.778Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-02-13T18:00:42Z</created>
+  </user>
+  <user>
+    <name>jbarnette</name>
+    <location>98107</location>
+    <followers type="integer">136</followers>
+    <language>Ruby</language>
+    <fullname>John Barnette</fullname>
+    <username>jbarnette</username>
+    <id>user-3117</id>
+    <repos type="integer">40</repos>
+    <type>user</type>
+    <pushed>2010-10-12T19:15:08.905Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-03-14T19:14:15Z</created>
+  </user>
+  <user>
+    <name>jmettraux</name>
+    <location>Perry Wharf (+9)</location>
+    <followers type="integer">126</followers>
+    <fullname>John Mettraux</fullname>
+    <username>jmettraux</username>
+    <language>Ruby</language>
+    <id>user-3624</id>
+    <repos type="integer">56</repos>
+    <type>user</type>
+    <pushed>2010-09-28T08:15:10.026Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-03-22T01:37:42Z</created>
+  </user>
+  <user>
+    <name>jdalton</name>
+    <location></location>
+    <followers type="integer">70</followers>
+    <language>JavaScript</language>
+    <fullname>John-David Dalton</fullname>
+    <username>jdalton</username>
+    <id>user-4303</id>
+    <repos type="integer">10</repos>
+    <type>user</type>
+    <pushed>2010-10-18T14:15:08.148Z</pushed>
+    <score type="float">1.5559703</score>
+    <record nil="true"></record>
+    <created>2008-04-02T18:54:07Z</created>
+  </user>
+  <user>
+    <name>beppu</name>
+    <location>Los Angeles, CA</location>
+    <followers type="integer">59</followers>
+    <language>Perl</language>
+    <fullname>John Beppu</fullname>
+    <username>beppu</username>
+    <id>user-4425</id>
+    <repos type="integer">21</repos>
+    <type>user</type>
+    <pushed>2010-10-11T17:15:09.086Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-04-03T02:15:58Z</created>
+  </user>
+  <user>
+    <name>johnboxall</name>
+    <location>Vancouver, Canada</location>
+    <followers type="integer">58</followers>
+    <language>Python</language>
+    <fullname>John Boxall</fullname>
+    <username>johnboxall</username>
+    <id>user-28967</id>
+    <repos type="integer">30</repos>
+    <type>user</type>
+    <pushed>2010-10-18T06:15:08.572Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-10-14T21:00:45Z</created>
+  </user>
+  <user>
+    <name>jwiegley</name>
+    <location>Road Warrior!</location>
+    <followers type="integer">50</followers>
+    <fullname>John Wiegley</fullname>
+    <language>Emacs Lisp</language>
+    <username>jwiegley</username>
+    <id>user-8460</id>
+    <repos type="integer">45</repos>
+    <type>user</type>
+    <pushed>2010-07-27T05:52:46.577Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-04-25T08:14:46Z</created>
+  </user>
+  <user>
+    <name>jlong</name>
+    <location>Cary, NC</location>
+    <followers type="integer">42</followers>
+    <fullname>John W. Long</fullname>
+    <username>jlong</username>
+    <language>Ruby</language>
+    <id>user-4173</id>
+    <repos type="integer">20</repos>
+    <type>user</type>
+    <pushed>2010-10-05T02:15:08.828Z</pushed>
+    <score type="float">1.5559703</score>
+    <record nil="true"></record>
+    <created>2008-03-31T17:26:25Z</created>
+  </user>
+  <user>
+    <name>jflam</name>
+    <location>Redmond, WA</location>
+    <followers type="integer">42</followers>
+    <fullname>John Lam</fullname>
+    <username>jflam</username>
+    <language>Ruby</language>
+    <id>user-8877</id>
+    <repos type="integer">13</repos>
+    <type>user</type>
+    <pushed>2010-10-05T09:15:14.605Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-04-29T21:57:56Z</created>
+  </user>
+  <user>
+    <name>jtrupiano</name>
+    <location>Baltimore, MD</location>
+    <followers type="integer">41</followers>
+    <fullname>John Trupiano</fullname>
+    <username>jtrupiano</username>
+    <language>Ruby</language>
+    <id>user-12331</id>
+    <repos type="integer">39</repos>
+    <type>user</type>
+    <pushed>2010-09-08T16:15:07.428Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-06-02T17:01:14Z</created>
+  </user>
+  <user>
+    <name>johnsheehan</name>
+    <location>MN</location>
+    <followers type="integer">39</followers>
+    <fullname>John Sheehan</fullname>
+    <username>johnsheehan</username>
+    <language>C#</language>
+    <id>user-101556</id>
+    <repos type="integer">4</repos>
+    <type>user</type>
+    <pushed>2010-10-03T08:15:08.891Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2009-07-04T03:51:57Z</created>
+  </user>
+  <user>
+    <name>joho</name>
+    <location>Melbourne, Australia</location>
+    <followers type="integer">38</followers>
+    <fullname>John Barton</fullname>
+    <username>joho</username>
+    <language>Ruby</language>
+    <id>user-4092</id>
+    <repos type="integer">23</repos>
+    <type>user</type>
+    <pushed>2010-10-02T09:15:10.064Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-03-29T00:06:09Z</created>
+  </user>
+  <user>
+    <name>duelinmarkers</name>
+    <location>Brooklyn, NY</location>
+    <followers type="integer">30</followers>
+    <fullname>John Hume</fullname>
+    <username>duelinmarkers</username>
+    <language>Ruby</language>
+    <id>user-9761</id>
+    <repos type="integer">9</repos>
+    <type>user</type>
+    <pushed>2010-08-31T00:15:07.485Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-05-09T05:26:44Z</created>
+  </user>
+  <user>
+    <name>johnl</name>
+    <location>Leeds, UK</location>
+    <followers type="integer">29</followers>
+    <fullname>John Leach</fullname>
+    <username>johnl</username>
+    <language>Ruby</language>
+    <id>user-5997</id>
+    <repos type="integer">16</repos>
+    <type>user</type>
+    <pushed>2010-09-07T20:15:07.822Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-04-09T11:38:38Z</created>
+  </user>
+  <user>
+    <name>hukl</name>
+    <location>Berlin</location>
+    <followers type="integer">27</followers>
+    <fullname>John-P. Bader</fullname>
+    <username>hukl</username>
+    <language>Ruby</language>
+    <id>user-25157</id>
+    <repos type="integer">28</repos>
+    <type>user</type>
+    <pushed>2010-10-03T15:15:09.032Z</pushed>
+    <score type="float">1.5559703</score>
+    <record nil="true"></record>
+    <created>2008-09-18T10:56:01Z</created>
+  </user>
+  <user>
+    <name>sneeu</name>
+    <location>Edinburgh, Scotland</location>
+    <followers type="integer">27</followers>
+    <language>Python</language>
+    <fullname>John Sutherland</fullname>
+    <username>sneeu</username>
+    <id>user-3464</id>
+    <repos type="integer">27</repos>
+    <type>user</type>
+    <pushed>2010-10-13T14:15:08.272Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-03-20T14:38:39Z</created>
+  </user>
+  <user>
+    <name>hornbeck</name>
+    <location>Lawton, OK</location>
+    <followers type="integer">24</followers>
+    <fullname>John Hornbeck</fullname>
+    <username>hornbeck</username>
+    <language>Ruby</language>
+    <id>user-49</id>
+    <repos type="integer">6</repos>
+    <type>user</type>
+    <pushed>2010-09-21T00:15:08.645Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-01-25T21:49:23Z</created>
+  </user>
+  <user>
+    <name>javasoze</name>
+    <location>Mountain View, CA</location>
+    <followers type="integer">24</followers>
+    <fullname>John Wang</fullname>
+    <username>javasoze</username>
+    <language>Java</language>
+    <id>user-168714</id>
+    <repos type="integer">6</repos>
+    <type>user</type>
+    <pushed>2010-09-25T23:15:08.612Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2009-12-17T00:47:15Z</created>
+  </user>
+  <user>
+    <name>woodie</name>
+    <location>Menlo Park, CA</location>
+    <followers type="integer">23</followers>
+    <fullname>John Woodell</fullname>
+    <language>Ruby</language>
+    <username>woodie</username>
+    <id>user-17495</id>
+    <repos type="integer">17</repos>
+    <type>user</type>
+    <pushed>2010-07-27T06:13:49.256Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-07-19T00:33:20Z</created>
+  </user>
+  <user>
+    <name>JohnLangford</name>
+    <location></location>
+    <followers type="integer">19</followers>
+    <fullname></fullname>
+    <username>JohnLangford</username>
+    <language>C++</language>
+    <id>user-79590</id>
+    <repos type="integer">1</repos>
+    <type>user</type>
+    <pushed>2010-09-17T15:15:09.077Z</pushed>
+    <score type="float">2.1124268</score>
+    <record nil="true"></record>
+    <created>2009-04-30T14:32:23Z</created>
+  </user>
+  <user>
+    <name>jgoodsen</name>
+    <location>New York City</location>
+    <followers type="integer">18</followers>
+    <language>JavaScript</language>
+    <fullname>John Goodsen</fullname>
+    <username>jgoodsen</username>
+    <id>user-16525</id>
+    <repos type="integer">8</repos>
+    <type>user</type>
+    <pushed>2010-10-19T20:15:11.929Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-07-09T14:31:19Z</created>
+  </user>
+  <user>
+    <name>Gojohnnyboi</name>
+    <location></location>
+    <followers type="integer">18</followers>
+    <language>C</language>
+    <fullname>John Heaton</fullname>
+    <username>Gojohnnyboi</username>
+    <id>user-159331</id>
+    <repos type="integer">5</repos>
+    <type>user</type>
+    <pushed>2010-10-19T23:15:09.386Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2009-11-29T00:18:06Z</created>
+  </user>
+  <user>
+    <name>banister</name>
+    <location>New Zealand</location>
+    <followers type="integer">17</followers>
+    <language>Ruby</language>
+    <fullname>John Mair</fullname>
+    <username>banister</username>
+    <id>user-17518</id>
+    <repos type="integer">17</repos>
+    <type>user</type>
+    <pushed>2010-10-08T09:15:09.086Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-07-19T11:18:47Z</created>
+  </user>
+  <user>
+    <name>retr0h</name>
+    <location></location>
+    <followers type="integer">17</followers>
+    <language>Ruby</language>
+    <fullname>John Dewey</fullname>
+    <username>retr0h</username>
+    <id>user-9895</id>
+    <repos type="integer">20</repos>
+    <type>user</type>
+    <pushed>2010-10-12T13:15:09.63Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-05-10T20:19:11Z</created>
+  </user>
+  <user>
+    <name>wiseman</name>
+    <location>Los Angeles</location>
+    <followers type="integer">16</followers>
+    <username>wiseman</username>
+    <language>Common Lisp</language>
+    <fullname>John Wiseman</fullname>
+    <id>user-52466</id>
+    <repos type="integer">20</repos>
+    <type>user</type>
+    <pushed>2010-10-06T07:15:09.016Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2009-02-06T22:38:56Z</created>
+  </user>
+  <user>
+    <name>jm3</name>
+    <location>California</location>
+    <followers type="integer">16</followers>
+    <language>Ruby</language>
+    <fullname>John Manoogian III</fullname>
+    <username>jm3</username>
+    <id>user-12213</id>
+    <repos type="integer">22</repos>
+    <type>user</type>
+    <pushed>2010-10-12T23:15:08.497Z</pushed>
+    <score type="float">1.5559703</score>
+    <record nil="true"></record>
+    <created>2008-06-01T17:31:52Z</created>
+  </user>
+  <user>
+    <name>johncblandii</name>
+    <location>Houston, TX</location>
+    <followers type="integer">16</followers>
+    <language>ColdFusion</language>
+    <fullname>John C. Bland II</fullname>
+    <username>johncblandii</username>
+    <id>user-134952</id>
+    <repos type="integer">12</repos>
+    <type>user</type>
+    <pushed>2010-10-14T23:15:09.287Z</pushed>
+    <score type="float">1.5559703</score>
+    <record nil="true"></record>
+    <created>2009-10-04T19:01:53Z</created>
+  </user>
+  <user>
+    <name>johnbender</name>
+    <location>Santa Monica, CA</location>
+    <followers type="integer">16</followers>
+    <language>Ruby</language>
+    <fullname>John Bender</fullname>
+    <username>johnbender</username>
+    <id>user-23505</id>
+    <repos type="integer">12</repos>
+    <type>user</type>
+    <pushed>2010-10-15T07:15:08.936Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-09-07T04:53:32Z</created>
+  </user>
+  <user>
+    <name>jacius</name>
+    <location>Illinois, USA</location>
+    <followers type="integer">15</followers>
+    <fullname>John Croisant</fullname>
+    <username>jacius</username>
+    <language>Ruby</language>
+    <id>user-10655</id>
+    <repos type="integer">13</repos>
+    <type>user</type>
+    <pushed>2010-09-01T01:15:07.824Z</pushed>
+    <score type="float">1.8597146</score>
+    <record nil="true"></record>
+    <created>2008-05-18T06:50:37Z</created>
+  </user>
+  <user>
+    <name>KirinDave</name>
+    <location>SF,CA</location>
+    <followers type="integer">81</followers>
+    <language>JavaScript</language>
+    <fullname>Dave Fayram</fullname>
+    <username>KirinDave</username>
+    <id>user-36</id>
+    <repos type="integer">36</repos>
+    <type>user</type>
+    <pushed>2010-10-12T09:15:07.43Z</pushed>
+    <score type="float">7.5476747</score>
+    <record nil="true"></record>
+    <created>2008-01-19T08:01:02Z</created>
+  </user>
+  <user>
+    <name>davorg</name>
+    <location>London, UK</location>
+    <followers type="integer">60</followers>
+    <fullname>Dave Cross</fullname>
+    <language>Perl</language>
+    <username>davorg</username>
+    <id>user-24642</id>
+    <repos type="integer">50</repos>
+    <type>user</type>
+    <pushed>2010-06-10T12:15:07.849Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-09-15T09:44:59Z</created>
+  </user>
+  <user>
+    <name>mezzoblue</name>
+    <location>Vancouver</location>
+    <followers type="integer">55</followers>
+    <fullname>Dave Shea</fullname>
+    <username>mezzoblue</username>
+    <language>Java</language>
+    <id>user-138526</id>
+    <repos type="integer">3</repos>
+    <type>user</type>
+    <pushed>2010-10-05T06:15:10.784Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2009-10-12T06:56:11Z</created>
+  </user>
+  <user>
+    <name>dcbriccetti</name>
+    <location>Lafayette, California</location>
+    <followers type="integer">37</followers>
+    <fullname>Dave Briccetti</fullname>
+    <language>Scala</language>
+    <username>dcbriccetti</username>
+    <id>user-55099</id>
+    <repos type="integer">3</repos>
+    <type>user</type>
+    <pushed>2010-08-19T16:15:07.652Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2009-02-17T00:55:33Z</created>
+  </user>
+  <user>
+    <name>autarch</name>
+    <location>Minneapolis, MN</location>
+    <followers type="integer">35</followers>
+    <fullname>Dave Rolsky</fullname>
+    <language>Perl</language>
+    <username>autarch</username>
+    <id>user-50729</id>
+    <repos type="integer">21</repos>
+    <type>user</type>
+    <pushed>2010-05-24T01:17:26.415Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2009-01-31T17:52:43Z</created>
+  </user>
+  <user>
+    <name>redsquirrel</name>
+    <location>Wheaton, IL, USA</location>
+    <followers type="integer">32</followers>
+    <language>Ruby</language>
+    <fullname>Dave Hoover</fullname>
+    <username>redsquirrel</username>
+    <id>user-2512</id>
+    <repos type="integer">12</repos>
+    <type>user</type>
+    <pushed>2010-10-19T09:15:08.68Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-03-07T16:45:07Z</created>
+  </user>
+  <user>
+    <name>naffis</name>
+    <location>Washington, DC</location>
+    <followers type="integer">31</followers>
+    <fullname>Dave Naffis</fullname>
+    <language></language>
+    <username>naffis</username>
+    <id>user-3753</id>
+    <repos type="integer">0</repos>
+    <type>user</type>
+    <pushed>2010-08-17T03:15:07.196Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-03-25T18:52:11Z</created>
+  </user>
+  <user>
+    <name>davepeck</name>
+    <location>Seattle, WA</location>
+    <followers type="integer">28</followers>
+    <language>Python</language>
+    <fullname>Dave Peck</fullname>
+    <username>davepeck</username>
+    <id>user-53165</id>
+    <repos type="integer">7</repos>
+    <type>user</type>
+    <pushed>2010-10-16T00:15:09.094Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2009-02-09T23:14:13Z</created>
+  </user>
+  <user>
+    <name>dajobe</name>
+    <location>Silicon Valley</location>
+    <followers type="integer">26</followers>
+    <language>C</language>
+    <fullname>Dave Beckett</fullname>
+    <username>dajobe</username>
+    <id>user-88392</id>
+    <repos type="integer">12</repos>
+    <type>user</type>
+    <pushed>2010-10-15T02:15:09.425Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2009-05-25T16:49:59Z</created>
+  </user>
+  <user>
+    <name>davetroy</name>
+    <location>Baltimore, MD</location>
+    <followers type="integer">25</followers>
+    <fullname>Dave Troy</fullname>
+    <language>JavaScript</language>
+    <username>davetroy</username>
+    <id>user-11199</id>
+    <repos type="integer">12</repos>
+    <type>user</type>
+    <pushed>2010-07-27T05:58:51.201Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-05-22T15:57:18Z</created>
+  </user>
+  <user>
+    <name>furf</name>
+    <location>New York, NY</location>
+    <followers type="integer">23</followers>
+    <fullname>Dave Furfero</fullname>
+    <username>furf</username>
+    <language>JavaScript</language>
+    <id>user-35775</id>
+    <repos type="integer">27</repos>
+    <type>user</type>
+    <pushed>2010-10-01T05:15:09.216Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-11-21T03:16:22Z</created>
+  </user>
+  <user>
+    <name>davidmorford</name>
+    <location>Seattle</location>
+    <followers type="integer">23</followers>
+    <language>Objective-C</language>
+    <fullname>Dave Morford</fullname>
+    <username>davidmorford</username>
+    <id>user-41352</id>
+    <repos type="integer">8</repos>
+    <type>user</type>
+    <pushed>2010-10-15T10:15:13.924Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-12-18T21:12:10Z</created>
+  </user>
+  <user>
+    <name>davebryson</name>
+    <location>Currently on planet Earth</location>
+    <followers type="integer">22</followers>
+    <language>Erlang</language>
+    <fullname>Dave Bryson</fullname>
+    <username>davebryson</username>
+    <id>user-12842</id>
+    <repos type="integer">7</repos>
+    <type>user</type>
+    <pushed>2010-10-15T09:15:11.557Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-06-06T14:51:21Z</created>
+  </user>
+  <user>
+    <name>davedelong</name>
+    <location></location>
+    <followers type="integer">20</followers>
+    <fullname>Dave DeLong</fullname>
+    <username>davedelong</username>
+    <language>Objective-C</language>
+    <id>user-112699</id>
+    <repos type="integer">10</repos>
+    <type>user</type>
+    <pushed>2010-08-29T03:15:07.65Z</pushed>
+    <score type="float">1.7260146</score>
+    <record nil="true"></record>
+    <created>2009-08-06T21:53:15Z</created>
+  </user>
+  <user>
+    <name>davemerwin</name>
+    <location>Eugene, OR</location>
+    <followers type="integer">20</followers>
+    <fullname>Dave Merwin</fullname>
+    <username>davemerwin</username>
+    <language>Python</language>
+    <id>user-1435</id>
+    <repos type="integer">26</repos>
+    <type>user</type>
+    <pushed>2010-09-27T09:15:09.105Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-02-28T05:25:14Z</created>
+  </user>
+  <user>
+    <name>davejohnson</name>
+    <location>Vancouver</location>
+    <followers type="integer">20</followers>
+    <language>JavaScript</language>
+    <fullname>Dave Johnson</fullname>
+    <username>davejohnson</username>
+    <id>user-2680</id>
+    <repos type="integer">34</repos>
+    <type>user</type>
+    <pushed>2010-10-18T09:15:08.383Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-03-10T08:00:10Z</created>
+  </user>
+  <user>
+    <name>dizzyd</name>
+    <location></location>
+    <followers type="integer">18</followers>
+    <fullname>Dave Smith</fullname>
+    <language>Erlang</language>
+    <username>dizzyd</username>
+    <id>user-20146</id>
+    <repos type="integer">12</repos>
+    <type>user</type>
+    <pushed>2010-08-09T22:15:08.07Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-08-09T20:07:59Z</created>
+  </user>
+  <user>
+    <name>davedash</name>
+    <location>San Jos&#233;, CA</location>
+    <followers type="integer">18</followers>
+    <language>Python</language>
+    <fullname>Dave Dash</fullname>
+    <username>davedash</username>
+    <id>user-59497</id>
+    <repos type="integer">25</repos>
+    <type>user</type>
+    <pushed>2010-10-08T00:15:08.748Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2009-03-02T21:19:36Z</created>
+  </user>
+  <user>
+    <name>wilkie</name>
+    <location>Pittsburgh</location>
+    <followers type="integer">17</followers>
+    <fullname>Dave Wilkinson II</fullname>
+    <language>D</language>
+    <username>wilkie</username>
+    <id>user-31674</id>
+    <repos type="integer">10</repos>
+    <type>user</type>
+    <pushed>2010-08-07T19:15:08.263Z</pushed>
+    <score type="float">1.7260146</score>
+    <record nil="true"></record>
+    <created>2008-10-29T17:21:41Z</created>
+  </user>
+  <user>
+    <name>falconindy</name>
+    <location></location>
+    <followers type="integer">17</followers>
+    <language>C</language>
+    <fullname>Dave Reisner</fullname>
+    <username>falconindy</username>
+    <id>user-99302</id>
+    <repos type="integer">26</repos>
+    <type>user</type>
+    <pushed>2010-10-16T09:15:13.811Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2009-06-26T20:40:20Z</created>
+  </user>
+  <user>
+    <name>davebalmer</name>
+    <location>Silicon Valley, CA</location>
+    <followers type="integer">17</followers>
+    <language>JavaScript</language>
+    <fullname>Dave Balmer</fullname>
+    <username>davebalmer</username>
+    <id>user-297182</id>
+    <repos type="integer">2</repos>
+    <type>user</type>
+    <pushed>2010-10-19T05:15:09.778Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2010-06-05T06:41:05Z</created>
+  </user>
+  <user>
+    <name>daveverwer</name>
+    <location>Chester, UK</location>
+    <followers type="integer">16</followers>
+    <language>Objective-C</language>
+    <fullname>Dave Verwer</fullname>
+    <username>daveverwer</username>
+    <id>user-5180</id>
+    <repos type="integer">12</repos>
+    <type>user</type>
+    <pushed>2010-10-08T14:15:08.571Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-04-04T21:14:30Z</created>
+  </user>
+  <user>
+    <name>snappycode</name>
+    <location>Sydney, Australia</location>
+    <followers type="integer">16</followers>
+    <language>C#</language>
+    <fullname>Dave Newman</fullname>
+    <username>snappycode</username>
+    <id>user-7064</id>
+    <repos type="integer">16</repos>
+    <type>user</type>
+    <pushed>2010-10-09T09:15:11.669Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-04-13T10:41:00Z</created>
+  </user>
+  <user>
+    <name>ddribin</name>
+    <location></location>
+    <followers type="integer">16</followers>
+    <language>C</language>
+    <fullname>Dave Dribin</fullname>
+    <username>ddribin</username>
+    <id>user-20428</id>
+    <repos type="integer">8</repos>
+    <type>user</type>
+    <pushed>2010-10-18T19:15:09.839Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-08-12T17:22:40Z</created>
+  </user>
+  <user>
+    <name>davelester</name>
+    <location>Washington, DC</location>
+    <followers type="integer">15</followers>
+    <fullname>Dave Lester</fullname>
+    <username>davelester</username>
+    <language>PHP</language>
+    <id>user-18080</id>
+    <repos type="integer">6</repos>
+    <type>user</type>
+    <pushed>2010-09-30T16:15:10.114Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-07-23T07:22:32Z</created>
+  </user>
+  <user>
+    <name>dgiunta</name>
+    <location>Chicago, IL</location>
+    <followers type="integer">15</followers>
+    <username>dgiunta</username>
+    <language>Ruby</language>
+    <fullname>Dave Giunta</fullname>
+    <id>user-697</id>
+    <repos type="integer">24</repos>
+    <type>user</type>
+    <pushed>2010-10-06T23:15:07.113Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-02-23T19:57:34Z</created>
+  </user>
+  <user>
+    <name>daveaiello</name>
+    <location>Newtown, PA</location>
+    <followers type="integer">14</followers>
+    <language>Perl</language>
+    <fullname>Dave Aiello</fullname>
+    <username>daveaiello</username>
+    <id>user-85067</id>
+    <repos type="integer">1</repos>
+    <type>user</type>
+    <pushed>2010-10-08T20:15:09.688Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2009-05-15T19:36:17Z</created>
+  </user>
+  <user>
+    <name>gotoplanb</name>
+    <location>Gainesville, FL</location>
+    <followers type="integer">14</followers>
+    <language>Python</language>
+    <fullname>Dave Stanton</fullname>
+    <username>gotoplanb</username>
+    <id>user-51855</id>
+    <repos type="integer">2</repos>
+    <type>user</type>
+    <pushed>2010-10-13T03:15:08.852Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2009-02-04T21:12:37Z</created>
+  </user>
+  <user>
+    <name>dabrahams</name>
+    <location>Somerville, MA</location>
+    <followers type="integer">13</followers>
+    <language>Python</language>
+    <fullname>Dave Abrahams</fullname>
+    <username>dabrahams</username>
+    <id>user-44065</id>
+    <repos type="integer">13</repos>
+    <type>user</type>
+    <pushed>2010-10-09T22:15:08.874Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2009-01-04T09:09:00Z</created>
+  </user>
+  <user>
+    <name>futuremint</name>
+    <location>Indiana</location>
+    <followers type="integer">13</followers>
+    <language>Ruby</language>
+    <fullname>Dave Woodward</fullname>
+    <username>futuremint</username>
+    <id>user-5891</id>
+    <repos type="integer">4</repos>
+    <type>user</type>
+    <pushed>2010-10-14T18:15:08.898Z</pushed>
+    <score type="float">2.0791738</score>
+    <record nil="true"></record>
+    <created>2008-04-08T18:38:38Z</created>
+  </user>
+
+</users>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users type="array">
+  <user>
+    <name>hassox</name>
+    <location>Australia</location>
+    <followers type="integer">146</followers>
+    <language>Ruby</language>
+    <fullname>Daniel Neighman</fullname>
+    <username>hassox</username>
+    <id>user-104</id>
+    <repos type="integer">60</repos>
+    <type>user</type>
+    <pushed>2010-10-12T19:15:07.104Z</pushed>
+    <score type="float">1.8019356</score>
+    <record nil="true"></record>
+    <created>2008-01-30T06:31:06Z</created>
+  </user>
+  <user>
+    <name>toastdriven</name>
+    <location>Lawrence, KS</location>
+    <followers type="integer">118</followers>
+    <language>Python</language>
+    <fullname>Daniel Lindsley</fullname>
+    <username>toastdriven</username>
+    <id>user-2449</id>
+    <repos type="integer">28</repos>
+    <type>user</type>
+    <pushed>2010-10-19T05:15:08.538Z</pushed>
+    <score type="float">1.8019356</score>
+    <record nil="true"></record>
+    <created>2008-03-06T20:05:39Z</created>
+  </user>
+  <user>
+    <name>danielvlopes</name>
+    <location>Belo Horizonte - MG - Brasil</location>
+    <followers type="integer">100</followers>
+    <language>Ruby</language>
+    <fullname>Daniel Lopes</fullname>
+    <username>danielvlopes</username>
+    <id>user-6641</id>
+    <repos type="integer">39</repos>
+    <type>user</type>
+    <pushed>2010-10-09T23:15:09.932Z</pushed>
+    <score type="float">1.8019356</score>
+    <record nil="true"></record>
+    <created>2008-04-11T14:59:37Z</created>
+  </user>
+  <user>
+    <name>pydanny</name>
+    <location>Arlington, VA</location>
+    <followers type="integer">90</followers>
+    <fullname>Daniel Greenfeld</fullname>
+    <username>pydanny</username>
+    <language>Python</language>
+    <id>user-62857</id>
+    <repos type="integer">27</repos>
+    <type>user</type>
+    <pushed>2010-10-03T09:15:11.824Z</pushed>
+    <score type="float">1.8019356</score>
+    <record nil="true"></record>
+    <created>2009-03-12T18:50:46Z</created>
+  </user>
+</users>
