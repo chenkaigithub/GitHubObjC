@@ -135,7 +135,11 @@ didReceiveResponse:(NSURLResponse *)response {
                                                   delegate:self];
   
   if (self.connection) {
+    
     self.receivedData = [NSMutableData data];
+  } else {
+  
+    [self.delegate gitHubService:self didFailWithError:nil];
   }
 }
 
