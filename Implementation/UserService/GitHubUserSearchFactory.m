@@ -5,6 +5,7 @@
 //  Created by Magnus Ernstsson on 10/19/10.
 //  Copyright 2010 Patchwork Solutions AB. All rights reserved.
 //
+
 #import "GitHubUserSearchFactory.h"
 #import "GitHubServiceGotNameDelegate.h"
 #import "GitHubServiceDelegate.h"

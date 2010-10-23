@@ -29,11 +29,12 @@
 @property (copy) NSString* request;
 @property (assign) BOOL failSent;
 @property (assign) BOOL cancelling;
-@property (assign) id<GitHubServiceDelegate> delegate;
+@property (retain) id<GitHubServiceDelegate> delegate;
 
 -(void)makeRequest:(NSString *) url;
 -(id<GitHubService>)initWithDelegate:(id<GitHubServiceDelegate>)newDelegate;
 -(void)cancelRequest;
+-(void)cleanUp;
 
 +(void)setServerAddress:(NSString *)newServerAddress;
 +(NSString *)serverAddress;

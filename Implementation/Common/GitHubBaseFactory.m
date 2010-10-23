@@ -57,6 +57,7 @@ qualifiedName:(NSString *)qName
   
   if (!self.cancelling) {
     [self.delegate gitHubService:self didFailWithError:parseError];
+    [self cleanUp];
   }
 }
 
@@ -64,6 +65,7 @@ qualifiedName:(NSString *)qName
   
   if (!self.failSent) {
     [self.delegate gitHubServiceDone:self];
+    [self cleanUp];
   }
 }
 
@@ -83,8 +85,7 @@ didReceiveResponse:(NSURLResponse *)response {
  didFailWithError:(NSError *)error {
   
   [self.delegate gitHubService:self didFailWithError:error];
-  self.connection = nil;
-  self.receivedData = nil;
+  [self cleanUp];
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -140,6 +141,7 @@ didReceiveResponse:(NSURLResponse *)response {
   } else {
   
     [self.delegate gitHubService:self didFailWithError:nil];
+    [self cleanUp];
   }
 }
 
@@ -153,13 +155,17 @@ didReceiveResponse:(NSURLResponse *)response {
   return self;
 }
 
--(void)dealloc {
-  
+-(void)cleanUp {
+  self.delegate = nil;
   self.receivedData = nil;
   self.request = nil;
   self.connection = nil;
   self.parser = nil;
   self.currentStringValue = nil;
+}
+
+-(void)dealloc {
+  [self cleanUp];
   [super dealloc];
 }
 

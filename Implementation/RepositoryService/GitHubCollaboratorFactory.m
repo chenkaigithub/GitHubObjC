@@ -10,7 +10,6 @@
 #import "GitHubServiceGotNameDelegate.h"
 #import "GitHubServiceDelegate.h"
 
-
 @implementation GitHubCollaboratorFactory
 
 -(void)parser:(NSXMLParser *)parser

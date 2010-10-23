@@ -8,7 +8,6 @@
 
 #import "GitHubTagImp.h"
 
-
 @implementation GitHubTagImp
 @synthesize name, commitId, userName, repositoryName;
 

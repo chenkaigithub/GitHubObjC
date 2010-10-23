@@ -8,7 +8,6 @@
 
 #import "GitHubBranchImp.h"
 
-
 @implementation GitHubBranchImp
 
 @synthesize name, commitId, userName, repositoryName;
