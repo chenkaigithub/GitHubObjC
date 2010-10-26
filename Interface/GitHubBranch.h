@@ -7,12 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GitHubRef.h"
 
-@protocol GitHubBranch <NSObject>
-
-@property (retain) NSString *name;
-@property (retain) NSString *commitId;
-@property (retain) NSString *repositoryName;
-@property (retain) NSString *userName;
+@protocol GitHubBranch <GitHubRef>
 
 @end

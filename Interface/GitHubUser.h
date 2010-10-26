@@ -10,20 +10,20 @@
 
 @protocol GitHubUser <NSObject>
 
-@property (copy) NSString *location;
-@property (copy) NSString *name;
-@property (copy) NSString *login;
-@property (copy) NSString *email;
-@property (retain) NSURL *blog;
-@property (copy) NSString *company;
-@property (copy) NSString *gravatarId;
-@property (assign) int publicRepoCount;
-@property (assign) int publicGistCount;
-@property (assign) int followersCount;
-@property (assign) int followingCount;
-@property (copy) NSDate *creationDate;
-@property (copy) NSString *ID;
-@property (copy) NSString *type;
+@property (readonly, copy) NSString *location;
+@property (readonly, copy) NSString *name;
+@property (readonly, copy) NSString *login;
+@property (readonly, copy) NSString *email;
+@property (readonly, retain) NSURL *blog;
+@property (readonly, copy) NSString *company;
+@property (readonly, copy) NSString *gravatarId;
+@property (readonly, assign) int publicRepoCount;
+@property (readonly, assign) int publicGistCount;
+@property (readonly, assign) int followersCount;
+@property (readonly, assign) int followingCount;
+@property (readonly, retain) NSDate *creationDate;
+@property (readonly, copy) NSString *ID;
+@property (readonly, copy) NSString *type;
 
 -(NSComparisonResult)compare:(id<GitHubUser>)otherUser;
 

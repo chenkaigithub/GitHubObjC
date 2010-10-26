@@ -13,7 +13,24 @@
 
 @implementation GitHubContributorFactory
 
+//Retain
 @synthesize contributor;
+
+-(void)cleanUp {
+  
+  self.contributor = nil;
+  [super cleanUp];
+}
+
+-(void)dealloc {
+  
+  [self cleanUp];
+  [super dealloc];
+}
+
+#pragma mark -
+#pragma mark Delegate protocol implementation
+#pragma mark - NSXMLParser
 
 -(void)parser:(NSXMLParser *)parser
 didStartElement:(NSString *)elementName
@@ -49,17 +66,14 @@ qualifiedName:(NSString *)qName {
     
   } else if ([elementName isEqualToString:@"error"]) {
     
-    [self.parser abortParsing];
+    [self handleErrorWithCode:GitHubServerServerError];
   }
   self.currentStringValue = nil;
 }
 
--(void)requestContributorsByName:(NSString *)name user:(NSString *)user {
-  
-  [self makeRequest:
-   [NSString stringWithFormat:@"%@/api/v2/xml/repos/show/%@/%@/contributors",
-    [GitHubBaseFactory serverAddress], user, name]];
-}
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
 
 +(GitHubContributorFactory *)contributorFactoryWithDelegate:
 (id<GitHubServiceGotContributorDelegate>)delegate {
@@ -68,10 +82,13 @@ qualifiedName:(NSString *)qName {
            initWithDelegate:delegate] autorelease]; 
 }
 
--(void)dealloc {
+#pragma mark - Instance
+
+-(void)requestContributorsByName:(NSString *)name user:(NSString *)user {
   
-  self.contributor = nil;
-  [super dealloc];
+  [self makeRequest:
+   [NSString stringWithFormat:@"%@/api/v2/xml/repos/show/%@/%@/contributors",
+    [GitHubBaseFactory serverAddress], user, name]];
 }
 
 @end

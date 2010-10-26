@@ -10,14 +10,37 @@
 
 @implementation GitHubCommitImp
 
-@synthesize authorName, authorEmail, authorLogin, authoredDate, committerName,
-committerEmail, committerLogin,committedDate, url, commitId, tree, message,
-parents;
+#pragma mark -
+#pragma mark Memory and member management
 
--(void)addParent:(NSString *)parent {
+//Retain
+@synthesize parents, url, authoredDate, committedDate; 
+
+//Copy
+@synthesize authorName, authorEmail, authorLogin,
+committerName, committerEmail, committerLogin, commitId,
+tree, message;
+
+-(void)dealloc {
   
-  [self.parents addObject:parent];
+  self.parents = nil;
+  self.authorName = nil;
+  self.authorEmail = nil;
+  self.authorLogin = nil;
+  self.url = nil;
+  self.commitId = nil;
+  self.committedDate = nil;
+  self.authoredDate = nil;
+  self.tree = nil;
+  self.committerName = nil;
+  self.committerLogin = nil;
+  self.committerEmail = nil;
+  self.message = nil;
+  [super dealloc];
 }
+
+#pragma mark -
+#pragma mark Super override implementation
 
 -(id)init {
   
@@ -25,11 +48,6 @@ parents;
     self.parents = [NSMutableArray arrayWithCapacity:2];
   }
   return self;
-}
-
-+(id<GitHubCommit>)commit {
-  
-  return [[[GitHubCommitImp alloc] init] autorelease];
 }
 
 -(NSString *)description {
@@ -70,22 +88,13 @@ parents;
           self.message];
 }
 
--(void)dealloc {
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
+
++(id<GitHubCommit>)commit {
   
-  self.parents = nil;
-  self.authorName = nil;
-  self.authorEmail = nil;
-  self.authorLogin = nil;
-  self.url = nil;
-  self.commitId = nil;
-  self.committedDate = nil;
-  self.authoredDate = nil;
-  self.tree = nil;
-  self.committerName = nil;
-  self.committerLogin = nil;
-  self.committerEmail = nil;
-  self.message = nil;
-  [super dealloc];
+  return [[[GitHubCommitImp alloc] init] autorelease];
 }
 
 @end

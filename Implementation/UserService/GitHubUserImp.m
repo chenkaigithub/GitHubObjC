@@ -9,16 +9,36 @@
 #import <Foundation/Foundation.h>
 #import "GitHubUserImp.h"
 
-@protocol GitHubUser;
-
 @implementation GitHubUserImp
 
-@synthesize gravatarId, company, blog, email, name, login, location, ID, type,
-publicRepoCount, publicGistCount, followersCount, followingCount, creationDate;
+#pragma mark -
+#pragma mark Memory and member management
 
-+(id<GitHubUser>)user {
-  return [[[GitHubUserImp alloc] init] autorelease]; 
+//Copy
+@synthesize gravatarId, company, email, name, login, location, ID, type;
+
+//Retain
+@synthesize blog, creationDate;
+
+//Assign
+@synthesize publicGistCount, publicRepoCount, followersCount, followingCount;
+
+-(void)dealloc {
+  self.location = nil;
+  self.name = nil;
+  self.login = nil;
+  self.email = nil;
+  self.blog = nil;
+  self.company = nil;
+  self.gravatarId = nil;
+  self.creationDate = nil;
+  self.ID = nil;
+  self.type = nil;
+  [super dealloc];
 }
+
+#pragma mark -
+#pragma mark Super override implementation
 
 -(NSString *)description {
   return [NSString
@@ -58,18 +78,12 @@ publicRepoCount, publicGistCount, followersCount, followingCount, creationDate;
   return [self.login compare:otherUser.login];
 }
 
--(void)dealloc {
-  self.location = nil;
-  self.name = nil;
-  self.login = nil;
-  self.email = nil;
-  self.blog = nil;
-  self.company = nil;
-  self.gravatarId = nil;
-  self.creationDate = nil;
-  self.ID = nil;
-  self.type = nil;
-  [super dealloc];
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
+
++(id<GitHubUser>)user {
+  return [[[GitHubUserImp alloc] init] autorelease]; 
 }
 
 @end

@@ -14,7 +14,25 @@
 
 @implementation GitHubUserFactory
 
+#pragma mark -
+#pragma mark Memory and member management
+
+//Retain
 @synthesize user;
+
+-(void)cleanUp {
+  self.user = nil;
+  [super cleanUp];
+}
+
+-(void)dealloc {
+  [self cleanUp];
+  [super dealloc];
+}
+
+#pragma mark -
+#pragma mark Delegate protocol implementation
+#pragma mark - NSXMLParserDelegate
 
 -(void)parser:(NSXMLParser *)parser
 didStartElement:(NSString *)elementName
@@ -82,7 +100,8 @@ qualifiedName:(NSString *)qName {
     
     NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-    self.user.creationDate = [formatter dateFromString:self.currentStringValue];
+    self.user.creationDate = 
+    [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
     
   } else if ([elementName isEqualToString:@"public-repo-count"]) {
     
@@ -106,10 +125,22 @@ qualifiedName:(NSString *)qName {
     
   } else if ([elementName isEqualToString:@"error"]) {
     
-    [self.parser abortParsing];
+    [self handleErrorWithCode:GitHubServerServerError];
   }
   self.currentStringValue = nil;
 }
+
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
+
++(GitHubUserFactory *)userFactoryWithDelegate:
+(id<GitHubServiceGotUserDelegate>)delegate {
+  
+  return [[[GitHubUserFactory alloc] initWithDelegate:delegate] autorelease]; 
+}
+
+#pragma mark - Instance
 
 -(void)requestUserByName:(NSString *) name {
   
@@ -123,12 +154,6 @@ qualifiedName:(NSString *)qName {
   [self makeRequest:[NSString
                      stringWithFormat:@"%@/api/v2/xml/user/email/%@",
                      [GitHubBaseFactory serverAddress], email]];
-}
-
-+(GitHubUserFactory *)userFactoryWithDelegate:
-(id<GitHubServiceGotUserDelegate>)delegate {
-  
-  return [[[GitHubUserFactory alloc] initWithDelegate:delegate] autorelease]; 
 }
 
 @end

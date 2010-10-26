@@ -9,15 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "GitHubBaseFactory.h"
 #import "GitHubService.h"
+#import "GitHubUserImp.h"
+#import "GitHubServiceGotUserDelegate.h"
 
-@protocol GitHubUser;
-@protocol GitHubServiceGotUserDelegate;
-
-@interface GitHubUserFactory : GitHubBaseFactory <GitHubService> {
-  id<GitHubUser> user;
+@interface GitHubUserFactory : GitHubBaseFactory {
+  GitHubUserImp*  user;
 }
 
-@property (retain) id<GitHubUser> user;
+@property (retain) GitHubUserImp* user;
 
 -(void)requestUserByName:(NSString *)name;
 

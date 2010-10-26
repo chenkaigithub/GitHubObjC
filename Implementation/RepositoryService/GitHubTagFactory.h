@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GitHubBaseFactory.h"
-
-@protocol GitHubServiceGotTagDelegate;
+#import "GitHubServiceGotTagDelegate.h"
 
 @interface GitHubTagFactory : GitHubBaseFactory {
   NSString *user;

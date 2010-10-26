@@ -10,13 +10,33 @@
 
 @implementation GitHubRepositoryImp
 
-@synthesize watchers, hasDownloads, desc, name, fork, hasWiki, hasIssues, url;
-@synthesize owner, homepage, openIssues, private, creationDate, pushDate, forks;
+#pragma mark -
+#pragma mark Memory and member management
 
-+(id<GitHubRepository>)repository {
+//Retain
+@synthesize homepage, url, creationDate, pushDate;
+
+//Copy
+@synthesize desc, name, owner;
+
+//Assign
+@synthesize watchers, hasDownloads, fork, hasWiki, hasIssues, openIssues,
+private, forks;
+
+-(void)dealloc {
   
-  return [[[GitHubRepositoryImp alloc] init] autorelease]; 
+  self.desc = nil;
+  self.name = nil;
+  self.url = nil;
+  self.owner = nil;
+  self.homepage = nil;
+  self.pushDate = nil;
+  self.creationDate = nil;
+  [super dealloc];
 }
+
+#pragma mark -
+#pragma mark Super override implementation
 
 -(NSString *)description {
   
@@ -62,16 +82,13 @@
   return [self.name compare:otherRepository.name];
 }
 
--(void)dealloc {
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
+
++(id<GitHubRepository>)repository {
   
-  self.desc = nil;
-  self.name = nil;
-  self.url = nil;
-  self.owner = nil;
-  self.homepage = nil;
-  self.pushDate = nil;
-  self.creationDate = nil;
-  [super dealloc];
+  return [[[GitHubRepositoryImp alloc] init] autorelease]; 
 }
 
 @end

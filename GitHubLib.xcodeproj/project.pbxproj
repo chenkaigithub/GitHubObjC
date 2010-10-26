@@ -91,6 +91,7 @@
 		F704E70E126E8C2800587F90 /* testSearchUser4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testSearchUser4; sourceTree = "<group>"; };
 		F704E986126EC15200587F90 /* testSearchUser5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testSearchUser5; sourceTree = "<group>"; };
 		F704E9F8126EF30D00587F90 /* testSearchUser6 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testSearchUser6; sourceTree = "<group>"; };
+		F70B0461127597D500F671B9 /* GitHubRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubRef.h; sourceTree = "<group>"; };
 		F7962454126E02620075205F /* GitHubCommitImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubCommitImp.h; sourceTree = "<group>"; };
 		F7962455126E02620075205F /* GitHubCommitImp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubCommitImp.m; sourceTree = "<group>"; };
 		F7962456126E02620075205F /* GitHubCommitServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubCommitServiceFactory.m; sourceTree = "<group>"; };
@@ -375,11 +376,12 @@
 				F79626DA126E259C0075205F /* GitHubServiceGotNameDelegate.h */,
 				F79626DC126E25E70075205F /* GitHubServiceGotContributorDelegate.h */,
 				F79624E0126E08980075205F /* GitHubServiceGotUserDelegate.h */,
-				F796246D126E02620075205F /* GitHubBranch.h */,
 				F796246E126E02620075205F /* GitHubCommit.h */,
 				F7962470126E02620075205F /* GitHubContributor.h */,
 				F7962471126E02620075205F /* GitHubRepository.h */,
+				F70B0461127597D500F671B9 /* GitHubRef.h */,
 				F7962474126E02620075205F /* GitHubTag.h */,
+				F796246D126E02620075205F /* GitHubBranch.h */,
 				F7962475126E02620075205F /* GitHubUser.h */,
 			);
 			path = Interface;

@@ -12,6 +12,10 @@
 
 @implementation GitHubCollaboratorFactory
 
+#pragma mark -
+#pragma mark Delegate protocol implementation
+#pragma mark - NSXMLParser
+
 -(void)parser:(NSXMLParser *)parser
 didEndElement:(NSString *)elementName
  namespaceURI:(NSString *)namespaceURI
@@ -25,10 +29,23 @@ qualifiedName:(NSString *)qName {
     
   } else if ([elementName isEqualToString:@"error"]) {
     
-    [self.parser abortParsing];
+    [self handleErrorWithCode:GitHubServerServerError];
   }
   self.currentStringValue = nil;
 }
+
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
+
++(GitHubCollaboratorFactory *)collaboratorFactoryWithDelegate:
+(id<GitHubServiceGotNameDelegate>)delegate {
+  
+  return [[[GitHubCollaboratorFactory alloc]
+           initWithDelegate:delegate] autorelease]; 
+}
+
+#pragma mark - Instance
 
 -(void)requestCollaboratorsByName:(NSString *)name
                              user:(NSString *)user {
@@ -36,13 +53,6 @@ qualifiedName:(NSString *)qName {
   [self makeRequest:
    [NSString stringWithFormat:@"%@/api/v2/xml/repos/show/%@/%@/collaborators",
     [GitHubBaseFactory serverAddress], user, name]];
-}
-
-+(GitHubCollaboratorFactory *)collaboratorFactoryWithDelegate:
-(id<GitHubServiceGotNameDelegate>)delegate {
-  
-  return [[[GitHubCollaboratorFactory alloc]
-           initWithDelegate:delegate] autorelease]; 
 }
 
 @end

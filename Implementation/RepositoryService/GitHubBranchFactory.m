@@ -14,33 +14,103 @@
 
 @implementation GitHubBranchFactory
 
+#pragma mark -
+#pragma mark Memory and member management
+
+//Retain
 @synthesize user, repository;
 
--(void)parser:(NSXMLParser *)parser
- didEndElement:(NSString *)elementName
-  namespaceURI:(NSString *)namespaceURI
- qualifiedName:(NSString *)qName {
+-(void)cleanUp {
   
-  if ([elementName isEqualToString:@"branches"]) {
-    
-  } else if ([elementName isEqualToString:@"error"]) {
-    
-    [self.parser abortParsing];
-    
-  } else {
-    
-    id<GitHubBranch> branch = [GitHubBranchImp branch];
-    branch.name = elementName;
-    branch.commitId = self.currentStringValue;
-    branch.userName = self.user;
-    branch.repositoryName = self.repository;
-    
-    [(id<GitHubServiceGotBranchDelegate>)self.delegate
-     gitHubService:self
-     gotBranch:branch];
-  }
-  self.currentStringValue = nil;
+  self.repository = nil;
+  self.user = nil;
+  [super cleanUp];
 }
+
+-(void)dealloc {
+  
+  [self cleanUp];
+  [super dealloc];
+}
+
+#pragma mark -
+#pragma mark Delegate protocol implementation
+#pragma mark - NSURLConnectionDelegate
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection {
+  
+  NSMutableCharacterSet *characterSet = 
+  [NSMutableCharacterSet characterSetWithCharactersInString:@"\""];
+  
+  [characterSet formUnionWithCharacterSet:
+   [NSCharacterSet whitespaceCharacterSet]];
+  
+  NSString *string = [[[NSString alloc]
+                       initWithData:self.receivedData
+                       encoding:NSUTF8StringEncoding]
+                      autorelease];
+  
+  NSArray *lines = [string componentsSeparatedByString:@"\n"];
+  BOOL tagsStarted = NO;
+  
+  for (int i = 0; i < [lines count]; i++) {
+    
+    NSString *line = [lines objectAtIndex:i];
+    
+    if (tagsStarted && ![line isEqualToString:@""]) {
+      
+      NSArray * tagStrings= [line componentsSeparatedByString:@":"];
+      
+      if ([tagStrings count] == 2) {
+        
+      id<GitHubBranch> branch = [GitHubBranchImp branch];
+      
+      branch.name = [[tagStrings objectAtIndex:0]
+                  stringByTrimmingCharactersInSet:characterSet];
+      
+      branch.commitId = [[tagStrings objectAtIndex:1]
+                      stringByTrimmingCharactersInSet:characterSet];
+      
+      branch.userName = self.user;
+      branch.repositoryName = self.repository;
+      
+      [(id<GitHubServiceGotBranchDelegate>)self.delegate
+       gitHubService:self gotBranch:branch];
+      }
+    } else if ([[line stringByTrimmingCharactersInSet:
+                 [NSCharacterSet whitespaceCharacterSet]]
+                isEqualToString:@"branches:"]) {
+      
+      tagsStarted = YES;
+      
+    } else if ([[line stringByTrimmingCharactersInSet:
+                 [NSCharacterSet whitespaceCharacterSet]]
+                isEqualToString:@"error:"]) {
+      
+      [self handleErrorWithCode:GitHubServerServerError];
+    }
+  }
+  self.connection = nil;
+  self.receivedData = nil;
+  
+  if (!self.failSent && !self.cancelling) {
+    
+    [self.delegate gitHubServiceDone:self];
+    [self cleanUp];
+  }
+}
+
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
+
++(GitHubBranchFactory *)branchFactoryWithDelegate:
+(id<GitHubServiceGotBranchDelegate>)delegate {
+  
+  return [[[GitHubBranchFactory alloc] initWithDelegate:delegate] autorelease]; 
+}
+
+#pragma mark - Instance
 
 -(void)requestBranchesByName:(NSString *)newRepository
                         user:(NSString *)newUser {
@@ -49,22 +119,8 @@
   self.repository = newRepository;
   
   [self makeRequest:
-   [NSString stringWithFormat:@"%@/api/v2/xml/repos/show/%@/%@/branches",
+   [NSString stringWithFormat:@"%@/api/v2/yaml/repos/show/%@/%@/branches",
     [GitHubBaseFactory serverAddress], newUser, newRepository]];
-}
-
-+(GitHubBranchFactory *)branchFactoryWithDelegate:
-(id<GitHubServiceGotBranchDelegate>)delegate {
-  
-  return [[[GitHubBranchFactory alloc] initWithDelegate:delegate] autorelease]; 
-}
-
--(void)dealloc {
-  
-  self.repository = nil;
-  self.user = nil;
-  self.currentStringValue = nil;
-  [super dealloc];
 }
 
 @end

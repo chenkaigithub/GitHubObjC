@@ -10,12 +10,23 @@
 
 @implementation GitHubBranchImp
 
+#pragma mark -
+#pragma mark Memory and member management
+
+//Copy
 @synthesize name, commitId, userName, repositoryName;
 
-+(id<GitHubBranch>)branch {
+-(void)dealloc {
   
-  return [[[GitHubBranchImp alloc] init] autorelease]; 
+  self.name = nil;
+  self.commitId = nil;
+  self.userName = nil;
+  self.repositoryName = nil;
+  [super dealloc];
 }
+
+#pragma mark -
+#pragma mark Super override implementation
 
 -(NSString *)description {
   
@@ -39,13 +50,13 @@
   return [self.name compare:otherBranch.name];
 }
 
--(void)dealloc {
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
+
++(id<GitHubBranch>)branch {
   
-  self.name = nil;
-  self.commitId = nil;
-  self.userName = nil;
-  self.repositoryName = nil;
-  [super dealloc];
+  return [[[GitHubBranchImp alloc] init] autorelease]; 
 }
 
 @end

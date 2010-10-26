@@ -10,12 +10,23 @@
 
 @implementation GitHubContributorImp
 
-@synthesize name, contributions;
+#pragma mark -
+#pragma mark Memory and member management
 
-+(id<GitHubContributor>)contributor {
+//Copy
+@synthesize name;
+
+//Assign
+@synthesize contributions;
+
+-(void)dealloc {
   
-  return [[[GitHubContributorImp alloc] init] autorelease]; 
+  self.name = nil;
+  [super dealloc];
 }
+
+#pragma mark -
+#pragma mark Super override implementation
 
 -(NSString *)description {
   
@@ -34,10 +45,13 @@
   return otherContributor.contributions - self.contributions;
 }
 
--(void)dealloc {
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
+
++(id<GitHubContributor>)contributor {
   
-  self.name = nil;
-  [super dealloc];
+  return [[[GitHubContributorImp alloc] init] autorelease]; 
 }
 
 @end

@@ -13,13 +13,17 @@
 #import "GitHubContributorFactory.h"
 #import "GitHubTagFactory.h"
 #import "GitHubBranchFactory.h"
-
-@protocol GitHubServiceGotContributorDelegate;
-@protocol GitHubServiceGotNameDelegate;
-@protocol GitHubServiceGotTagDelegate;
-@protocol GitHubServiceGotBranchDelegate;
+#import "GitHubServiceGotContributorDelegate.h";
+#import "GitHubServiceGotNameDelegate.h";
+#import "GitHubServiceGotTagDelegate.h";
+#import "GitHubServiceGotBranchDelegate.h";
 
 @implementation GitHubRepositoryServiceFactory
+
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
+#pragma mark - Instance
 
 +(id<GitHubService>)requestRepositoriesInNetworkByName:(NSString *)name
                                                   user:(NSString *)user

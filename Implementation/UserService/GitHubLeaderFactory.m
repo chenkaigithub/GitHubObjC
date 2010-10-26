@@ -12,6 +12,9 @@
 
 @implementation GitHubLeaderFactory
 
+#pragma mark -
+#pragma mark Delegate protocol implementation
+#pragma mark - NSXMLParserDelegate
 
 -(void)parser:(NSXMLParser *)parser
 didEndElement:(NSString *)elementName
@@ -26,17 +29,14 @@ qualifiedName:(NSString *)qName {
     
   } else if ([elementName isEqualToString:@"error"]) {
     
-    [self.parser abortParsing];
+    [self handleErrorWithCode:GitHubServerServerError];
   }
   self.currentStringValue = nil;
 }
 
--(void)requestLeadersOfUser:(NSString *)name {
-  
-  [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/user/show/%@/following",
-                     [GitHubBaseFactory serverAddress], name]];
-}
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
 
 +(GitHubLeaderFactory *)leaderFactoryWithDelegate:
 (id<GitHubServiceGotNameDelegate>)delegate {
@@ -44,10 +44,13 @@ qualifiedName:(NSString *)qName {
   return [[[GitHubLeaderFactory alloc] initWithDelegate:delegate] autorelease]; 
 }
 
--(void)dealloc {
+#pragma mark - Instance
+
+-(void)requestLeadersOfUser:(NSString *)name {
   
-  self.currentStringValue = nil;
-  [super dealloc];
+  [self makeRequest:[NSString
+                     stringWithFormat:@"%@/api/v2/xml/user/show/%@/following",
+                     [GitHubBaseFactory serverAddress], name]];
 }
 
 @end

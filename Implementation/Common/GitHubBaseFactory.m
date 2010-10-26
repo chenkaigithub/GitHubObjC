@@ -11,10 +11,52 @@
 
 @implementation GitHubBaseFactory
 
-@synthesize receivedData, currentStringValue, request, parser;
-@synthesize connection, delegate, failSent, cancelling;
+#pragma mark -
+#pragma mark Internal implementation declaration
 
-static NSString *serverAddress = @"http://github.com";
+static NSString * serverAddress = @"http://github.com";
+
+#pragma mark -
+#pragma mark Memory and member management
+
+//Copy
+@synthesize request;
+
+//Retain
+@synthesize receivedData, currentStringValue, parser, connection, delegate;
+
+//Assign
+@synthesize failSent, cancelling;
+
+-(void)cleanUp {
+  
+  self.delegate = nil;
+  self.receivedData = nil;
+  self.request = nil;
+  self.connection = nil;
+  self.parser = nil;
+  self.currentStringValue = nil;
+}
+
+-(void)dealloc {
+  
+  [self cleanUp];
+  [super dealloc];
+}
+
+-(void)setParser:(NSXMLParser *)newParser {
+  
+  [parser abortParsing];
+  [parser release];
+  parser = [newParser retain];
+}
+
+-(void)setConnection:(NSURLConnection *)newConnection {
+  
+  [connection cancel];
+  [connection release];
+  connection = [newConnection retain];
+}
 
 +(void)setServerAddress:(NSString *)newServerAddress {
   
@@ -26,6 +68,61 @@ static NSString *serverAddress = @"http://github.com";
   
   return serverAddress;
 }
+
+#pragma mark -
+#pragma mark Internal implementation
+#pragma mark - Instance
+
+-(id<GitHubService>)initWithDelegate:(id<GitHubServiceDelegate>)newDelegate {
+  
+  if (self = [super init]){
+    self.delegate = newDelegate;
+    self.cancelling = NO;
+    self.failSent = NO;
+  }
+  return self;
+}
+
+-(void)handleErrorWithCode:(GitHubServerError)code {
+
+  if (!self.cancelling && !self.failSent) {
+    
+    self.failSent = YES;
+    
+    [self.delegate gitHubService:self
+                didFailWithError:[NSError
+                                  errorWithDomain:GitHubServerErrorDomain
+                                  code:code
+                                  userInfo:nil]];
+    
+    [self cleanUp];
+  }
+}
+
+-(void)makeRequest:(NSString *) url {
+  
+  self.request = url;
+  
+  NSURLRequest *theRequest=[NSURLRequest
+                            requestWithURL:[NSURL URLWithString:url]
+                            cachePolicy:NSURLRequestUseProtocolCachePolicy
+                            timeoutInterval:60.0];
+  
+  self.connection = [NSURLConnection connectionWithRequest:theRequest
+                                                  delegate:self];
+  
+  if (self.connection) {
+    
+    self.receivedData = [NSMutableData data];
+  } else {
+    
+    [self handleErrorWithCode:GitHubServerConnectionError];
+  }
+}
+
+#pragma mark -
+#pragma mark Delegate protocol implementation
+#pragma mark - NSXMLParserDelegate
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
  namespaceURI:(NSString *)namespaceURI
@@ -45,7 +142,6 @@ qualifiedName:(NSString *)qName
    NSStringFromSelector(_cmd)];
 }
 
-
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
   
   [self.currentStringValue appendString:string];
@@ -53,21 +149,19 @@ qualifiedName:(NSString *)qName
 
 -(void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
   
-  self.failSent = YES;
-  
-  if (!self.cancelling) {
-    [self.delegate gitHubService:self didFailWithError:parseError];
-    [self cleanUp];
-  }
+  [self handleErrorWithCode:GitHubServerParserError];
 }
 
 -(void)parserDidEndDocument:(NSXMLParser *)parser {
   
-  if (!self.failSent) {
+  if (!self.failSent && !self.cancelling) {
+    
     [self.delegate gitHubServiceDone:self];
     [self cleanUp];
   }
 }
+
+#pragma mark - NSURLConnection
 
 -(void)connection:(NSURLConnection *)connection
 didReceiveResponse:(NSURLResponse *)response {
@@ -84,8 +178,7 @@ didReceiveResponse:(NSURLResponse *)response {
 -(void)connection:(NSURLConnection *)connection
  didFailWithError:(NSError *)error {
   
-  [self.delegate gitHubService:self didFailWithError:error];
-  [self cleanUp];
+  [self handleErrorWithCode:GitHubServerConnectionError];
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -94,79 +187,23 @@ didReceiveResponse:(NSURLResponse *)response {
                   initWithData:self.receivedData] autorelease];
   
   [self.parser setDelegate:self];
-  [self.parser setShouldResolveExternalEntities:YES];
   [self.parser parse];
   self.connection = nil;
   self.receivedData = nil;
 }
 
--(void)setParser:(NSXMLParser *)newParser {
-  
-  [parser abortParsing];
-  [parser release];
-  parser = [newParser retain];
-}
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
 
--(void)setConnection:(NSURLConnection *)newConnection {
-  
-  [connection cancel];
-  [connection release];
-  connection = [newConnection retain];
-}
+NSString * const GitHubServerErrorDomain = @"GitHubServerErrorDomain";
+
+#pragma mark - Instance
 
 -(void)cancelRequest {
   
   self.cancelling = YES;
-  self.request = nil;
-  self.parser = nil;
-  self.receivedData = nil;
-  self.connection = nil;
-}
-	
--(void)makeRequest:(NSString *) url {
-  
-  self.request = url;
-  
-  NSURLRequest *theRequest=[NSURLRequest
-                            requestWithURL:[NSURL URLWithString:url]
-                            cachePolicy:NSURLRequestUseProtocolCachePolicy
-                            timeoutInterval:60.0];
-  
-  self.connection = [NSURLConnection connectionWithRequest:theRequest
-                                                  delegate:self];
-  
-  if (self.connection) {
-    
-    self.receivedData = [NSMutableData data];
-  } else {
-  
-    [self.delegate gitHubService:self didFailWithError:nil];
-    [self cleanUp];
-  }
-}
-
--(id<GitHubService>)initWithDelegate:(id<GitHubServiceDelegate>)newDelegate {
-  
-  if (self = [super init]){
-    self.delegate = newDelegate;
-    self.cancelling = NO;
-    self.failSent = NO;
-  }
-  return self;
-}
-
--(void)cleanUp {
-  self.delegate = nil;
-  self.receivedData = nil;
-  self.request = nil;
-  self.connection = nil;
-  self.parser = nil;
-  self.currentStringValue = nil;
-}
-
--(void)dealloc {
   [self cleanUp];
-  [super dealloc];
 }
 
 @end

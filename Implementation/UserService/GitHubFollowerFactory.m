@@ -12,6 +12,10 @@
 
 @implementation GitHubFollowerFactory
 
+#pragma mark -
+#pragma mark Delegate protocol implementation
+#pragma mark - NSXMLParserDelegate
+
 -(void)parser:(NSXMLParser *)parser
 didEndElement:(NSString *)elementName
  namespaceURI:(NSString *)namespaceURI
@@ -25,17 +29,14 @@ qualifiedName:(NSString *)qName {
     
   } else if ([elementName isEqualToString:@"error"]) {
     
-    [self.parser abortParsing];
+    [self handleErrorWithCode:GitHubServerServerError];
   }
   self.currentStringValue = nil;
 }
 
--(void)requestFollowersOfUser:(NSString *)name {
-  
-  [self makeRequest:[NSString 
-                    stringWithFormat:@"%@/api/v2/xml/user/show/%@/followers",
-                     [GitHubBaseFactory serverAddress], name]];
-}
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
 
 +(GitHubFollowerFactory *)followerFactoryWithDelegate:
 (id<GitHubServiceGotNameDelegate>)delegate {
@@ -44,10 +45,13 @@ qualifiedName:(NSString *)qName {
            initWithDelegate:delegate] autorelease]; 
 }
 
--(void)dealloc {
+#pragma mark - Instance
+
+-(void)requestFollowersOfUser:(NSString *)name {
   
-  self.currentStringValue = nil;
-  [super dealloc];
+  [self makeRequest:[NSString 
+                    stringWithFormat:@"%@/api/v2/xml/user/show/%@/followers",
+                     [GitHubBaseFactory serverAddress], name]];
 }
 
 @end

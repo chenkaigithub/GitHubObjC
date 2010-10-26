@@ -25,6 +25,20 @@
   NSString *ID;
   NSString *type;
 }
+@property (copy) NSString *location;
+@property (copy) NSString *name;
+@property (copy) NSString *login;
+@property (copy) NSString *email;
+@property (retain) NSURL *blog;
+@property (copy) NSString *company;
+@property (copy) NSString *gravatarId;
+@property (assign) int publicRepoCount;
+@property (assign) int publicGistCount;
+@property (assign) int followersCount;
+@property (assign) int followingCount;
+@property (retain) NSDate *creationDate;
+@property (copy) NSString *ID;
+@property (copy) NSString *type;
 
 +(id<GitHubUser>)user;
 

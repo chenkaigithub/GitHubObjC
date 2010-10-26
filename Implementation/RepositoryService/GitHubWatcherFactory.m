@@ -12,6 +12,10 @@
 
 @implementation GitHubWatcherFactory
 
+#pragma mark -
+#pragma mark Delegate protocol implementation
+#pragma mark - NSXMLParser
+
 -(void)parser:(NSXMLParser *)parser
 didEndElement:(NSString *)elementName
  namespaceURI:(NSString *)namespaceURI
@@ -25,18 +29,14 @@ qualifiedName:(NSString *)qName {
     
   } else if ([elementName isEqualToString:@"error"]) {
     
-    [self.parser abortParsing];
+    [self handleErrorWithCode:GitHubServerServerError];
   }
   self.currentStringValue = nil;
 }
 
--(void)requestWatchersByName:(NSString *)name
-                        user:(NSString *)user {
-  
-  [self makeRequest:
-   [NSString stringWithFormat:@"%@/api/v2/xml/repos/show/%@/%@/watchers",
-    [GitHubBaseFactory serverAddress], user, name]];
-}
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
 
 +(GitHubWatcherFactory *)watcherFactoryWithDelegate:
 (id<GitHubServiceGotNameDelegate>)delegate {
@@ -44,10 +44,14 @@ qualifiedName:(NSString *)qName {
   return [[[GitHubWatcherFactory alloc] initWithDelegate:delegate] autorelease];   
 }
 
--(void)dealloc {
+#pragma mark - Instance
+
+-(void)requestWatchersByName:(NSString *)name
+                        user:(NSString *)user {
   
-  self.currentStringValue = nil;
-  [super dealloc];
+  [self makeRequest:
+   [NSString stringWithFormat:@"%@/api/v2/xml/repos/show/%@/%@/watchers",
+    [GitHubBaseFactory serverAddress], user, name]];
 }
 
 @end

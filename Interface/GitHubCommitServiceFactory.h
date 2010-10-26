@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GitHubService.h"
 
-@protocol GitHubService;
 @protocol GitHubServiceGotCommitDelegate;
 
 /**

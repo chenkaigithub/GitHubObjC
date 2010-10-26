@@ -24,6 +24,4 @@
 @property (copy) NSString *committerEmail;
 @property (copy) NSString *message;
 
--(void)addParent:(NSString *)parent;
-
 @end

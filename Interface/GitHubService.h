@@ -13,3 +13,13 @@
 -(void)cancelRequest;
 
 @end
+
+extern NSString * const GitHubServerErrorDomain;
+
+typedef enum {
+  GitHubServerInternalError = 1,
+  GitHubServerOutOfMemoryError = 2,
+  GitHubServerServerError = 3,
+  GitHubServerParserError = 4,
+  GitHubServerConnectionError = 5,
+} GitHubServerError;

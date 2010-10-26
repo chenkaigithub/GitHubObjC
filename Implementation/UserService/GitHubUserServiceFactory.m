@@ -14,6 +14,10 @@
 
 @implementation GitHubUserServiceFactory
 
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
+
 +(id<GitHubService>)requestUserByName:(NSString *)name
 delegate:(id<GitHubServiceGotUserDelegate>)delegate {
   

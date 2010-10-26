@@ -9,12 +9,24 @@
 #import "GitHubTagImp.h"
 
 @implementation GitHubTagImp
+
+#pragma mark -
+#pragma mark Memory and member management
+
+//Copy
 @synthesize name, commitId, userName, repositoryName;
 
-+(id<GitHubTag>)tag {
+-(void)dealloc {
   
-  return [[[GitHubTagImp alloc] init] autorelease]; 
+  self.name = nil;
+  self.commitId = nil;
+  self.userName = nil;
+  self.repositoryName = nil;
+  [super dealloc];
 }
+
+#pragma mark -
+#pragma mark Super override implementation
 
 -(NSString *)description {
   
@@ -38,13 +50,13 @@
   return [self.name compare:otherTag.name];
 }
 
--(void)dealloc {
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
+
++(id<GitHubTag>)tag {
   
-  self.name = nil;
-  self.commitId = nil;
-  self.userName = nil;
-  self.repositoryName = nil;
-  [super dealloc];
+  return [[[GitHubTagImp alloc] init] autorelease]; 
 }
 
 @end

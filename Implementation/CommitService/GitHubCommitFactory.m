@@ -14,7 +14,28 @@
 
 @implementation GitHubCommitFactory
 
-@synthesize commit, author, committer, parent;
+#pragma mark -
+#pragma mark Memory and member management
+
+//Retain
+@synthesize commit;
+
+//Assign
+@synthesize author, committer, parent;
+
+-(void)cleanUp {
+  self.commit = nil;
+  [super cleanUp];
+}
+
+-(void)dealloc {
+  [self cleanUp];
+  [super dealloc];
+}
+
+#pragma mark -
+#pragma mark Delegate protocol implementation
+#pragma mark - NSXMLParserDelegate
 
 -(void)parser:(NSXMLParser *)parser
 didStartElement:(NSString *)elementName
@@ -121,23 +142,35 @@ qualifiedName:(NSString *)qName {
     NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     
-    self.commit.authoredDate = [formatter
-                                dateFromString:self.currentStringValue];
+    self.commit.authoredDate =
+    [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
     
   } else if ([elementName isEqualToString:@"committed-date"]) {
     
     NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     
-    self.commit.committedDate = [formatter
-                                 dateFromString:self.currentStringValue];
+    self.commit.committedDate =
+    [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
     
   } else if ([elementName isEqualToString:@"error"]) {
     
-    [self.parser abortParsing];
+    [self handleErrorWithCode:GitHubServerServerError];
   }
   self.currentStringValue = nil;
 }
+
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
+
++(GitHubCommitFactory *)commitFactoryWithDelegate:
+(id<GitHubServiceGotCommitDelegate>)delegate {
+  
+  return [[[GitHubCommitFactory alloc] initWithDelegate:delegate] autorelease]; 
+}
+
+#pragma mark - Instance
 
 -(void)requestCommitsOnBranch:(NSString *)branch
                    repository:(NSString *)repository
@@ -168,12 +201,6 @@ qualifiedName:(NSString *)qName {
                      stringWithFormat:@"%@/api/v2/xml/commits/show/%@/%@/%@",
                      [GitHubBaseFactory serverAddress],
                      user, repository, commitId]];
-}
-
-+(GitHubCommitFactory *)commitFactoryWithDelegate:
-(id<GitHubServiceGotCommitDelegate>)delegate {
-  
-  return [[[GitHubCommitFactory alloc] initWithDelegate:delegate] autorelease]; 
 }
 
 @end

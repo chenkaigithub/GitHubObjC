@@ -12,6 +12,10 @@
 
 @implementation GitHubUserSearchFactory
 
+#pragma mark -
+#pragma mark Delegate protocol implementation
+#pragma mark - NSXMLParserDelegate
+
 -(void)parser:(NSXMLParser *)parser
 didStartElement:(NSString *)elementName
  namespaceURI:(NSString *)namespaceURI
@@ -34,18 +38,15 @@ qualifiedName:(NSString *)qName {
     
   } else if ([elementName isEqualToString:@"error"]) {
     
-    [self.parser abortParsing];
+    [self handleErrorWithCode:GitHubServerServerError];
   }
   
   self.currentStringValue = nil;
 }
 
--(void)searchUsersByName:(NSString *)name {
-  
-  [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/user/search/%@",
-                     [GitHubBaseFactory serverAddress], name]];
-}
+#pragma mark -
+#pragma mark Interface implementation
+#pragma mark - Class
 
 +(GitHubUserSearchFactory *)userSearchFactoryWithDelegate:
 (id<GitHubServiceGotNameDelegate>)delegate {
@@ -54,10 +55,13 @@ qualifiedName:(NSString *)qName {
            initWithDelegate:delegate] autorelease]; 
 }
 
--(void)dealloc {
+#pragma mark - Instance
+
+-(void)searchUsersByName:(NSString *)name {
   
-  self.currentStringValue = nil;
-  [super dealloc];
+  [self makeRequest:[NSString
+                     stringWithFormat:@"%@/api/v2/xml/user/search/%@",
+                     [GitHubBaseFactory serverAddress], name]];
 }
 
 @end

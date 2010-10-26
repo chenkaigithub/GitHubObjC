@@ -7,12 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GitHubRef.h"
 
-@protocol GitHubTag <NSObject>
-
-@property (retain) NSString *name;
-@property (retain) NSString *commitId;
-@property (retain) NSString *repositoryName;
-@property (retain) NSString *userName;
+@protocol GitHubTag <GitHubRef>
 
 @end
