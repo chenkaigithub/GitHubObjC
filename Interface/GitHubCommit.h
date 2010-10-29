@@ -10,18 +10,22 @@
 
 @protocol GitHubCommit <NSObject>
 
-@property (retain) NSMutableArray *parents;
-@property (copy) NSString *authorName;
-@property (copy) NSString *authorEmail;
-@property (copy) NSString *authorLogin;
-@property (retain) NSURL *url;
-@property (copy) NSString *commitId;
-@property (retain) NSDate *committedDate;
-@property (retain) NSDate *authoredDate;
-@property (copy) NSString *tree;
-@property (copy) NSString *committerName;
-@property (copy) NSString *committerLogin;
-@property (copy) NSString *committerEmail;
-@property (copy) NSString *message;
+@property (readonly, retain) NSArray *parents;
+@property (readonly, copy) NSString *authorName;
+@property (readonly, copy) NSString *authorEmail;
+@property (readonly, copy) NSString *authorLogin;
+@property (readonly, retain) NSURL *url;
+@property (readonly, copy) NSString *commitId;
+@property (readonly, retain) NSDate *committedDate;
+@property (readonly, retain) NSDate *authoredDate;
+@property (readonly, copy) NSString *tree;
+@property (readonly, copy) NSString *committerName;
+@property (readonly, copy) NSString *committerLogin;
+@property (readonly, copy) NSString *committerEmail;
+@property (readonly, copy) NSString *message;
+@property (readonly, retain) NSArray *added;
+@property (readonly, retain) NSArray *modified;
+@property (readonly, retain) NSArray *modifiedDiff;
+@property (readonly, retain) NSArray *removed;
 
 @end

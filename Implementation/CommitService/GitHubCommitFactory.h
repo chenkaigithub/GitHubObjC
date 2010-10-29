@@ -8,21 +8,35 @@
 
 #import <Foundation/Foundation.h>
 #import "GitHubBaseFactory.h"
+#import "GitHubCommitImp.h"
 
-@protocol GitHubCommit;
 @protocol GitHubServiceGotCommitDelegate;
 
 @interface GitHubCommitFactory : GitHubBaseFactory {
-  id<GitHubCommit> commit;
+  GitHubCommitImp *commit;
   BOOL author;
   BOOL committer;
-  BOOL parent;
+  NSMutableArray *parents;
+  NSMutableArray *removed;
+  NSMutableArray *added;
+  NSMutableArray *modified;
+  NSMutableArray *modifiedDiff;
+  BOOL inAdded;
+  BOOL inModified;
+  BOOL inRemoved;
 }
 
-@property (retain) id<GitHubCommit> commit;
+@property (retain) GitHubCommitImp *commit;
 @property (assign) BOOL author;
 @property (assign) BOOL committer;
-@property (assign) BOOL parent;
+@property (retain) NSMutableArray *parents;
+@property (retain) NSMutableArray *removed;
+@property (retain) NSMutableArray *added;
+@property (retain) NSMutableArray *modified;
+@property (retain) NSMutableArray *modifiedDiff;
+@property (assign) BOOL inAdded;
+@property (assign) BOOL inModified;
+@property (assign) BOOL inRemoved;
 
 -(void)requestCommitsOnBranch:(NSString *)branch
                    repository:(NSString *)repository

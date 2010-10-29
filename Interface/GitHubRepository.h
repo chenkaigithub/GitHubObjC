@@ -10,20 +10,20 @@
 
 @protocol GitHubRepository <NSObject>
 
-@property (assign) int watchers;
-@property (assign) BOOL hasDownloads;
-@property (copy) NSString *desc;
-@property (copy) NSString *name;
-@property (assign) BOOL fork;
-@property (assign) BOOL hasWiki;
-@property (assign) BOOL hasIssues;
-@property (retain) NSURL *url;
-@property (copy) NSString *owner;
-@property (retain) NSURL *homepage;
-@property (assign) int openIssues;
-@property (assign) BOOL private;
-@property (retain) NSDate *creationDate;
-@property (retain) NSDate *pushDate;
-@property (assign) int forks;
+@property (readonly, assign) int watchers;
+@property (readonly, assign) BOOL hasDownloads;
+@property (readonly, copy) NSString *desc;
+@property (readonly, copy) NSString *name;
+@property (readonly, assign) BOOL fork;
+@property (readonly, assign) BOOL hasWiki;
+@property (readonly, assign) BOOL hasIssues;
+@property (readonly, retain) NSURL *url;
+@property (readonly, copy) NSString *owner;
+@property (readonly, retain) NSURL *homepage;
+@property (readonly, assign) int openIssues;
+@property (readonly, assign) BOOL private;
+@property (readonly, retain) NSDate *creationDate;
+@property (readonly, retain) NSDate *pushDate;
+@property (readonly, assign) int forks;
 
 @end

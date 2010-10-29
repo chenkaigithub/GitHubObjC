@@ -14,7 +14,8 @@
 #pragma mark Memory and member management
 
 //Retain
-@synthesize parents, url, authoredDate, committedDate; 
+@synthesize parents, url, authoredDate, committedDate, added, modified, removed,
+modifiedDiff; 
 
 //Copy
 @synthesize authorName, authorEmail, authorLogin,
@@ -36,19 +37,15 @@ tree, message;
   self.committerLogin = nil;
   self.committerEmail = nil;
   self.message = nil;
+  self.added = nil;
+  self.modified = nil;
+  self.modifiedDiff = nil;
+  self.removed = nil;
   [super dealloc];
 }
 
 #pragma mark -
 #pragma mark Super override implementation
-
--(id)init {
-  
-  if (self = [super init]) {
-    self.parents = [NSMutableArray arrayWithCapacity:2];
-  }
-  return self;
-}
 
 -(NSString *)description {
   

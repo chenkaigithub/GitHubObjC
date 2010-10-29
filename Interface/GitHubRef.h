@@ -11,9 +11,9 @@
 
 @protocol GitHubRef <NSObject>
 
-@property (retain) NSString *name;
-@property (retain) NSString *commitId;
-@property (retain) NSString *repositoryName;
-@property (retain) NSString *userName;
+@property (readonly, retain) NSString *name;
+@property (readonly, retain) NSString *commitId;
+@property (readonly, retain) NSString *repositoryName;
+@property (readonly, retain) NSString *userName;
 
 @end

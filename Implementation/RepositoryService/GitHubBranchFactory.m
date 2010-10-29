@@ -9,7 +9,6 @@
 #import "GitHubBranchFactory.h"
 #import "GitHubServiceGotBranchDelegate.h"
 #import "GitHubServiceDelegate.h"
-#import "GitHubBranch.h"
 #import "GitHubBranchImp.h"
 
 @implementation GitHubBranchFactory
@@ -63,7 +62,7 @@
       
       if ([tagStrings count] == 2) {
         
-      id<GitHubBranch> branch = [GitHubBranchImp branch];
+      GitHubBranchImp *branch = [GitHubBranchImp branch];
       
       branch.name = [[tagStrings objectAtIndex:0]
                   stringByTrimmingCharactersInSet:characterSet];

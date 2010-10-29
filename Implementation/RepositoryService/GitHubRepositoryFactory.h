@@ -8,16 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "GitHubBaseFactory.h"
+#import "GitHubRepositoryImp.h"
 
-@protocol GitHubRepository;
 @protocol GitHubServiceGotRepositoryDelegate;
 
 @interface GitHubRepositoryFactory : GitHubBaseFactory {
-  id<GitHubRepository> repository;
+  GitHubRepositoryImp *repository;
   BOOL networkElement;
 }
 
-@property (retain) id<GitHubRepository> repository;
+@property (retain) GitHubRepositoryImp *repository;
 @property (assign) BOOL networkElement;
 
 -(void)searchRepositoriesByName:(NSString *)name;

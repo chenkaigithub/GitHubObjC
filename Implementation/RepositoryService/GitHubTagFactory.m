@@ -63,7 +63,7 @@
       
       if ([tagStrings count] == 2) {
         
-        id<GitHubTag> tag = [GitHubTagImp tag];
+        GitHubTagImp *tag = [GitHubTagImp tag];
         
         tag.name = [[tagStrings objectAtIndex:0]
                     stringByTrimmingCharactersInSet:characterSet];

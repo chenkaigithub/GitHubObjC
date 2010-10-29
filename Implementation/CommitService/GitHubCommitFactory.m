@@ -18,17 +18,24 @@
 #pragma mark Memory and member management
 
 //Retain
-@synthesize commit;
+@synthesize commit, parents, removed, added, modified, modifiedDiff;
 
 //Assign
-@synthesize author, committer, parent;
+@synthesize author, committer, inAdded, inModified, inRemoved;
 
 -(void)cleanUp {
+  
   self.commit = nil;
+  self.parents = nil;
+  self.removed = nil;
+  self.added = nil;
+  self.modified = nil;
+  self.modifiedDiff = nil;
   [super cleanUp];
 }
 
 -(void)dealloc {
+  
   [self cleanUp];
   [super dealloc];
 }
@@ -57,7 +64,37 @@ qualifiedName:(NSString *)qName
     
   } else if ([elementName isEqualToString:@"parent"]) {
     
-    self.parent = YES;
+    self.parents = [NSMutableArray arrayWithCapacity:5];
+    
+  } else if ([elementName isEqualToString:@"removed"]) {
+    
+    self.inRemoved = YES;
+    
+    if (!self.removed) {
+      
+      self.removed = [NSMutableArray arrayWithCapacity:5];
+    }
+  } else if ([elementName isEqualToString:@"added"]) {
+ 
+    self.inAdded = YES;
+    
+    if (!self.added) {
+      
+      self.added = [NSMutableArray arrayWithCapacity:5];
+    }
+  } else if ([elementName isEqualToString:@"modified"]) {
+    
+    self.inModified = YES;
+    
+    if (!self.modified) {
+      
+      self.modified = [NSMutableArray arrayWithCapacity:10];
+    }
+    
+    if (!self.modifiedDiff) {
+    
+      self.modifiedDiff = [NSMutableArray arrayWithCapacity:10];
+    }
   }
   self.currentStringValue = [NSMutableString stringWithCapacity:100];
 }
@@ -66,7 +103,32 @@ qualifiedName:(NSString *)qName
 didEndElement:(NSString *)elementName
  namespaceURI:(NSString *)namespaceURI
 qualifiedName:(NSString *)qName {
+  
   if ([elementName isEqualToString:@"commit"]) {
+    
+    if (self.modified) {
+      
+      self.commit.modified = [NSArray arrayWithArray:self.modified];
+      self.modified = nil;
+    }
+    
+    if (self.modifiedDiff) {
+      
+      self.commit.modifiedDiff = [NSArray arrayWithArray:self.modifiedDiff];    
+      self.modifiedDiff = nil;
+    }
+    
+    if (self.removed) {
+      
+      self.commit.removed = [NSArray arrayWithArray:self.removed];
+      self.removed = nil;
+    }
+    
+    if (self.added) {
+      
+      self.commit.added = [NSArray arrayWithArray:self.added];
+      self.added = nil;
+    }
     
     [(id<GitHubServiceGotCommitDelegate>)self.delegate
      gitHubService:self
@@ -86,18 +148,30 @@ qualifiedName:(NSString *)qName {
     
   } else if ([elementName isEqualToString:@"parent"]) {
     
-    self.parent = NO;
+    self.commit.parents = [NSArray arrayWithArray:self.parents]; 
+    self.parents = nil;
     
+  } else if ([elementName isEqualToString:@"modified"]) {
+    
+    self.inModified = NO;
+
+  } else if ([elementName isEqualToString:@"added"]) {
+    
+    self.inAdded = NO;
+
+  } else if ([elementName isEqualToString:@"removed"]) {
+    
+    self.inRemoved = NO;
+
   } else if ([elementName isEqualToString:@"id"]) {
     
-    if (self.parent) {
+    if (self.parents) {
       
-      [self.commit.parents addObject:currentStringValue];
+      [self.parents addObject:currentStringValue];
       
     } else {
       
       self.commit.commitId = currentStringValue;
-      
     }
   } else if ([elementName isEqualToString:@"tree"]) {
     
@@ -152,6 +226,26 @@ qualifiedName:(NSString *)qName {
     
     self.commit.committedDate =
     [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
+    
+  } else if ([elementName isEqualToString:@"filename"]) {
+    
+    if (self.inAdded) {
+      [self.added addObject:self.currentStringValue];
+    }
+    
+    if (self.inRemoved) {
+      [self.removed addObject:self.currentStringValue];
+    }
+    
+    if (self.inModified) {
+      [self.modified addObject:self.currentStringValue];
+    }
+    
+  } else if ([elementName isEqualToString:@"diff"]) {
+    
+    if (self.inModified) {
+      [self.modifiedDiff addObject:self.currentStringValue];
+    }
     
   } else if ([elementName isEqualToString:@"error"]) {
     

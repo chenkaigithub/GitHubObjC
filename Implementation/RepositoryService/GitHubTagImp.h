@@ -15,6 +15,12 @@
   NSString *repositoryName;
   NSString *userName;
 }
+
+@property (retain) NSString *name;
+@property (retain) NSString *commitId;
+@property (retain) NSString *repositoryName;
+@property (retain) NSString *userName;
+
 +(id<GitHubTag>)tag;
 
 @end

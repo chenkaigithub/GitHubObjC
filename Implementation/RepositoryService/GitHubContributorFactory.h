@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "GitHubBaseFactory.h"
+#import "GitHubContributorImp.h"
 
-@protocol GitHubContributor;
 @protocol GitHubServiceGotContributorDelegate;
 
 @interface GitHubContributorFactory : GitHubBaseFactory {
-  id<GitHubContributor> contributor;
+  GitHubContributorImp *contributor;
 }
 
-@property (retain) id<GitHubContributor> contributor;
+@property (retain) GitHubContributorImp *contributor;
 
 -(void)requestContributorsByName:(NSString *)name user:(NSString *)user;
 

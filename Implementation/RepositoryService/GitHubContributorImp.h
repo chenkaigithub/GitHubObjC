@@ -14,6 +14,9 @@
   NSInteger contributions;
 }
 
+@property (copy) NSString *name;
+@property (assign) NSInteger contributions;
+
 +(id<GitHubContributor>)contributor;
 
 @end

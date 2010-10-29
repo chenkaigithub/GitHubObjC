@@ -10,7 +10,7 @@
 
 @protocol GitHubContributor <NSObject>
 
-@property (copy) NSString *name;
-@property (assign) NSInteger contributions;
+@property (readonly, copy) NSString *name;
+@property (readonly, assign) NSInteger contributions;
 
 @end
