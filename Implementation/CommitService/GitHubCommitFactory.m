@@ -261,7 +261,7 @@ qualifiedName:(NSString *)qName {
 +(GitHubCommitFactory *)commitFactoryWithDelegate:
 (id<GitHubServiceGotCommitDelegate>)delegate {
   
-  return [[[GitHubCommitFactory alloc] initWithDelegate:delegate] autorelease]; 
+  return [[[GitHubCommitFactory alloc] initWithDelegate:delegate] autorelease];
 }
 
 #pragma mark - Instance
