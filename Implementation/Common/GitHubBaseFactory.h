@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GitHubService.h"
-
-@protocol GitHubServiceDelegate;
+#import "GitHubServiceDelegate.h"
 
 @interface GitHubBaseFactory : NSObject <GitHubService, NSXMLParserDelegate> {
   NSMutableData *receivedData;
@@ -40,3 +39,7 @@
 +(NSString *)serverAddress;
 
 @end
+
+extern NSDictionary *endElement;
+
+extern NSDictionary *startElement;

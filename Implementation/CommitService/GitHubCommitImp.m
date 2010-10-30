@@ -18,9 +18,8 @@
 modifiedDiff; 
 
 //Copy
-@synthesize authorName, authorEmail, authorLogin,
-committerName, committerEmail, committerLogin, commitId,
-tree, message;
+@synthesize authorName, authorEmail, authorLogin, committerName, committerEmail,
+committerLogin, commitId, tree, message;
 
 -(void)dealloc {
   
@@ -52,6 +51,7 @@ tree, message;
   NSMutableString *parentsString = [NSMutableString string];
   
   for (int i = 0; i < [self.parents count]; i++) {
+    
     [parentsString appendFormat:@"%@, ", [self.parents objectAtIndex:i]];
   }
   return [NSString

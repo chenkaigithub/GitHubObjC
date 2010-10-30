@@ -17,9 +17,7 @@
 extern NSString * const GitHubServerErrorDomain;
 
 typedef enum {
-  GitHubServerInternalError = 1,
-  GitHubServerOutOfMemoryError = 2,
-  GitHubServerServerError = 3,
-  GitHubServerParserError = 4,
-  GitHubServerConnectionError = 5,
+  GitHubServerServerError = 1,
+  GitHubServerParserError = 2,
+  GitHubServerConnectionError = 3,
 } GitHubServerError;

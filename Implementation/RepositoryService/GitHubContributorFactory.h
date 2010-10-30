@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GitHubBaseFactory.h"
 #import "GitHubContributorImp.h"
-
-@protocol GitHubServiceGotContributorDelegate;
+#import "GitHubServiceGotContributorDelegate.h"
 
 @interface GitHubContributorFactory : GitHubBaseFactory {
   GitHubContributorImp *contributor;

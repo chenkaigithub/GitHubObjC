@@ -7,8 +7,6 @@
 //
 
 #import "GitHubBranchFactory.h"
-#import "GitHubServiceGotBranchDelegate.h"
-#import "GitHubServiceDelegate.h"
 #import "GitHubBranchImp.h"
 
 @implementation GitHubBranchFactory

@@ -7,8 +7,6 @@
 //
 
 #import "GitHubLeaderFactory.h"
-#import "GitHubServiceGotNameDelegate.h"
-#import "GitHubServiceDelegate.h"
 
 @implementation GitHubLeaderFactory
 

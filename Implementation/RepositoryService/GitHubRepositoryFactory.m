@@ -7,9 +7,6 @@
 //
 
 #import "GitHubRepositoryFactory.h"
-#import "GitHubServiceGotRepositoryDelegate.h"
-#import "GitHubServiceDelegate.h"
-#import "GitHubRepositoryImp.h"
 
 @implementation GitHubRepositoryFactory
 
@@ -99,19 +96,24 @@ qualifiedName:(NSString *)qName {
     
   } else if ([elementName isEqualToString:@"created-at"]) {
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-    
-    self.repository.creationDate = 
-    [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
-    
+    if ([self.currentStringValue length] > 18) {
+      
+      NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+      [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+      
+      self.repository.creationDate = 
+      [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
+    }
   } else if ([elementName isEqualToString:@"pushed-at"]) {
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-    
-    self.repository.pushDate = 
-    [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
+    if ([self.currentStringValue length] > 18) {
+      
+      NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+      [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+      
+      self.repository.pushDate = 
+      [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
+    }
     
   } else if ([elementName isEqualToString:@"watchers"]) {
     

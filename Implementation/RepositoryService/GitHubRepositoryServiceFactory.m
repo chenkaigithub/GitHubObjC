@@ -13,10 +13,6 @@
 #import "GitHubContributorFactory.h"
 #import "GitHubTagFactory.h"
 #import "GitHubBranchFactory.h"
-#import "GitHubServiceGotContributorDelegate.h";
-#import "GitHubServiceGotNameDelegate.h";
-#import "GitHubServiceGotTagDelegate.h";
-#import "GitHubServiceGotBranchDelegate.h";
 
 @implementation GitHubRepositoryServiceFactory
 

@@ -9,8 +9,6 @@
 #import "GitHubServiceDelegate.h"
 #import "GitHubServiceGotCommitDelegate.h"
 #import "GitHubCommitFactory.h"
-#import "GitHubCommitImp.h"
-#import "GitHubCommit.h"
 
 @implementation GitHubCommitFactory
 
@@ -41,217 +39,303 @@
 }
 
 #pragma mark -
-#pragma mark Delegate protocol implementation
-#pragma mark - NSXMLParserDelegate
+#pragma mark Internal implementation declaration
 
--(void)parser:(NSXMLParser *)parser
-didStartElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI 
-qualifiedName:(NSString *)qName
-   attributes:(NSDictionary *)attributeDict {
+-(void)startElementCommit {
   
-  if ([elementName isEqualToString:@"commit"]) {
-    
-    self.commit = [GitHubCommitImp commit];
-    
-  } else if ([elementName isEqualToString:@"author"]) {
-    
-    self.author = YES;
-    
-  } else if ([elementName isEqualToString:@"committer"]) {
-    
-    self.committer = YES;
-    
-  } else if ([elementName isEqualToString:@"parent"]) {
-    
-    self.parents = [NSMutableArray arrayWithCapacity:5];
-    
-  } else if ([elementName isEqualToString:@"removed"]) {
-    
-    self.inRemoved = YES;
-    
-    if (!self.removed) {
-      
-      self.removed = [NSMutableArray arrayWithCapacity:5];
-    }
-  } else if ([elementName isEqualToString:@"added"]) {
- 
-    self.inAdded = YES;
-    
-    if (!self.added) {
-      
-      self.added = [NSMutableArray arrayWithCapacity:5];
-    }
-  } else if ([elementName isEqualToString:@"modified"]) {
-    
-    self.inModified = YES;
-    
-    if (!self.modified) {
-      
-      self.modified = [NSMutableArray arrayWithCapacity:10];
-    }
-    
-    if (!self.modifiedDiff) {
-    
-      self.modifiedDiff = [NSMutableArray arrayWithCapacity:10];
-    }
-  }
-  self.currentStringValue = [NSMutableString stringWithCapacity:100];
+  self.commit = [GitHubCommitImp commit];
 }
 
--(void)parser:(NSXMLParser *)parser
-didEndElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName {
+-(void)startElementAuthor {
   
-  if ([elementName isEqualToString:@"commit"]) {
-    
-    if (self.modified) {
-      
-      self.commit.modified = [NSArray arrayWithArray:self.modified];
-      self.modified = nil;
-    }
-    
-    if (self.modifiedDiff) {
-      
-      self.commit.modifiedDiff = [NSArray arrayWithArray:self.modifiedDiff];    
-      self.modifiedDiff = nil;
-    }
-    
-    if (self.removed) {
-      
-      self.commit.removed = [NSArray arrayWithArray:self.removed];
-      self.removed = nil;
-    }
-    
-    if (self.added) {
-      
-      self.commit.added = [NSArray arrayWithArray:self.added];
-      self.added = nil;
-    }
-    
-    [(id<GitHubServiceGotCommitDelegate>)self.delegate
-     gitHubService:self
-         gotCommit:self.commit];
-    
-  } else if ([elementName isEqualToString:@"message"]) {
-    
-    self.commit.message = currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"author"]) {
-    
-    self.author = NO;
-    
-  } else if ([elementName isEqualToString:@"committer"]) {
-    
-    self.committer = NO;
-    
-  } else if ([elementName isEqualToString:@"parent"]) {
-    
-    self.commit.parents = [NSArray arrayWithArray:self.parents]; 
-    self.parents = nil;
-    
-  } else if ([elementName isEqualToString:@"modified"]) {
-    
-    self.inModified = NO;
+  self.author = YES;
+}
 
-  } else if ([elementName isEqualToString:@"added"]) {
-    
-    self.inAdded = NO;
+-(void)startElementCommitter {
+  
+  self.committer = YES;
+}
 
-  } else if ([elementName isEqualToString:@"removed"]) {
-    
-    self.inRemoved = NO;
+-(void)startElementParent {
+  
+  self.parents = [NSMutableArray arrayWithCapacity:5];
+}
 
-  } else if ([elementName isEqualToString:@"id"]) {
+-(void)startElementRemoved {
+  
+  self.inRemoved = YES;
+  
+  if (!self.removed) {
     
-    if (self.parents) {
-      
-      [self.parents addObject:currentStringValue];
-      
-    } else {
-      
-      self.commit.commitId = currentStringValue;
-    }
-  } else if ([elementName isEqualToString:@"tree"]) {
+    self.removed = [NSMutableArray arrayWithCapacity:5];
+  }
+}
+
+-(void)startElementAdded {
+  
+  self.inAdded = YES;
+  
+  if (!self.added) {
     
-    self.commit.tree = currentStringValue;
+    self.added = [NSMutableArray arrayWithCapacity:5];
+  }
+}
+
+-(void)startElementModified {
+  
+  self.inModified = YES;
+  
+  if (!self.modified) {
     
-  } else if ([elementName isEqualToString:@"name"]) {
+    self.modified = [NSMutableArray arrayWithCapacity:10];
+  }
+  
+  if (!self.modifiedDiff) {
     
-    if (self.author) {
-      
-      self.commit.authorName = currentStringValue;
-      
-    } else if (self.committer){
-      
-      self.commit.committerName = currentStringValue;
-    }
-  } else if ([elementName isEqualToString:@"email"]) {
+    self.modifiedDiff = [NSMutableArray arrayWithCapacity:10];
+  }
+}
+
+-(void)endElementCommit {
+  
+  if (self.modified) {
     
-    if (self.author) {
-      
-      self.commit.authorEmail = currentStringValue;
-      
-    } else if (self.committer) {
-      
-      self.commit.committerEmail = currentStringValue;
-    }
-  } else if ([elementName isEqualToString:@"login"]) {
+    self.commit.modified = [NSArray arrayWithArray:self.modified];
+    self.modified = nil;
+  }
+  
+  if (self.modifiedDiff) {
     
-    if (self.author) {
-      
-      self.commit.authorLogin = currentStringValue;
-      
-    } else {
-      
-      self.commit.committerLogin = currentStringValue;
-    }
-  } else if ([elementName isEqualToString:@"url"]) {
+    self.commit.modifiedDiff = [NSArray arrayWithArray:self.modifiedDiff];    
+    self.modifiedDiff = nil;
+  }
+  
+  if (self.removed) {
     
-    self.commit.url = [NSURL URLWithString:currentStringValue];
+    self.commit.removed = [NSArray arrayWithArray:self.removed];
+    self.removed = nil;
+  }
+  
+  if (self.added) {
     
-  } else if ([elementName isEqualToString:@"authored-date"]) {
+    self.commit.added = [NSArray arrayWithArray:self.added];
+    self.added = nil;
+  }
+  
+  [(id<GitHubServiceGotCommitDelegate>)self.delegate
+   gitHubService:self
+   gotCommit:self.commit];  
+}
+
+-(void)endElementMessage {
+  
+  self.commit.message = currentStringValue;
+}
+
+-(void)endElementAuthor {
+  
+  self.author = NO;
+}
+
+-(void)endElementCommitter {
+  
+  self.committer = NO;
+}
+
+-(void)endElementParent {
+  
+  self.commit.parents = [NSArray arrayWithArray:self.parents]; 
+  self.parents = nil;
+}
+
+-(void)endElementModified {
+  
+  self.inModified = NO;
+}
+
+-(void)endElementAdded {
+  
+  self.inAdded = NO;
+}
+
+-(void)endElementRemoved {
+  
+  self.inRemoved = NO;
+}
+
+-(void)endElementId {
+  
+  if (self.parents) {
+    
+    [self.parents addObject:self.currentStringValue];
+    
+  } else {
+    
+    self.commit.commitId = self.currentStringValue;
+  }
+}
+
+-(void)endElementTree {
+  
+  self.commit.tree = self.currentStringValue;
+}
+
+-(void)endElementName {
+  
+  if (self.author) {
+    
+    self.commit.authorName = self.currentStringValue;
+    
+  } else if (self.committer){
+    
+    self.commit.committerName = self.currentStringValue;
+  }
+}
+
+-(void)endElementEmail {
+  
+  if (self.author) {
+    
+    self.commit.authorEmail = self.currentStringValue;
+    
+  } else if (self.committer) {
+    
+    self.commit.committerEmail = self.currentStringValue;
+  }
+}
+
+-(void)endElementLogin {
+  
+  if (self.author) {
+    
+    self.commit.authorLogin = self.currentStringValue;
+    
+  } else {
+    
+    self.commit.committerLogin = self.currentStringValue;
+  }
+}
+
+-(void)endElementUrl {
+  
+  self.commit.url = [NSURL URLWithString:currentStringValue];
+}
+
+-(void)endElementAuthoredDate {
+  
+  if ([self.currentStringValue length] > 18) {
     
     NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     
     self.commit.authoredDate =
     [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
-    
-  } else if ([elementName isEqualToString:@"committed-date"]) {
+  }
+}
+
+-(void)endElementCommittedDate {
+  
+  if ([self.currentStringValue length] > 18) {
     
     NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
     [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     
     self.commit.committedDate =
     [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
-    
-  } else if ([elementName isEqualToString:@"filename"]) {
-    
-    if (self.inAdded) {
-      [self.added addObject:self.currentStringValue];
-    }
-    
-    if (self.inRemoved) {
-      [self.removed addObject:self.currentStringValue];
-    }
-    
-    if (self.inModified) {
-      [self.modified addObject:self.currentStringValue];
-    }
-    
-  } else if ([elementName isEqualToString:@"diff"]) {
-    
-    if (self.inModified) {
-      [self.modifiedDiff addObject:self.currentStringValue];
-    }
-    
-  } else if ([elementName isEqualToString:@"error"]) {
-    
-    [self handleErrorWithCode:GitHubServerServerError];
   }
-  self.currentStringValue = nil;
+}
+
+-(void)endElementFilename {
+  
+  if (self.inAdded) {
+    [self.added addObject:self.currentStringValue];
+  }
+  
+  if (self.inRemoved) {
+    [self.removed addObject:self.currentStringValue];
+  }
+  
+  if (self.inModified) {
+    [self.modified addObject:self.currentStringValue];
+  }
+}
+
+-(void)endElementDiff {
+  
+  if (self.inModified) {
+    [self.modifiedDiff addObject:self.currentStringValue];
+  }
+}
+
+-(void)endElementError {
+  
+  [self handleErrorWithCode:GitHubServerServerError];
+}
+
+#pragma mark -
+#pragma mark Super override implementation
+
++(void)initialize {
+  
+  startElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (startElementCommit)], @"commit",
+    [NSValue valueWithPointer:@selector
+     (startElementAuthor)], @"author",
+    [NSValue valueWithPointer:@selector
+     (startElementCommitter)], @"committer",
+    [NSValue valueWithPointer:@selector
+     (startElementParent)], @"parent",
+    [NSValue valueWithPointer:@selector
+     (startElementRemoved)], @"removed",
+    [NSValue valueWithPointer:@selector
+     (startElementAdded)], @"added",
+    [NSValue valueWithPointer:@selector
+     (startElementModified)], @"modified",
+    nil] retain];
+  
+  endElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (endElementCommit)], @"commit",
+    [NSValue valueWithPointer:@selector
+     (endElementMessage)], @"message",
+    [NSValue valueWithPointer:@selector
+     (endElementAuthor)], @"author",
+    [NSValue valueWithPointer:@selector
+     (endElementCommitter)], @"committer",
+    [NSValue valueWithPointer:@selector
+     (endElementParent)], @"parent",
+    [NSValue valueWithPointer:@selector
+     (endElementModified)], @"modified",
+    [NSValue valueWithPointer:@selector
+     (endElementAdded)], @"added",
+    [NSValue valueWithPointer:@selector
+     (endElementRemoved)], @"removed",
+    [NSValue valueWithPointer:@selector
+     (endElementId)], @"id",
+    [NSValue valueWithPointer:@selector
+     (endElementTree)], @"tree",
+    [NSValue valueWithPointer:@selector
+     (endElementName)], @"name",
+    [NSValue valueWithPointer:@selector
+     (endElementEmail)], @"email",
+    [NSValue valueWithPointer:@selector
+     (endElementLogin)], @"login",
+    [NSValue valueWithPointer:@selector
+     (endElementUrl)], @"url",
+    [NSValue valueWithPointer:@selector
+     (endElementAuthoredDate)], @"authored-date",
+    [NSValue valueWithPointer:@selector
+     (endElementCommittedDate)], @"committed-date",
+    [NSValue valueWithPointer:@selector
+     (endElementFilename)], @"filename",
+    [NSValue valueWithPointer:@selector
+     (endElementDiff)], @"diff",
+    [NSValue valueWithPointer:@selector
+     (endElementError)], @"error",
+    nil] retain];
 }
 
 #pragma mark -

@@ -7,8 +7,6 @@
 //
 
 #import "GitHubCollaboratorFactory.h"
-#import "GitHubServiceGotNameDelegate.h"
-#import "GitHubServiceDelegate.h"
 
 @implementation GitHubCollaboratorFactory
 

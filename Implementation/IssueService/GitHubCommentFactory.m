@@ -62,11 +62,14 @@ qualifiedName:(NSString *)qName {
     
   } else if ([elementName isEqualToString:@"created-at"]) {
       
+    if ([self.currentStringValue length] > 18) {
+      
       NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
       [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
       
       self.comment.created =
       [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
+    }
     
   } else if ([elementName isEqualToString:@"body"]) {
     
@@ -74,11 +77,14 @@ qualifiedName:(NSString *)qName {
     
   } else if ([elementName isEqualToString:@"updated-at"]) {
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-    
-    self.comment.updated =
-    [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
+    if ([self.currentStringValue length] > 18) {
+      
+      NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+      [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+      
+      self.comment.updated =
+      [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
+    }
     
   } else if ([elementName isEqualToString:@"id"]) {
     

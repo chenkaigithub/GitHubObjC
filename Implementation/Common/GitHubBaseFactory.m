@@ -7,7 +7,6 @@
 //
 
 #import "GitHubBaseFactory.h"
-#import "GitHubServiceDelegate.h"
 
 @implementation GitHubBaseFactory
 
@@ -114,9 +113,6 @@ static NSString * serverAddress = @"http://github.com";
   if (self.connection) {
     
     self.receivedData = [NSMutableData data];
-  } else {
-    
-    [self handleErrorWithCode:GitHubServerConnectionError];
   }
 }
 
@@ -124,11 +120,18 @@ static NSString * serverAddress = @"http://github.com";
 #pragma mark Delegate protocol implementation
 #pragma mark - NSXMLParserDelegate
 
--(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
+-(void)parser:(NSXMLParser *)parser
+didStartElement:(NSString *)elementName
+ namespaceURI:(NSString *)namespaceURI 
 qualifiedName:(NSString *)qName
    attributes:(NSDictionary *)attributeDict {
+
+  SEL aSel = [[startElement objectForKey:elementName] pointerValue];
   
+  if (aSel) {
+    
+    [self performSelector:aSel];
+  }
   self.currentStringValue = [NSMutableString stringWithCapacity:100];
 }
 
@@ -137,9 +140,13 @@ qualifiedName:(NSString *)qName
   namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName {
   
-  [NSException raise:NSInternalInconsistencyException 
-              format:@"You must override %@ in a subclass",
-   NSStringFromSelector(_cmd)];
+  SEL aSel = [[endElement objectForKey:elementName] pointerValue];
+  
+  if (aSel) {
+    
+    [self performSelector:aSel];
+  }
+  self.currentStringValue = nil;
 }
 
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
@@ -195,6 +202,10 @@ didReceiveResponse:(NSURLResponse *)response {
 #pragma mark -
 #pragma mark Interface implementation
 #pragma mark - Class
+
+NSDictionary *endElement;
+
+NSDictionary *startElement;
 
 NSString * const GitHubServerErrorDomain = @"GitHubServerErrorDomain";
 

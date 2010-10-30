@@ -8,7 +8,6 @@
 
 #import "GitHubDataFactory.h"
 
-
 @implementation GitHubDataFactory
 
 #pragma mark -

@@ -7,8 +7,6 @@
 //
 
 #import "GitHubWatcherFactory.h"
-#import "GitHubServiceGotNameDelegate.h"
-#import "GitHubServiceDelegate.h"
 
 @implementation GitHubWatcherFactory
 

@@ -7,9 +7,6 @@
 //
 
 #import "GitHubContributorFactory.h"
-#import "GitHubServiceGotContributorDelegate.h"
-#import "GitHubServiceDelegate.h"
-#import "GitHubContributorImp.h"
 
 @implementation GitHubContributorFactory
 

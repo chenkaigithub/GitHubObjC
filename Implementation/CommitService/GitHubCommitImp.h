@@ -10,7 +10,7 @@
 #import "GitHubCommit.h"
 
 @interface GitHubCommitImp : NSObject <GitHubCommit> {
-  NSMutableArray *parents;
+  NSArray *parents;
   NSString *authorName;
   NSString *authorEmail;
   NSString *authorLogin;
@@ -23,10 +23,10 @@
   NSString *committerLogin;
   NSString *committerEmail;
   NSString *message;
-  NSMutableArray *added;
-  NSMutableArray *modified;
-  NSMutableArray *modifiedDiff;
-  NSMutableArray *removed;
+  NSArray *added;
+  NSArray *modified;
+  NSArray *modifiedDiff;
+  NSArray *removed;
 }
 
 @property (retain) NSArray *parents;

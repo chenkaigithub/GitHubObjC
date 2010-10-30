@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GitHubBaseFactory.h"
 #import "GitHubRepositoryImp.h"
-
-@protocol GitHubServiceGotRepositoryDelegate;
+#import "GitHubServiceGotRepositoryDelegate.h"
 
 @interface GitHubRepositoryFactory : GitHubBaseFactory {
   GitHubRepositoryImp *repository;

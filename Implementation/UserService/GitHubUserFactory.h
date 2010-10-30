@@ -8,12 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "GitHubBaseFactory.h"
-#import "GitHubService.h"
 #import "GitHubUserImp.h"
 #import "GitHubServiceGotUserDelegate.h"
 
 @interface GitHubUserFactory : GitHubBaseFactory {
-  GitHubUserImp*  user;
+  GitHubUserImp* user;
 }
 
 @property (retain) GitHubUserImp* user;

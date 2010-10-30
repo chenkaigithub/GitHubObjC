@@ -10,7 +10,6 @@
 		AA747D9F0F9514B9006C5449 /* GitHubLib_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* GitHubLib_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		F704E3F8126E5E3C00587F90 /* libGitHubLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libGitHubLib.a */; };
-		F704E40C126E5EB900587F90 /* TestGitHubUserServer.m in Sources */ = {isa = PBXBuildFile; fileRef = F7962848126E37A60075205F /* TestGitHubUserServer.m */; };
 		F71F3905127B832300C96889 /* GitHubUserServiceFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F7962476126E02620075205F /* GitHubUserServiceFactory.h */; };
 		F71F3906127B832300C96889 /* GitHubCommitServiceFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F796246F126E02620075205F /* GitHubCommitServiceFactory.h */; };
 		F71F3907127B832300C96889 /* GitHubRepositoryServiceFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F7962472126E02620075205F /* GitHubRepositoryServiceFactory.h */; };
@@ -43,13 +42,14 @@
 		F71F3922127B832300C96889 /* GitHubComment.h in Headers */ = {isa = PBXBuildFile; fileRef = F71F38E4127B7CD400C96889 /* GitHubComment.h */; };
 		F71F3923127B832900C96889 /* GitHubIssueImp.h in Headers */ = {isa = PBXBuildFile; fileRef = F71F38E5127B7DCF00C96889 /* GitHubIssueImp.h */; };
 		F71F3924127B832900C96889 /* GitHubIssueImp.m in Sources */ = {isa = PBXBuildFile; fileRef = F71F38E6127B7DCF00C96889 /* GitHubIssueImp.m */; };
-		F71F3925127B832900C96889 /* GitHubCommentImp.h in Headers */ = {isa = PBXBuildFile; fileRef = F71F38E8127B7F1400C96889 /* GitHubCommentImp.h */; };
 		F71F3926127B832900C96889 /* GitHubCommentImp.m in Sources */ = {isa = PBXBuildFile; fileRef = F71F38E9127B7F1400C96889 /* GitHubCommentImp.m */; };
 		F71F3927127B832900C96889 /* GitHubIssueServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F71F38E0127B79EA00C96889 /* GitHubIssueServiceFactory.m */; };
 		F71F3973127B84B400C96889 /* GitHubIssueFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F71F3970127B84AE00C96889 /* GitHubIssueFactory.h */; };
 		F71F3974127B84B400C96889 /* GitHubIssueFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F71F3971127B84AE00C96889 /* GitHubIssueFactory.m */; };
-		F71F397E127B84F200C96889 /* GitHubLabelFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F71F397D127B84F200C96889 /* GitHubLabelFactory.m */; };
-		F71F3981127B84FD00C96889 /* GitHubCommentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F71F3980127B84FD00C96889 /* GitHubCommentFactory.m */; };
+		F71F3E93127CD24F00C96889 /* TestGitHubUserServer.m in Sources */ = {isa = PBXBuildFile; fileRef = F7962848126E37A60075205F /* TestGitHubUserServer.m */; };
+		F71F3EA6127CD2B900C96889 /* GitHubCommentFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F71F397F127B84FD00C96889 /* GitHubCommentFactory.h */; };
+		F71F3EA7127CD2B900C96889 /* GitHubLabelFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F71F397C127B84F200C96889 /* GitHubLabelFactory.h */; };
+		F71F3EA8127CD2BA00C96889 /* GitHubLabelFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F71F397D127B84F200C96889 /* GitHubLabelFactory.m */; };
 		F7700DCF127B241A000D3D77 /* GitHubTreeItemImp.m in Sources */ = {isa = PBXBuildFile; fileRef = F7700C02127AE80C000D3D77 /* GitHubTreeItemImp.m */; };
 		F7700DD0127B241C000D3D77 /* GitHubObjectServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F7700C08127AE82D000D3D77 /* GitHubObjectServiceFactory.m */; };
 		F7700DD1127B241C000D3D77 /* GitHubDataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F7700C12127AEBB0000D3D77 /* GitHubDataFactory.m */; };
@@ -558,8 +558,9 @@
 				F71F3921127B832300C96889 /* GitHubIssue.h in Headers */,
 				F71F3922127B832300C96889 /* GitHubComment.h in Headers */,
 				F71F3923127B832900C96889 /* GitHubIssueImp.h in Headers */,
-				F71F3925127B832900C96889 /* GitHubCommentImp.h in Headers */,
 				F71F3973127B84B400C96889 /* GitHubIssueFactory.h in Headers */,
+				F71F3EA6127CD2B900C96889 /* GitHubCommentFactory.h in Headers */,
+				F71F3EA7127CD2B900C96889 /* GitHubLabelFactory.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,6 +694,7 @@
 				F71F3926127B832900C96889 /* GitHubCommentImp.m in Sources */,
 				F71F3927127B832900C96889 /* GitHubIssueServiceFactory.m in Sources */,
 				F71F3974127B84B400C96889 /* GitHubIssueFactory.m in Sources */,
+				F71F3EA8127CD2BA00C96889 /* GitHubLabelFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,9 +702,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F704E40C126E5EB900587F90 /* TestGitHubUserServer.m in Sources */,
-				F71F397E127B84F200C96889 /* GitHubLabelFactory.m in Sources */,
-				F71F3981127B84FD00C96889 /* GitHubCommentFactory.m in Sources */,
+				F71F3E93127CD24F00C96889 /* TestGitHubUserServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

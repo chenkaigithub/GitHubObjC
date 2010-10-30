@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GitHubIssue.h"=
+#import "GitHubIssue.h"
 
 @interface GitHubIssueImp : NSObject <GitHubIssue> {
   NSString *gravatar;

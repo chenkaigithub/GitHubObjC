@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GitHubBaseFactory.h"
-
-@protocol GitHubServiceGotBranchDelegate;
+#import "GitHubServiceGotBranchDelegate.h";
 
 @interface GitHubBranchFactory : GitHubBaseFactory {
   NSString *user;

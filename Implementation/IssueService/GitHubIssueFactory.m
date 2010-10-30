@@ -85,11 +85,14 @@ qualifiedName:(NSString *)qName {
     
   } else if ([elementName isEqualToString:@"created-at"]) {
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-    
-    self.issue.created =
-    [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
+    if ([self.currentStringValue length] > 18) {
+      
+      NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+      [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+      
+      self.issue.created =
+      [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
+    }
     
   } else if ([elementName isEqualToString:@"comments"]) {
     
@@ -105,19 +108,25 @@ qualifiedName:(NSString *)qName {
     
   } else if ([elementName isEqualToString:@"updated-at"]) {
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-    
-    self.issue.updated =
-    [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
+    if ([self.currentStringValue length] > 18) {
+      
+      NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+      [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+      
+      self.issue.updated =
+      [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
+    }
     
   } else if ([elementName isEqualToString:@"closed-at"]) {
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-    
-    self.issue.updated =
-    [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
+    if ([self.currentStringValue length] > 18) {
+        
+      NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+      [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+      
+      self.issue.updated =
+      [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
+    }
     
   } else if ([elementName isEqualToString:@"user"]) {
     

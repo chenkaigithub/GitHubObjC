@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GitHubBaseFactory.h"
 
-@protocol GitHubServiceGotNameDelegate;
+#import "GitHubServiceGotNameDelegate.h";
 
 @interface GitHubUserSearchFactory : GitHubBaseFactory {
 }

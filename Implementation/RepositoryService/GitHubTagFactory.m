@@ -7,8 +7,6 @@
 //
 
 #import "GitHubTagFactory.h"
-#import "GitHubServiceGotTagDelegate.h"
-#import "GitHubServiceDelegate.h"
 #import "GitHubTagImp.h"
 #import "GitHubBaseFactory.h"
 
