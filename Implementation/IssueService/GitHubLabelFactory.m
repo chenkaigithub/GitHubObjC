@@ -11,34 +11,54 @@
 @implementation GitHubLabelFactory
 
 #pragma mark -
-#pragma mark Delegate protocol implementation
-#pragma mark - NSXMLParserDelegate
+#pragma mark Internal implementation declaration
 
--(void)parser:(NSXMLParser *)parser
-didStartElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI 
-qualifiedName:(NSString *)qName
-   attributes:(NSDictionary *)attributeDict {
+static NSDictionary *localEndElement;
+
+static NSDictionary *localStartElement;
+
+#pragma mark -
+#pragma mark Memory and member management
+
+-(NSDictionary *)startElement {
   
-  self.currentStringValue = [NSMutableString stringWithCapacity:100];
+  return localStartElement;
 }
 
--(void)parser:(NSXMLParser *)parser
-didEndElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName {
+-(NSDictionary *)endElement {
   
-  if ([elementName isEqualToString:@"label"]) {
-    
-    [(id<GitHubServiceGotNameDelegate>)self.delegate
-     gitHubService:self
-     gotName:self.currentStringValue];
-    
-  } else if ([elementName isEqualToString:@"error"]) {
-    
-    [self handleErrorWithCode:GitHubServerServerError];
-  }
-  self.currentStringValue = nil;
+  return localEndElement;
+}
+
+#pragma mark -
+#pragma mark Internal implementation declaration
+
+-(void)endElementLabel {
+  
+  [(id<GitHubServiceGotNameDelegate>)self.delegate
+   gitHubService:self
+   gotName:self.currentStringValue];
+}
+
+-(void)endElementError {
+  
+  [self handleErrorWithCode:GitHubServerServerError];
+}
+
+#pragma mark -
+#pragma mark Super override implementation
+
++(void)initialize {
+  
+  localStartElement = nil;
+  
+  localEndElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (endElementLabel)], @"label",
+    [NSValue valueWithPointer:@selector
+     (endElementError)], @"error",
+    nil] retain];
 }
 
 #pragma mark -

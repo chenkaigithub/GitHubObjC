@@ -10,6 +10,13 @@
 
 @implementation GitHubContributorFactory
 
+#pragma mark -
+#pragma mark Internal implementation declaration
+
+static NSDictionary *localEndElement;
+
+static NSDictionary *localStartElement;
+
 //Retain
 @synthesize contributor;
 
@@ -25,47 +32,68 @@
   [super dealloc];
 }
 
-#pragma mark -
-#pragma mark Delegate protocol implementation
-#pragma mark - NSXMLParser
-
--(void)parser:(NSXMLParser *)parser
-didStartElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName
-   attributes:(NSDictionary *)attributeDict {
+-(NSDictionary *)startElement {
   
-  if ([elementName isEqualToString:@"contributor"]) {
-    
-    self.contributor = [GitHubContributorImp contributor];
-  }
-  self.currentStringValue = [NSMutableString stringWithCapacity:100];
+  return localStartElement;
 }
 
--(void)parser:(NSXMLParser *)parser
-didEndElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName {
+-(NSDictionary *)endElement {
   
-  if ([elementName isEqualToString:@"contributor"]) {
-    
-    [(id<GitHubServiceGotContributorDelegate>)self.delegate
-     gitHubService:self
-     gotContributor:self.contributor];
-    
-  } else if ([elementName isEqualToString:@"login"]) {
-    
-    self.contributor.name = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"contributions"]) {
-    
-    self.contributor.contributions = [self.currentStringValue intValue];
-    
-  } else if ([elementName isEqualToString:@"error"]) {
-    
-    [self handleErrorWithCode:GitHubServerServerError];
-  }
-  self.currentStringValue = nil;
+  return localEndElement;
+}
+
+#pragma mark -
+#pragma mark Internal implementation declaration
+
+-(void)startElementContributor {
+  
+  self.contributor = [GitHubContributorImp contributor];
+}
+
+-(void)endElementContributor {
+  
+  [(id<GitHubServiceGotContributorDelegate>)self.delegate
+   gitHubService:self
+   gotContributor:self.contributor];
+}
+
+-(void)endElementLogin {
+  
+  self.contributor.name = self.currentStringValue;
+}
+
+-(void)endElementContributions {
+  
+  self.contributor.contributions = [self.currentStringValue intValue];
+}
+
+-(void)endElementError {
+  
+  [self handleErrorWithCode:GitHubServerServerError];
+}
+
+#pragma mark -
+#pragma mark Super override implementation
+
++(void)initialize {
+  
+  localStartElement = 
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (startElementContributor)], @"contributor",
+    nil] retain];
+  
+  localEndElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (endElementContributor)], @"contributor",
+    [NSValue valueWithPointer:@selector
+     (endElementLogin)], @"login",
+    [NSValue valueWithPointer:@selector
+     (endElementContributions)], @"contributions",
+    [NSValue valueWithPointer:@selector
+     (endElementError)], @"error",
+    nil] retain];
 }
 
 #pragma mark -

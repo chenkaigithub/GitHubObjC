@@ -11,25 +11,54 @@
 @implementation GitHubCollaboratorFactory
 
 #pragma mark -
-#pragma mark Delegate protocol implementation
-#pragma mark - NSXMLParser
+#pragma mark Internal implementation declaration
 
--(void)parser:(NSXMLParser *)parser
-didEndElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName {
+static NSDictionary *localEndElement;
+
+static NSDictionary *localStartElement;
+
+#pragma mark -
+#pragma mark Memory and member management
+
+-(NSDictionary *)startElement {
   
-  if ([elementName isEqualToString:@"collaborator"]) {
-    
-    [(id<GitHubServiceGotNameDelegate>)self.delegate
-     gitHubService:self
-     gotName:self.currentStringValue];
-    
-  } else if ([elementName isEqualToString:@"error"]) {
-    
-    [self handleErrorWithCode:GitHubServerServerError];
-  }
-  self.currentStringValue = nil;
+  return localStartElement;
+}
+
+-(NSDictionary *)endElement {
+  
+  return localEndElement;
+}
+
+#pragma mark -
+#pragma mark Internal implementation declaration
+
+-(void)endElementCollaborator {
+  
+  [(id<GitHubServiceGotNameDelegate>)self.delegate
+   gitHubService:self
+   gotName:self.currentStringValue];
+}
+
+-(void)endElementError {
+  
+  [self handleErrorWithCode:GitHubServerServerError];
+}
+
+#pragma mark -
+#pragma mark Super override implementation
+
++(void)initialize {
+  
+  localStartElement = nil;
+  
+  localEndElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (endElementCollaborator)], @"collaborator",
+    [NSValue valueWithPointer:@selector
+     (endElementError)], @"error",
+    nil] retain];
 }
 
 #pragma mark -
