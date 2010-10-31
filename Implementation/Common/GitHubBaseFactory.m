@@ -131,7 +131,7 @@ qualifiedName:(NSString *)qName
   
   if (aSel) {
     
-    [self performSelector:aSel];
+    [self performSelector:aSel withObject:elementName withObject:attributeDict];
   }
   self.currentStringValue = [NSMutableString stringWithCapacity:100];
 }
@@ -145,7 +145,7 @@ qualifiedName:(NSString *)qName
   
   if (aSel) {
     
-    [self performSelector:aSel];
+    [self performSelector:aSel withObject:elementName];
   }
   self.currentStringValue = nil;
 }
@@ -212,6 +212,20 @@ NSString * const GitHubServerErrorDomain = @"GitHubServerErrorDomain";
   
   self.cancelling = YES;
   [self cleanUp];
+}
+
+-(NSDate *)createDateFromString:(NSString *)string {
+  
+  NSDate *retVal = nil;
+  
+  if ([string length] > 18) {
+    
+    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    
+    retVal = [formatter dateFromString:[string substringToIndex:18]];
+  }
+  return retVal;
 }
 
 @end

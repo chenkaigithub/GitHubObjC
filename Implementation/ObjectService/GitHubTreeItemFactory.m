@@ -8,8 +8,14 @@
 
 #import "GitHubTreeItemFactory.h"
 
-
 @implementation GitHubTreeItemFactory
+
+#pragma mark -
+#pragma mark Internal implementation declaration
+
+static NSDictionary *localEndElement;
+
+static NSDictionary *localStartElement;
 
 #pragma mark -
 #pragma mark Memory and member management
@@ -29,65 +35,99 @@
   [super dealloc];
 }
 
-#pragma mark -
-#pragma mark Delegate protocol implementation
-#pragma mark - NSXMLParserDelegate
-
--(void)parser:(NSXMLParser *)parser
-didStartElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName
-   attributes:(NSDictionary *)attributeDict {
+-(NSDictionary *)startElement {
   
-  if ([elementName isEqualToString:@"tree"]) {
-    
-    self.treeItem = [GitHubTreeItemImp treeItem];
-  }
-  self.currentStringValue = [NSMutableString stringWithCapacity:100];
+  return localStartElement;
 }
 
--(void)parser:(NSXMLParser *)parser
-didEndElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName {
+-(NSDictionary *)endElement {
   
-  if ([elementName isEqualToString:@"tree"]) {
+  return localEndElement;
+}
+
+#pragma mark -
+#pragma mark Internal implementation declaration
+
+-(void)startElementTree {
+  
+  self.treeItem = [GitHubTreeItemImp treeItem];
+}
+
+-(void)endElementTree {
+  
+  if (self.treeItem.name) {
     
-    if (self.treeItem.name) {
-      
-      [(id<GitHubServiceGotTreeItemDelegate>)self.delegate
-       gitHubService:self
-       gotTreeItem:self.treeItem];
-    }
-  } else if ([elementName isEqualToString:@"name"]) {
-    
-    self.treeItem.name = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"sha"]) {
-    
-    self.treeItem.sha = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"mode"]) {
-    
-    self.treeItem.mode = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"mime-type"]) {
-    
-    self.treeItem.mime = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"type"]) {
-    
-    self.treeItem.type = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"size"]) {
-    
-    self.treeItem.size = [self.currentStringValue intValue];
-    
-  } else if ([elementName isEqualToString:@"error"]) {
-    
-    [self handleErrorWithCode:GitHubServerServerError];
+    [(id<GitHubServiceGotTreeItemDelegate>)self.delegate
+     gitHubService:self
+     gotTreeItem:self.treeItem];
   }
-  self.currentStringValue = nil;
+}
+
+-(void)endElementName {
+  
+  self.treeItem.name = self.currentStringValue;
+}
+
+-(void)endElementSha {
+ 
+  self.treeItem.sha = self.currentStringValue;
+}
+
+-(void)endElementMode {
+  
+  self.treeItem.mode = self.currentStringValue;
+}
+
+-(void)endElementMimeType {
+  
+  self.treeItem.mime = self.currentStringValue;
+}
+
+-(void)endElementType {
+  
+  self.treeItem.type = self.currentStringValue;
+}
+
+-(void)endElementSize {
+  
+  self.treeItem.size = [self.currentStringValue intValue];
+}
+
+-(void)endElementError {
+  
+  [self handleErrorWithCode:GitHubServerServerError];
+}
+
+#pragma mark -
+#pragma mark Super override implementation
+
++(void)initialize {
+  
+  localStartElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (startElementTree)], @"tree",
+    nil] retain];
+  
+  localEndElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (endElementTree)], @"tree",
+    [NSValue valueWithPointer:@selector
+     (endElementName)], @"name",
+    [NSValue valueWithPointer:@selector
+     (endElementSha)], @"sha",
+    [NSValue valueWithPointer:@selector
+     (endElementMode)], @"mode",
+    [NSValue valueWithPointer:@selector
+     (endElementMimeType)], @"mime-type",
+    [NSValue valueWithPointer:@selector
+     (endElementType)], @"type",
+    [NSValue valueWithPointer:@selector
+     (endElementSize)], @"size",
+    [NSValue valueWithPointer:@selector
+     (endElementError)], @"error",
+    nil] retain];
 }
 
 #pragma mark -

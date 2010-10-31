@@ -11,6 +11,13 @@
 @implementation GitHubCommentFactory
 
 #pragma mark -
+#pragma mark Internal implementation declaration
+
+static NSDictionary *localEndElement;
+
+static NSDictionary *localStartElement;
+
+#pragma mark -
 #pragma mark Memory and member management
 
 //Retain
@@ -28,77 +35,98 @@
   [super dealloc];
 }
 
-#pragma mark -
-#pragma mark Delegate protocol implementation
-#pragma mark - NSXMLParserDelegate
-
--(void)parser:(NSXMLParser *)parser
-didStartElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI 
-qualifiedName:(NSString *)qName
-   attributes:(NSDictionary *)attributeDict {
+-(NSDictionary *)startElement {
   
-  if ([elementName isEqualToString:@"comment"]) {
-    
-    self.comment = [GitHubCommentImp comment];
-  }
-  self.currentStringValue = [NSMutableString stringWithCapacity:100];
+  return localStartElement;
 }
 
--(void)parser:(NSXMLParser *)parser
-didEndElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName {
+-(NSDictionary *)endElement {
   
-  if ([elementName isEqualToString:@"comment"]) {
-    
-    [(id<GitHubServiceGotCommentDelegate>)self.delegate
-     gitHubService:self
-     gotComment:self.comment];
-    
-  } else if ([elementName isEqualToString:@"gravatar-id"]) {
-    
-    self.comment.gravatar = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"created-at"]) {
-      
-    if ([self.currentStringValue length] > 18) {
-      
-      NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-      [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-      
-      self.comment.created =
-      [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
-    }
-    
-  } else if ([elementName isEqualToString:@"body"]) {
-    
-    self.comment.body = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"updated-at"]) {
-    
-    if ([self.currentStringValue length] > 18) {
-      
-      NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-      [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-      
-      self.comment.updated =
-      [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
-    }
-    
-  } else if ([elementName isEqualToString:@"id"]) {
-    
-    self.comment.commentId = [self.currentStringValue intValue];
-    
-  } else if ([elementName isEqualToString:@"user"]) {
-    
-    self.comment.user = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"error"]) {
-    
-    [self handleErrorWithCode:GitHubServerServerError];
-  }
-  self.currentStringValue = nil;
+  return localEndElement;
+}
+
+#pragma mark -
+#pragma mark Internal implementation declaration
+
+-(void)startElementComment {
+  
+  self.comment = [GitHubCommentImp comment];
+}
+
+-(void)endElementComment {
+  
+  [(id<GitHubServiceGotCommentDelegate>)self.delegate
+   gitHubService:self
+   gotComment:self.comment];
+}
+
+-(void)endElementGravatarId {
+  
+  self.comment.gravatar = self.currentStringValue;
+}
+
+-(void)endElementCreatedAt {
+  
+  self.comment.created =
+  [self createDateFromString:self.currentStringValue];
+}
+
+-(void)endElementBody {
+  
+  self.comment.body = self.currentStringValue;
+}
+
+-(void)endElementUpdatedAt {
+  
+  self.comment.updated =
+  [self createDateFromString:self.currentStringValue];
+}
+
+-(void)endElementId {
+  
+  self.comment.commentId = [self.currentStringValue intValue];
+}
+
+-(void)endElementUser {
+  
+  self.comment.user = self.currentStringValue;
+}
+
+-(void)endElementError {
+  
+  [self handleErrorWithCode:GitHubServerServerError];
+}
+
+#pragma mark -
+#pragma mark Super override implementation
+
++(void)initialize {
+  
+  localStartElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (startElementComment)], @"comment",
+    nil] retain];
+  
+  localEndElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (endElementComment)], @"comment",
+    [NSValue valueWithPointer:@selector
+     (endElementGravatarId)], @"gravatar-id",
+    [NSValue valueWithPointer:@selector
+     (endElementCreatedAt)], @"created-at",
+    [NSValue valueWithPointer:@selector
+     (endElementBody)], @"body",
+    [NSValue valueWithPointer:@selector
+     (endElementUpdatedAt)], @"updated-at",
+    [NSValue valueWithPointer:@selector
+     (endElementId)], @"id",
+    [NSValue valueWithPointer:@selector
+     (endElementUser)], @"user",
+    [NSValue valueWithPointer:@selector
+     (endElementError)], @"error",
+    nil] retain];
 }
 
 #pragma mark -

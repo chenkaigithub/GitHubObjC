@@ -240,26 +240,14 @@ static NSDictionary *localStartElement;
 
 -(void)endElementAuthoredDate {
   
-  if ([self.currentStringValue length] > 18) {
-    
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-    
-    self.commit.authoredDate =
-    [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
-  }
+  self.commit.authoredDate = 
+  [self createDateFromString:self.currentStringValue];
 }
 
 -(void)endElementCommittedDate {
-  
-  if ([self.currentStringValue length] > 18) {
-    
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-    
-    self.commit.committedDate =
-    [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
-  }
+
+  self.commit.committedDate =
+  [self createDateFromString:self.currentStringValue];
 }
 
 -(void)endElementFilename {

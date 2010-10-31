@@ -11,6 +11,13 @@
 @implementation GitHubBlobFactory
 
 #pragma mark -
+#pragma mark Internal implementation declaration
+
+static NSDictionary *localEndElement;
+
+static NSDictionary *localStartElement;
+
+#pragma mark -
 #pragma mark Memory and member management
 
 //Retain
@@ -28,63 +35,97 @@
   [super dealloc];
 }
 
-#pragma mark -
-#pragma mark Delegate protocol implementation
-#pragma mark - NSXMLParserDelegate
-
--(void)parser:(NSXMLParser *)parser
-didStartElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName
-   attributes:(NSDictionary *)attributeDict {
+-(NSDictionary *)startElement {
   
-  if ([elementName isEqualToString:@"blob"]) {
-    
-    self.blob = [GitHubBlobImp blob];
-  }
-  self.currentStringValue = [NSMutableString stringWithCapacity:100];
+  return localStartElement;
 }
 
--(void)parser:(NSXMLParser *)parser
-didEndElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName {
+-(NSDictionary *)endElement {
   
-  if ([elementName isEqualToString:@"blob"]) {
-    
-    [(id<GitHubServiceGotBlobDelegate>)self.delegate
-     gitHubService:self
-     gotBlob:self.blob];
-    
-  } else if ([elementName isEqualToString:@"name"]) {
-    
-    self.blob.name = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"sha"]) {
-    
-    self.blob.sha = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"mode"]) {
-    
-    self.blob.mode = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"mime-type"]) {
-    
-    self.blob.mime = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"data"]) {
-    
-    self.blob.data = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"size"]) {
-    
-    self.blob.size = [self.currentStringValue intValue];
-    
-  } else if ([elementName isEqualToString:@"error"]) {
-    
-    [self handleErrorWithCode:GitHubServerServerError];
-  }
-  self.currentStringValue = nil;
+  return localEndElement;
+}
+
+#pragma mark -
+#pragma mark Internal implementation declaration
+
+-(void)startElementBlob {
+  
+  self.blob = [GitHubBlobImp blob];
+}
+
+-(void)endElementBlob {
+  
+  [(id<GitHubServiceGotBlobDelegate>)self.delegate
+   gitHubService:self
+   gotBlob:self.blob];
+}
+
+-(void)endElementName {
+ 
+  self.blob.name = self.currentStringValue;
+}
+
+-(void)endElementSha {
+  
+  self.blob.sha = self.currentStringValue;
+}
+
+-(void)endElementMode {
+  
+  self.blob.mode = self.currentStringValue;
+}
+
+-(void)endElementMimeType {
+  
+  self.blob.mime = self.currentStringValue;
+}
+
+
+-(void)endElementData {
+  
+  self.blob.data = self.currentStringValue;
+}
+
+-(void)endElementSize {
+  
+  self.blob.size = [self.currentStringValue intValue];
+}
+
+-(void)endElementError {
+  
+  [self handleErrorWithCode:GitHubServerServerError];
+}
+
+#pragma mark -
+#pragma mark Super override implementation
+
++(void)initialize {
+  
+  localStartElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (startElementBlob)], @"blob",
+    nil] retain];
+  
+  localEndElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (endElementBlob)], @"blob",
+    [NSValue valueWithPointer:@selector
+     (endElementName)], @"name",
+    [NSValue valueWithPointer:@selector
+     (endElementSha)], @"sha",
+    [NSValue valueWithPointer:@selector
+     (endElementMode)], @"mode",
+    [NSValue valueWithPointer:@selector
+     (endElementMimeType)], @"mime-type",
+    [NSValue valueWithPointer:@selector
+     (endElementData)], @"data",
+    [NSValue valueWithPointer:@selector
+     (endElementSize)], @"size",
+    [NSValue valueWithPointer:@selector
+     (endElementError)], @"error",
+    nil] retain];
 }
 
 #pragma mark -

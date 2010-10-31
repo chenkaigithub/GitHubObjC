@@ -106,15 +106,9 @@ static NSDictionary *localStartElement;
 }
 
 -(void)endElementCreatedAt {
-  
-  if ([self.currentStringValue length] > 18) {
-    
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-    
-    self.user.creationDate = 
-    [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
-  }
+
+  self.user.creationDate =
+  [self createDateFromString:self.currentStringValue];
 }
 
 -(void)endElementPublicRepoCount {

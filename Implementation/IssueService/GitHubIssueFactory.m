@@ -11,6 +11,13 @@
 @implementation GitHubIssueFactory
 
 #pragma mark -
+#pragma mark Internal implementation declaration
+
+static NSDictionary *localEndElement;
+
+static NSDictionary *localStartElement;
+
+#pragma mark -
 #pragma mark Memory and member management
 
 //Retain
@@ -27,132 +34,178 @@
 }
 
 -(void)dealloc {
-
+  
   [self cleanUp];
   [super dealloc];
 }
 
-#pragma mark -
-#pragma mark Delegate protocol implementation
-#pragma mark - NSXMLParserDelegate
-
--(void)parser:(NSXMLParser *)parser
-didStartElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI 
-qualifiedName:(NSString *)qName
-   attributes:(NSDictionary *)attributeDict {
+-(NSDictionary *)startElement {
   
-  if ([elementName isEqualToString:@"issue"]) {
-    
-    self.issue = [GitHubIssueImp issue];
-  } else if ([elementName isEqualToString:@"labels"]) {
-    
-    self.labels = [NSMutableArray arrayWithCapacity:5];
-    
-  } else if ([elementName isEqualToString:@"label"]) {
-    
-    self.inLabel = YES;
-  }
-  self.currentStringValue = [NSMutableString stringWithCapacity:100];
+  return localStartElement;
 }
 
--(void)parser:(NSXMLParser *)parser
-didEndElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName {
+-(NSDictionary *)endElement {
   
-  if ([elementName isEqualToString:@"issue"]) {
+  return localEndElement;
+}
+
+#pragma mark -
+#pragma mark Internal implementation declaration
+
+-(void)startElementIssue {
+  
+  self.issue = [GitHubIssueImp issue];
+}
+
+-(void)startElementLabels {
+  
+  self.labels = [NSMutableArray arrayWithCapacity:5];
+}
+
+-(void)startElementLabel {
+  
+  self.inLabel = YES;
+}
+
+-(void)endElementIssue {
+  
+  [(id<GitHubServiceGotIssueDelegate>)self.delegate
+   gitHubService:self
+   gotIssue:self.issue];
+}
+
+-(void)endElementGravatarId {
+  
+  self.issue.gravatar = self.currentStringValue;
+} 
+
+-(void)endElementPosition {
+  
+  self.issue.position = [self.currentStringValue floatValue];
+} 
+
+-(void)endElementNumber {
+  
+  self.issue.number = [self.currentStringValue intValue];
+} 
+
+-(void)endElementVotes {
+  
+  self.issue.votes = [self.currentStringValue intValue];
+} 
+
+-(void)endElementCreatedAt {
+  
+  self.issue.created =
+  [self createDateFromString:self.currentStringValue];
+ } 
+
+-(void)endElementComments {
+  
+  self.issue.comments = [self.currentStringValue intValue];
+} 
+
+-(void)endElementBody {
+  
+  self.issue.body = self.currentStringValue;
+} 
+
+-(void)endElementTitle {
+  
+  self.issue.title = self.currentStringValue;
+} 
+
+-(void)endElementUpdatedAt {
     
-    [(id<GitHubServiceGotIssueDelegate>)self.delegate
-     gitHubService:self
-     gotIssue:self.issue];
+  self.issue.updated =
+  [self createDateFromString:self.currentStringValue];
+} 
+
+-(void)endElementClosedAt {
+  
+  self.issue.updated =
+  [self createDateFromString:self.currentStringValue];
+} 
+
+-(void)endElementUser {
+  
+  self.issue.user = self.currentStringValue;
+} 
+
+-(void)endElementLabels {
+  
+  self.issue.labels = [NSArray arrayWithArray:self.labels];
+  self.labels = nil;
+} 
+
+-(void)endElementLabel {
+  
+  self.inLabel = NO;
+} 
+
+-(void)endElementName {
+  
+  if (self.inLabel) {
     
-  } else if ([elementName isEqualToString:@"gravatar-id"]) {
-    
-    self.issue.gravatar = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"position"]) {
-    
-    self.issue.position = [self.currentStringValue floatValue];
-    
-  } else if ([elementName isEqualToString:@"number"]) {
-    
-    self.issue.number = [self.currentStringValue intValue];
-    
-  } else if ([elementName isEqualToString:@"votes"]) {
-    
-    self.issue.votes = [self.currentStringValue intValue];
-    
-  } else if ([elementName isEqualToString:@"created-at"]) {
-    
-    if ([self.currentStringValue length] > 18) {
-      
-      NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-      [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-      
-      self.issue.created =
-      [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
-    }
-    
-  } else if ([elementName isEqualToString:@"comments"]) {
-    
-    self.issue.comments = [self.currentStringValue intValue];
-    
-  } else if ([elementName isEqualToString:@"body"]) {
-    
-    self.issue.body = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"title"]) {
-    
-    self.issue.title = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"updated-at"]) {
-    
-    if ([self.currentStringValue length] > 18) {
-      
-      NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-      [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-      
-      self.issue.updated =
-      [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
-    }
-    
-  } else if ([elementName isEqualToString:@"closed-at"]) {
-    
-    if ([self.currentStringValue length] > 18) {
-        
-      NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-      [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-      
-      self.issue.updated =
-      [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
-    }
-    
-  } else if ([elementName isEqualToString:@"user"]) {
-    
-    self.issue.user = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"labels"]) {
-    
-    self.issue.labels = [NSArray arrayWithArray:self.labels];
-    self.labels = nil;
-    
-  } else if ([elementName isEqualToString:@"label"]) {
-    
-    self.inLabel = NO;
-    
-  } else if ([elementName isEqualToString:@"name"]) {
-    
-    if (self.inLabel) {
-      
-      [self.labels addObject:self.currentStringValue];
-    }
-    
-  } else if ([elementName isEqualToString:@"error"]) {
-    
-    [self handleErrorWithCode:GitHubServerServerError];
-  }
-  self.currentStringValue = nil;
+    [self.labels addObject:self.currentStringValue];
+  }  
+} 
+
+-(void)endElementError {
+  
+  [self handleErrorWithCode:GitHubServerServerError];
+}
+
+#pragma mark -
+#pragma mark Super override implementation
+
++(void)initialize {
+  
+  localStartElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (startElementIssue)], @"issue",
+    [NSValue valueWithPointer:@selector
+     (startElementLabels)], @"labels",
+    [NSValue valueWithPointer:@selector
+     (startElementLabel)], @"label",
+    nil] retain];
+  
+  localEndElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (endElementIssue)], @"issue",
+    [NSValue valueWithPointer:@selector
+     (endElementGravatarId)], @"gravatar-id",
+    [NSValue valueWithPointer:@selector
+     (endElementSha)], @"position",
+    [NSValue valueWithPointer:@selector
+     (endElementMode)], @"number",
+    [NSValue valueWithPointer:@selector
+     (endElementMimeType)], @"votes",
+    [NSValue valueWithPointer:@selector
+     (endElementCreatedAt)], @"created-at",
+    [NSValue valueWithPointer:@selector
+     (endElementComments)], @"comments",
+    [NSValue valueWithPointer:@selector
+     (endElementBody)], @"body",
+    [NSValue valueWithPointer:@selector
+     (endElementTitle)], @"title",
+    [NSValue valueWithPointer:@selector
+     (endElementUpdatedAt)], @"updated-at",
+    [NSValue valueWithPointer:@selector
+     (endElementClosedAt)], @"closed-at",
+    [NSValue valueWithPointer:@selector
+     (endElementUser)], @"user",
+    [NSValue valueWithPointer:@selector
+     (endElementLabels)], @"labels",
+    [NSValue valueWithPointer:@selector
+     (endElementLabel)], @"label",
+    [NSValue valueWithPointer:@selector
+     (endElementName)], @"name",
+    [NSValue valueWithPointer:@selector
+     (endElementError)], @"body",
+    nil] retain];
 }
 
 #pragma mark -

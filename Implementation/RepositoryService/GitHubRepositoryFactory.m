@@ -11,6 +11,14 @@
 @implementation GitHubRepositoryFactory
 
 #pragma mark -
+#pragma mark Internal implementation declaration
+
+static NSDictionary *localEndElement;
+
+static NSDictionary *localStartElement;
+
+
+#pragma mark -
 #pragma mark Memory and member management
 
 //Retain
@@ -31,151 +39,204 @@
   [super dealloc];
 }
 
-#pragma mark -
-#pragma mark Delegate protocol implementation
-#pragma mark - NSXMLParserDelegate
-
--(void)parser:(NSXMLParser *)parser
-didStartElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName
-   attributes:(NSDictionary *)attributeDict {
+-(NSDictionary *)startElement {
   
-  if ([elementName isEqualToString:@"repository"]) {
-    
-    self.repository = [GitHubRepositoryImp repository];
-    
-  } else if ([elementName isEqualToString:@"network"]) {
-    
-    if (![attributeDict count]) {
-      
-      self.networkElement++;
-      self.repository = [GitHubRepositoryImp repository];
-    }
-  }
-  self.currentStringValue = [NSMutableString stringWithCapacity:100];
+  return localStartElement;
 }
 
--(void)parser:(NSXMLParser *)parser
-didEndElement:(NSString *)elementName
-namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName {
+-(NSDictionary *)endElement {
   
-  if ([elementName isEqualToString:@"repository"]) {
+  return localEndElement;
+}
+
+#pragma mark -
+#pragma mark Internal implementation declaration
+
+-(void)startElementRepository {
+  
+  self.repository = [GitHubRepositoryImp repository];
+}
+
+-(void)startElementNetwork:(NSString *)elementName
+                attributes:(NSDictionary *)attributeDict {
+  
+  if (![attributeDict count]) {
+    
+    self.networkElement++;
+    self.repository = [GitHubRepositoryImp repository];
+  }
+}
+
+-(void)endElementRepository {
+  [(id<GitHubServiceGotRepositoryDelegate>)self.delegate
+   gitHubService:self
+   gotRepository:self.repository];
+}
+
+-(void)endElementNetwork {
+  if (self.networkElement) {
     
     [(id<GitHubServiceGotRepositoryDelegate>)self.delegate
      gitHubService:self
      gotRepository:self.repository];
     
-  } else if ([elementName isEqualToString:@"network"]) {
-    
-    if (self.networkElement) {
-      
-      [(id<GitHubServiceGotRepositoryDelegate>)self.delegate
-       gitHubService:self
-       gotRepository:self.repository];
-      
-      self.networkElement--;
-    }
-  } else if ([elementName isEqualToString:@"homepage"]) {
-    
-    NSURL *url = [NSURL URLWithString:self.currentStringValue];
-    
-    if (!url.scheme) {
-      
-      url = [NSURL URLWithString:[NSString
-                                  stringWithFormat:@"http://%@",
-                                  currentStringValue]];
-      
-    }
-    self.repository.homepage = url;
-    
-  } else if ([elementName isEqualToString:@"has-issues"]) {
-    
-    self.repository.hasIssues = [self.currentStringValue boolValue];
-    
-  } else if ([elementName isEqualToString:@"created-at"]) {
-    
-    if ([self.currentStringValue length] > 18) {
-      
-      NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-      [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-      
-      self.repository.creationDate = 
-      [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
-    }
-  } else if ([elementName isEqualToString:@"pushed-at"]) {
-    
-    if ([self.currentStringValue length] > 18) {
-      
-      NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-      [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-      
-      self.repository.pushDate = 
-      [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
-    }
-    
-  } else if ([elementName isEqualToString:@"watchers"]) {
-    
-    self.repository.watchers  = [self.currentStringValue intValue];
-    
-  } else if ([elementName isEqualToString:@"forks"]) {
-    
-    self.repository.forks = [self.currentStringValue intValue];
-    
-  } else if ([elementName isEqualToString:@"fork"]) {
-    
-    self.repository.fork = [self.currentStringValue boolValue];
-  
-  } else if ([elementName isEqualToString:@"has-downloads"]) {
-    
-    self.repository.hasDownloads = [self.currentStringValue boolValue];
-    
-  } else if ([elementName isEqualToString:@"description"]) {
-    
-    self.repository.desc = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"private"]) {
-    
-    self.repository.private = [self.currentStringValue boolValue];
-    
-  } else if ([elementName isEqualToString:@"has-wiki"]) {
-    
-    self.repository.hasWiki = [self.currentStringValue boolValue];
-    
-  } else if ([elementName isEqualToString:@"name"]) {
-    
-    self.repository.name = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"owner"]) {
-    
-    self.repository.owner = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"username"]) {
-    
-    self.repository.owner = self.currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"url"]) {
-    
-    NSURL *url = [NSURL URLWithString:self.currentStringValue];
-    
-    if (!url.scheme) {
-      
-      url = [NSURL URLWithString:[NSString
-                                  stringWithFormat:@"http://%@",
-                                  self.currentStringValue]];
-    }
-    self.repository.url = url;
-    
-  } else if ([elementName isEqualToString:@"open-issues"]) {
-    
-    self.repository.openIssues = [self.currentStringValue intValue];
-    
-  } else if ([elementName isEqualToString:@"error"]) {
-    
-    [self handleErrorWithCode:GitHubServerServerError];
+    self.networkElement--;
   }
-  self.currentStringValue = nil;
+}
+
+-(void)endElementHomepage {
+  
+  NSURL *url = [NSURL URLWithString:self.currentStringValue];
+  
+  if (!url.scheme) {
+    
+    url = [NSURL URLWithString:[NSString
+                                stringWithFormat:@"http://%@",
+                                currentStringValue]];
+    
+  }
+  self.repository.homepage = url;
+}
+
+-(void)endElementHasIssues {
+  
+   self.repository.hasIssues = [self.currentStringValue boolValue];
+}
+
+-(void)endElementCreatedAt {
+      
+    self.repository.creationDate =
+    [self createDateFromString:self.currentStringValue];
+}
+
+-(void)endElementPushedAt {
+    
+    self.repository.pushDate = 
+    [self createDateFromString:self.currentStringValue];
+}
+
+-(void)endElementWatchers {
+  
+  self.repository.watchers  = [self.currentStringValue intValue];
+}
+
+-(void)endElementForks {
+  
+  self.repository.forks = [self.currentStringValue intValue];
+}
+
+-(void)endElementFork {
+  
+  self.repository.fork = [self.currentStringValue boolValue];
+}
+
+-(void)endElementHasDownloads {
+  
+  self.repository.hasDownloads = [self.currentStringValue boolValue];
+}
+
+-(void)endElementDescription {
+  
+  self.repository.desc = self.currentStringValue;  
+}
+
+-(void)endElementPrivate {
+  
+  self.repository.private = [self.currentStringValue boolValue];
+}
+
+-(void)endElementHasWiki {
+  
+  self.repository.hasWiki = [self.currentStringValue boolValue];
+}
+
+-(void)endElementName {
+  
+  self.repository.name = self.currentStringValue;
+}
+
+-(void)endElementOwner {
+  
+  self.repository.owner = self.currentStringValue;
+}
+
+-(void)endElementUrl {
+  
+  NSURL *url = [NSURL URLWithString:self.currentStringValue];
+  
+  if (!url.scheme) {
+    
+    url = [NSURL URLWithString:[NSString
+                                stringWithFormat:@"http://%@",
+                                self.currentStringValue]];
+  }
+  self.repository.url = url;
+}
+
+-(void)endElementOpenIssues {
+  
+  self.repository.openIssues = [self.currentStringValue intValue];
+}
+
+-(void)endElementError {
+  
+  [self handleErrorWithCode:GitHubServerServerError];
+}
+
+#pragma mark -
+#pragma mark Super override implementation
+
++(void)initialize {
+  
+  localStartElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (startElementRepository)], @"repository",
+    [NSValue valueWithPointer:@selector
+     (startElementNetwork:attributes:)], @"network",
+    nil] retain];
+  
+  localEndElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (endElementRepository)], @"repository",
+    [NSValue valueWithPointer:@selector
+     (endElementNetwork)], @"network",
+    [NSValue valueWithPointer:@selector
+     (endElementHomepage)], @"homepage",
+    [NSValue valueWithPointer:@selector
+     (endElementHasIssues)], @"has-issues",
+    [NSValue valueWithPointer:@selector
+     (endElementCreatedAt)], @"created-at",
+    [NSValue valueWithPointer:@selector
+     (endElementPushedAt)], @"pushed-at",
+    [NSValue valueWithPointer:@selector
+     (endElementWatchers)], @"watchers",
+    [NSValue valueWithPointer:@selector
+     (endElementForks)], @"forks",
+    [NSValue valueWithPointer:@selector
+     (endElementFork)], @"fork",
+    [NSValue valueWithPointer:@selector
+     (endElementHasDownloads)], @"has-downloads",
+    [NSValue valueWithPointer:@selector
+     (endElementDescription)], @"description",
+    [NSValue valueWithPointer:@selector
+     (endElementPrivate)], @"private",
+    [NSValue valueWithPointer:@selector
+     (endElementHasWiki)], @"has-wiki",
+    [NSValue valueWithPointer:@selector
+     (endElementName)], @"name",
+    [NSValue valueWithPointer:@selector
+     (endElementOwner)], @"owner",
+    [NSValue valueWithPointer:@selector
+     (endElementOwner)], @"username",
+    [NSValue valueWithPointer:@selector
+     (endElementUrl)], @"url",
+    [NSValue valueWithPointer:@selector
+     (endElementOpenIssues)], @"open-issues",
+    [NSValue valueWithPointer:@selector
+     (endElementError)], @"error",
+    nil] retain];
 }
 
 #pragma mark -
