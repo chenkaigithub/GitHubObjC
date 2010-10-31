@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "GitHubService.h"
+#import "GitHubServiceGotRepositoryDelegate.h"
+#import "GitHubServiceGotContributorDelegate.h"
+#import "GitHubServiceGotNameDelegate.h"
+#import "GitHubServiceGotTagDelegate.h"
+#import "GitHubServiceGotBranchDelegate.h"
 
-@protocol GitHubServiceGotRepositoryDelegate;
-@protocol GitHubServiceGotContributorDelegate;
-@protocol GitHubServiceGotNameDelegate;
-@protocol GitHubServiceGotTagDelegate;
-@protocol GitHubServiceGotBranchDelegate;
-
+/**
+ * Service factory class for GitHub repository services.
+ */
 @interface GitHubRepositoryServiceFactory : NSObject {
 }
 

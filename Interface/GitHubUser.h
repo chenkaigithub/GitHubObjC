@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Protocol for a GitHub user in GitHub.
+ */
 @protocol GitHubUser <NSObject>
 
 @property (readonly, copy) NSString *location;

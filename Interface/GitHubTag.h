@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "GitHubRef.h"
 
+/**
+ * Protocol for a git tag in GitHub.
+ */
 @protocol GitHubTag <GitHubRef>
 
 @end

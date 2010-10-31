@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Protocol for a git repository in GitHub.
+ */
 @protocol GitHubRepository <NSObject>
 
 @property (readonly, assign) int watchers;

@@ -8,11 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Enum representing the state of an issue for a repository in GitHub.
+ */
 typedef enum {
-  GitHubIssueOpen,
-  GitHubIssueClosed
+  GitHubIssueOpen, /**< Issue is open */
+  GitHubIssueClosed /**< Issue is closed */
 } GitHubIssueState;
 
+/**
+ * Protocol for a GitHub issue for a repository in GitHub.
+ */
 @protocol GitHubIssue <NSObject>
 
 @property (readonly, copy) NSString *gravatar;

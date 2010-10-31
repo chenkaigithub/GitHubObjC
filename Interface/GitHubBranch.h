@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "GitHubRef.h"
 
+/**
+ * Protocol for a git branch in GitHub.
+ */
 @protocol GitHubBranch <GitHubRef>
 
 @end

@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "GitHubService.h"
-
-@protocol GitHubServiceGotNameDelegate;
-@protocol GitHubServiceGotUserDelegate;
+#import "GitHubServiceGotNameDelegate.h"
+#import "GitHubServiceGotUserDelegate.h"
 
 /**
  * Service factory class for GitHub user services.
@@ -34,7 +33,7 @@
 delegate:(id<GitHubServiceGotUserDelegate>)delegate;
 
 /**
- * Creates and returns an initialized GitHubService will send
+ * Creates and returns an initialized GitHubService that will send
  * gitHubService:gotUser: with the resulting GitHubUser. The service will end
  * with sending gitHubServiceDone if service went well, or
  * gitHubService:didFailWithError: if service failed during execution.
@@ -49,7 +48,7 @@ delegate:(id<GitHubServiceGotUserDelegate>)delegate;
 delegate:(id<GitHubServiceGotUserDelegate>)delegate;
 
 /**
- * Creates and returns an initialized GitHubService will send
+ * Creates and returns an initialized GitHubService that will send
  * gitHubService:gotName: for each follower of the named user. The service will
  * end with sending gitHubServiceDone if service went well, or
  * gitHubService:didFailWithError: if service failed during execution.
@@ -64,7 +63,7 @@ delegate:(id<GitHubServiceGotUserDelegate>)delegate;
 delegate:(id<GitHubServiceGotNameDelegate>)delegate;
 
 /**
- * Creates and returns an initialized GitHubService will send
+ * Creates and returns an initialized GitHubService that will send
  * gitHubService:gotName: for each user named user follows. The service will
  * end with sending gitHubServiceDone if service went well, or
  * gitHubService:didFailWithError: if service failed during execution.
@@ -79,7 +78,7 @@ delegate:(id<GitHubServiceGotNameDelegate>)delegate;
 delegate:(id<GitHubServiceGotNameDelegate>)delegate;
 
 /**
- * Creates and returns an initialized GitHubService will send
+ * Creates and returns an initialized GitHubService that will send
  * gitHubService:gotName: for each user that matches the search. The service
  * will end with sending gitHubServiceDone if service went well, or
  * gitHubService:didFailWithError: if service failed during execution.

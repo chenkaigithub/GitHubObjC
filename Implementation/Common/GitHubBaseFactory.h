@@ -40,6 +40,7 @@
 -(void)cleanUp;
 -(void)handleErrorWithCode:(GitHubServerError)code;
 -(NSDate *)createDateFromString:(NSString *)string;
+-(NSURL *)createURLFromString:(NSString *)string;
 +(void)setServerAddress:(NSString *)newServerAddress;
 +(NSString *)serverAddress;
 

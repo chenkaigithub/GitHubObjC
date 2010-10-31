@@ -203,7 +203,7 @@ static NSDictionary *localStartElement;
     
     self.commit.authorName = self.currentStringValue;
     
-  } else if (self.committer){
+  } else if (self.committer) {
     
     self.commit.committerName = self.currentStringValue;
   }

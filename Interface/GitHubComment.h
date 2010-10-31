@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Protocol for a comment on an issue for a repository in GitHub.
+ */
 @protocol GitHubComment <NSObject>
 
 @property (readonly, copy) NSString *gravatar;

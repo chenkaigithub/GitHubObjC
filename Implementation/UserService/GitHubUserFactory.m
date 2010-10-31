@@ -79,15 +79,7 @@ static NSDictionary *localStartElement;
 
 -(void)endElementBlog {
   
-  NSURL *url = [NSURL URLWithString:currentStringValue];
-  
-  if (!url.scheme) {
-    
-    url = [NSURL
-           URLWithString:[NSString stringWithFormat:@"http://%@",
-                          currentStringValue]];
-  }
-  self.user.blog = url;
+  self.user.blog = [self createURLFromString:self.currentStringValue];
 }
 
 -(void)endElementEmail {

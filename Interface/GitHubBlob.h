@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Protocol for a git blob in GitHub.
+ */
 @protocol GitHubBlob <NSObject>
 
 @property (readonly, copy) NSString *name;

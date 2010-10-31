@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-
+/**
+ * Protocol for a git reference, a tag or a branch, in GitHub.
+ */
 @protocol GitHubRef <NSObject>
 
 @property (readonly, retain) NSString *name;

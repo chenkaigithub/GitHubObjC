@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Protocol for a git commit in GitHub.
+ */
 @protocol GitHubCommit <NSObject>
 
 @property (readonly, retain) NSArray *parents;

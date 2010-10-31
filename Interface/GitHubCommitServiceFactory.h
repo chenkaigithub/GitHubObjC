@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GitHubService.h"
-
-@protocol GitHubServiceGotCommitDelegate;
+#import "GitHubServiceGotCommitDelegate.h"
 
 /**
  * Service factory class for GitHub commit services.
@@ -18,7 +17,7 @@
 }
 
 /**
- * Creates and returns an initialized GitHubService will send
+ * Creates and returns an initialized GitHubService that will send
  * gitHubService:gotCommit: for each commit on a branch. The service will return
  * a limited amount of commit (server is currently configured to 35). More
  * commits are available if the last commit has a parent. To get more commits,
@@ -40,7 +39,7 @@
 delegate:(id<GitHubServiceGotCommitDelegate>)delegate;
 
 /**
- * Creates and returns an initialized GitHubService will send
+ * Creates and returns an initialized GitHubService that will send
  * gitHubService:gotCommit: for each commit for a specific file on a branch.
  * The service will return a limited amount of commit (server is currently
  * configured to 35). More commits are available if the last commit has a
@@ -64,7 +63,7 @@ delegate:(id<GitHubServiceGotCommitDelegate>)delegate;
 delegate:(id<GitHubServiceGotCommitDelegate>)delegate;
 
 /**
- * Creates and returns an initialized GitHubService will send
+ * Creates and returns an initialized GitHubService that will send
  * gitHubService:gotCommit: for the commit id specified.
  * The service will end with sending gitHubServiceDone if service went well, or
  * gitHubService:didFailWithError: if service failed during execution.

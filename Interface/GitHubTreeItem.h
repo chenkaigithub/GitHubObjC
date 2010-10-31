@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Protocol for a git tree item in GitHub.
+ */
 @protocol GitHubTreeItem <NSObject>
 
 @property (readonly, copy) NSString *name;
@@ -16,6 +19,5 @@
 @property (readonly, copy) NSString *mode;
 @property (readonly, copy) NSString *mime;
 @property (readonly, assign) NSUInteger size;
-
 
 @end

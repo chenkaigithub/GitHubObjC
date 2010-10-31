@@ -74,6 +74,7 @@ static NSDictionary *localStartElement;
 }
 
 -(void)endElementNetwork {
+  
   if (self.networkElement) {
     
     [(id<GitHubServiceGotRepositoryDelegate>)self.delegate
@@ -86,16 +87,7 @@ static NSDictionary *localStartElement;
 
 -(void)endElementHomepage {
   
-  NSURL *url = [NSURL URLWithString:self.currentStringValue];
-  
-  if (!url.scheme) {
-    
-    url = [NSURL URLWithString:[NSString
-                                stringWithFormat:@"http://%@",
-                                currentStringValue]];
-    
-  }
-  self.repository.homepage = url;
+  self.repository.homepage = [self createURLFromString:self.currentStringValue];
 }
 
 -(void)endElementHasIssues {
@@ -162,15 +154,7 @@ static NSDictionary *localStartElement;
 
 -(void)endElementUrl {
   
-  NSURL *url = [NSURL URLWithString:self.currentStringValue];
-  
-  if (!url.scheme) {
-    
-    url = [NSURL URLWithString:[NSString
-                                stringWithFormat:@"http://%@",
-                                self.currentStringValue]];
-  }
-  self.repository.url = url;
+  self.repository.url = [self createURLFromString:self.currentStringValue];
 }
 
 -(void)endElementOpenIssues {

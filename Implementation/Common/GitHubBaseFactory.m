@@ -214,6 +214,20 @@ NSString * const GitHubServerErrorDomain = @"GitHubServerErrorDomain";
   [self cleanUp];
 }
 
+-(NSURL *)createURLFromString:(NSString *)string {
+  
+  NSURL *url = [NSURL URLWithString:string];
+  
+  if (!url.scheme) {
+    
+    url = [NSURL URLWithString:[NSString
+                                stringWithFormat:@"http://%@",
+                                string]];
+    
+  }
+  return url;
+}
+
 -(NSDate *)createDateFromString:(NSString *)string {
   
   NSDate *retVal = nil;

@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Protocol for a git contibutor in GitHub.
+ */
 @protocol GitHubContributor <NSObject>
 
 @property (readonly, copy) NSString *name;
