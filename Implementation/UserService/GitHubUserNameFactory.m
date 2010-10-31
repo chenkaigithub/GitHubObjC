@@ -1,14 +1,14 @@
 //
-//  GitHubUserSearchFactory.m
+//  GitHubUserNameFactory.m
 //  GitHubLib
 //
 //  Created by Magnus Ernstsson on 10/19/10.
 //  Copyright 2010 Patchwork Solutions AB. All rights reserved.
 //
 
-#import "GitHubUserSearchFactory.h"
+#import "GitHubUserNameFactory.h"
 
-@implementation GitHubUserSearchFactory
+@implementation GitHubUserNameFactory
 
 #pragma mark -
 #pragma mark Internal implementation declaration
@@ -33,7 +33,7 @@ static NSDictionary *localStartElement;
 #pragma mark -
 #pragma mark Internal implementation declaration
 
--(void)endElementName {
+-(void)endElementUser {
   
   [(id<GitHubServiceGotNameDelegate>)self.delegate
    gitHubService:self
@@ -55,7 +55,7 @@ static NSDictionary *localStartElement;
   localEndElement =
   [[NSDictionary dictionaryWithObjectsAndKeys:
     [NSValue valueWithPointer:@selector
-     (endElementName)], @"name",
+     (endElementUser)], @"user",
     [NSValue valueWithPointer:@selector
      (endElementError)], @"error",
     nil] retain];
@@ -65,19 +65,25 @@ static NSDictionary *localStartElement;
 #pragma mark Interface implementation
 #pragma mark - Class
 
-+(GitHubUserSearchFactory *)userSearchFactoryWithDelegate:
++(GitHubUserNameFactory *)userNameFactoryWithDelegate:
 (id<GitHubServiceGotNameDelegate>)delegate {
   
-  return [[[GitHubUserSearchFactory alloc]
-           initWithDelegate:delegate] autorelease]; 
+  return [[[GitHubUserNameFactory alloc] initWithDelegate:delegate] autorelease]; 
 }
 
 #pragma mark - Instance
 
--(void)searchUsersByName:(NSString *)name {
+-(void)requestLeadersOfUser:(NSString *)name {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/user/search/%@",
+                     stringWithFormat:@"%@/api/v2/xml/user/show/%@/following",
+                     [GitHubBaseFactory serverAddress], name]];
+}
+
+-(void)requestFollowersOfUser:(NSString *)name {
+  
+  [self makeRequest:[NSString 
+                     stringWithFormat:@"%@/api/v2/xml/user/show/%@/followers",
                      [GitHubBaseFactory serverAddress], name]];
 }
 

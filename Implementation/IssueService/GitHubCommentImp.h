@@ -25,4 +25,6 @@
 @property (assign) NSUInteger commentId;
 @property (copy) NSString *user;
 
++(GitHubCommentImp *)comment;
+
 @end

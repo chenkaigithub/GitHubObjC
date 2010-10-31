@@ -50,6 +50,7 @@
 		F71F3EA6127CD2B900C96889 /* GitHubCommentFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F71F397F127B84FD00C96889 /* GitHubCommentFactory.h */; };
 		F71F3EA7127CD2B900C96889 /* GitHubLabelFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F71F397C127B84F200C96889 /* GitHubLabelFactory.h */; };
 		F71F3EA8127CD2BA00C96889 /* GitHubLabelFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F71F397D127B84F200C96889 /* GitHubLabelFactory.m */; };
+		F71F3F0C127D953F00C96889 /* GitHubCommentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F71F3980127B84FD00C96889 /* GitHubCommentFactory.m */; };
 		F7700DCF127B241A000D3D77 /* GitHubTreeItemImp.m in Sources */ = {isa = PBXBuildFile; fileRef = F7700C02127AE80C000D3D77 /* GitHubTreeItemImp.m */; };
 		F7700DD0127B241C000D3D77 /* GitHubObjectServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F7700C08127AE82D000D3D77 /* GitHubObjectServiceFactory.m */; };
 		F7700DD1127B241C000D3D77 /* GitHubDataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F7700C12127AEBB0000D3D77 /* GitHubDataFactory.m */; };
@@ -95,10 +96,8 @@
 		F796262E126E1C7D0075205F /* GitHubTagFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F796262C126E1C7D0075205F /* GitHubTagFactory.m */; };
 		F7962631126E1CC10075205F /* GitHubWatcherFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F796262F126E1CC10075205F /* GitHubWatcherFactory.h */; };
 		F7962632126E1CC10075205F /* GitHubWatcherFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F7962630126E1CC10075205F /* GitHubWatcherFactory.m */; };
-		F796274A126E2A7E0075205F /* GitHubFollowerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F7962748126E2A7E0075205F /* GitHubFollowerFactory.h */; };
-		F796274B126E2A7E0075205F /* GitHubFollowerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F7962749126E2A7E0075205F /* GitHubFollowerFactory.m */; };
-		F796276D126E2D5B0075205F /* GitHubLeaderFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F796276B126E2D5B0075205F /* GitHubLeaderFactory.h */; };
-		F796276E126E2D5B0075205F /* GitHubLeaderFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F796276C126E2D5B0075205F /* GitHubLeaderFactory.m */; };
+		F796276D126E2D5B0075205F /* GitHubUserNameFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F796276B126E2D5B0075205F /* GitHubUserNameFactory.h */; };
+		F796276E126E2D5B0075205F /* GitHubUserNameFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F796276C126E2D5B0075205F /* GitHubUserNameFactory.m */; };
 		F7962775126E2D9E0075205F /* GitHubUserSearchFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F7962773126E2D9E0075205F /* GitHubUserSearchFactory.h */; };
 		F7962776126E2D9E0075205F /* GitHubUserSearchFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F7962774126E2D9E0075205F /* GitHubUserSearchFactory.m */; };
 /* End PBXBuildFile section */
@@ -209,10 +208,8 @@
 		F79626D5126E25350075205F /* GitHubServiceGotTagDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubServiceGotTagDelegate.h; sourceTree = "<group>"; };
 		F79626DA126E259C0075205F /* GitHubServiceGotNameDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubServiceGotNameDelegate.h; sourceTree = "<group>"; };
 		F79626DC126E25E70075205F /* GitHubServiceGotContributorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubServiceGotContributorDelegate.h; sourceTree = "<group>"; };
-		F7962748126E2A7E0075205F /* GitHubFollowerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubFollowerFactory.h; sourceTree = "<group>"; };
-		F7962749126E2A7E0075205F /* GitHubFollowerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubFollowerFactory.m; sourceTree = "<group>"; };
-		F796276B126E2D5B0075205F /* GitHubLeaderFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubLeaderFactory.h; sourceTree = "<group>"; };
-		F796276C126E2D5B0075205F /* GitHubLeaderFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubLeaderFactory.m; sourceTree = "<group>"; };
+		F796276B126E2D5B0075205F /* GitHubUserNameFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubUserNameFactory.h; sourceTree = "<group>"; };
+		F796276C126E2D5B0075205F /* GitHubUserNameFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubUserNameFactory.m; sourceTree = "<group>"; };
 		F7962773126E2D9E0075205F /* GitHubUserSearchFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubUserSearchFactory.h; sourceTree = "<group>"; };
 		F7962774126E2D9E0075205F /* GitHubUserSearchFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubUserSearchFactory.m; sourceTree = "<group>"; };
 		F7962847126E37A60075205F /* TestGitHubUserServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGitHubUserServer.h; sourceTree = "<group>"; };
@@ -438,10 +435,8 @@
 				F7962468126E02620075205F /* GitHubUserImp.m */,
 				F796246A126E02620075205F /* GitHubUserFactory.h */,
 				F796246B126E02620075205F /* GitHubUserFactory.m */,
-				F7962748126E2A7E0075205F /* GitHubFollowerFactory.h */,
-				F7962749126E2A7E0075205F /* GitHubFollowerFactory.m */,
-				F796276B126E2D5B0075205F /* GitHubLeaderFactory.h */,
-				F796276C126E2D5B0075205F /* GitHubLeaderFactory.m */,
+				F796276B126E2D5B0075205F /* GitHubUserNameFactory.h */,
+				F796276C126E2D5B0075205F /* GitHubUserNameFactory.m */,
 				F7962773126E2D9E0075205F /* GitHubUserSearchFactory.h */,
 				F7962774126E2D9E0075205F /* GitHubUserSearchFactory.m */,
 				F7962469126E02620075205F /* GitHubUserServiceFactory.m */,
@@ -518,8 +513,7 @@
 				F7962629126E1C720075205F /* GitHubBranchFactory.h in Headers */,
 				F796262D126E1C7D0075205F /* GitHubTagFactory.h in Headers */,
 				F7962631126E1CC10075205F /* GitHubWatcherFactory.h in Headers */,
-				F796274A126E2A7E0075205F /* GitHubFollowerFactory.h in Headers */,
-				F796276D126E2D5B0075205F /* GitHubLeaderFactory.h in Headers */,
+				F796276D126E2D5B0075205F /* GitHubUserNameFactory.h in Headers */,
 				F7962775126E2D9E0075205F /* GitHubUserSearchFactory.h in Headers */,
 				F7700DD5127B2427000D3D77 /* GitHubBlobImp.h in Headers */,
 				F7700DD7127B242A000D3D77 /* GitHubDataFactory.h in Headers */,
@@ -681,8 +675,7 @@
 				F796262A126E1C720075205F /* GitHubBranchFactory.m in Sources */,
 				F796262E126E1C7D0075205F /* GitHubTagFactory.m in Sources */,
 				F7962632126E1CC10075205F /* GitHubWatcherFactory.m in Sources */,
-				F796274B126E2A7E0075205F /* GitHubFollowerFactory.m in Sources */,
-				F796276E126E2D5B0075205F /* GitHubLeaderFactory.m in Sources */,
+				F796276E126E2D5B0075205F /* GitHubUserNameFactory.m in Sources */,
 				F7962776126E2D9E0075205F /* GitHubUserSearchFactory.m in Sources */,
 				F7700DCF127B241A000D3D77 /* GitHubTreeItemImp.m in Sources */,
 				F7700DD0127B241C000D3D77 /* GitHubObjectServiceFactory.m in Sources */,
@@ -695,6 +688,7 @@
 				F71F3927127B832900C96889 /* GitHubIssueServiceFactory.m in Sources */,
 				F71F3974127B84B400C96889 /* GitHubIssueFactory.m in Sources */,
 				F71F3EA8127CD2BA00C96889 /* GitHubLabelFactory.m in Sources */,
+				F71F3F0C127D953F00C96889 /* GitHubCommentFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

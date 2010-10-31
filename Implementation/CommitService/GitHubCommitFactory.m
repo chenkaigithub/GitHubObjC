@@ -13,6 +13,13 @@
 @implementation GitHubCommitFactory
 
 #pragma mark -
+#pragma mark Internal implementation declaration
+
+static NSDictionary *localEndElement;
+
+static NSDictionary *localStartElement;
+
+#pragma mark -
 #pragma mark Memory and member management
 
 //Retain
@@ -36,6 +43,16 @@
   
   [self cleanUp];
   [super dealloc];
+}
+
+-(NSDictionary *)startElement {
+  
+  return localStartElement;
+}
+
+-(NSDictionary *)endElement {
+  
+  return localEndElement;
 }
 
 #pragma mark -
@@ -277,7 +294,7 @@
 
 +(void)initialize {
   
-  startElement =
+  localStartElement =
   [[NSDictionary dictionaryWithObjectsAndKeys:
     [NSValue valueWithPointer:@selector
      (startElementCommit)], @"commit",
@@ -295,7 +312,7 @@
      (startElementModified)], @"modified",
     nil] retain];
   
-  endElement =
+  localEndElement =
   [[NSDictionary dictionaryWithObjectsAndKeys:
     [NSValue valueWithPointer:@selector
      (endElementCommit)], @"commit",

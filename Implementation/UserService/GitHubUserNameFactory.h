@@ -1,5 +1,5 @@
 //
-//  GitHubFollowersFactory.h
+//  GitHubUserNameFactory.h
 //  GitHubLib
 //
 //  Created by Magnus Ernstsson on 10/19/10.
@@ -8,14 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "GitHubBaseFactory.h"
-#import "GitHubServiceGotNameDelegate.h"
+#import "GitHubServiceGotNameDelegate.h";
 
-@interface GitHubFollowerFactory : GitHubBaseFactory {
+@interface GitHubUserNameFactory : GitHubBaseFactory {
 }
+
+-(void)requestLeadersOfUser:(NSString *)name;
 
 -(void)requestFollowersOfUser:(NSString *)name;
 
-+(GitHubFollowerFactory *)followerFactoryWithDelegate:
++(GitHubUserNameFactory *)userNameFactoryWithDelegate:
 (id<GitHubServiceGotNameDelegate>)delegate;
 
 @end

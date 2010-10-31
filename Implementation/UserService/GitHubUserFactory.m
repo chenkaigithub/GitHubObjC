@@ -11,6 +11,13 @@
 @implementation GitHubUserFactory
 
 #pragma mark -
+#pragma mark Internal implementation declaration
+
+static NSDictionary *localEndElement;
+
+static NSDictionary *localStartElement;
+
+#pragma mark -
 #pragma mark Memory and member management
 
 //Retain
@@ -26,108 +33,166 @@
   [super dealloc];
 }
 
-#pragma mark -
-#pragma mark Delegate protocol implementation
-#pragma mark - NSXMLParserDelegate
-
--(void)parser:(NSXMLParser *)parser
-didStartElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName
-   attributes:(NSDictionary *)attributeDict {
+-(NSDictionary *)startElement {
   
-  if ([elementName isEqualToString:@"user"]) {
-    
-    self.user = [GitHubUserImp user];
-  }
-  self.currentStringValue = [NSMutableString stringWithCapacity:100];
+  return localStartElement;
 }
 
--(void)parser:(NSXMLParser *)parser
-didEndElement:(NSString *)elementName
- namespaceURI:(NSString *)namespaceURI
-qualifiedName:(NSString *)qName {
+-(NSDictionary *)endElement {
   
-  if ([elementName isEqualToString:@"user"]) {
+  return localEndElement;
+}
+
+#pragma mark -
+#pragma mark Internal implementation declaration
+
+-(void)startElementUser {
+  
+  self.user = [GitHubUserImp user];
+}
+
+-(void)endElementUser {
+  
+  [(id<GitHubServiceGotUserDelegate>)self.delegate gitHubService:self
+                                                         gotUser:self.user];
+}
+
+-(void)endElementName {
+  
+  self.user.name = currentStringValue;
+}
+
+-(void)endElementGravatarId {
+  
+  self.user.gravatarId = currentStringValue;
+}
+
+-(void)endElementCompany {
+  
+  self.user.company = currentStringValue;
+}
+
+-(void)endElementLocation {
+  
+  self.user.location = currentStringValue;
+}
+
+-(void)endElementBlog {
+  
+  NSURL *url = [NSURL URLWithString:currentStringValue];
+  
+  if (!url.scheme) {
     
-    [(id<GitHubServiceGotUserDelegate>)self.delegate gitHubService:self
-                                                           gotUser:self.user];
-    
-  } else if ([elementName isEqualToString:@"name"]) {
-    
-    self.user.name = currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"gravatar-id"]) {
-    
-    self.user.gravatarId = currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"company"]) {
-    
-    self.user.company = currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"location"]) {
-    self.user.location = currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"blog"]) {
-    
-    NSURL *url = [NSURL URLWithString:currentStringValue];
-    
-    if (!url.scheme) {
-      
-       url = [NSURL
-              URLWithString:[NSString stringWithFormat:@"http://%@",
-                             currentStringValue]];
-    }
-    self.user.blog = url;
-    
-  } else if ([elementName isEqualToString:@"email"]) {
-    
-    self.user.email = currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"login"]) {
-    
-    self.user.login = currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"id"]) {
-    
-    self.user.ID = currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"created-at"]) {
-    
-    if ([self.currentStringValue length] > 18) {
-      
-      NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-      [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-      
-      self.user.creationDate = 
-      [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
-    }
-    
-  } else if ([elementName isEqualToString:@"public-repo-count"]) {
-    
-    self.user.publicRepoCount = [currentStringValue intValue];
-    
-  } else if ([elementName isEqualToString:@"public-gist-count"]) {
-    
-    self.user.publicGistCount = [currentStringValue intValue];
-    
-  } else if ([elementName isEqualToString:@"following-count"]) {
-    
-    self.user.followingCount = [currentStringValue intValue];
-    
-  } else if ([elementName isEqualToString:@"followers-count"]) {
-    
-    self.user.followersCount = [currentStringValue intValue];
-    
-  } else if ([elementName isEqualToString:@"type"]) {
-    
-    self.user.type = currentStringValue;
-    
-  } else if ([elementName isEqualToString:@"error"]) {
-    
-    [self handleErrorWithCode:GitHubServerServerError];
+    url = [NSURL
+           URLWithString:[NSString stringWithFormat:@"http://%@",
+                          currentStringValue]];
   }
-  self.currentStringValue = nil;
+  self.user.blog = url;
+}
+
+-(void)endElementEmail {
+  
+  self.user.email = currentStringValue;
+}
+
+-(void)endElementLogin {
+  
+  self.user.login = currentStringValue;
+}
+
+-(void)endElementId {
+  
+  self.user.ID = currentStringValue;
+}
+
+-(void)endElementCreatedAt {
+  
+  if ([self.currentStringValue length] > 18) {
+    
+    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    
+    self.user.creationDate = 
+    [formatter dateFromString:[self.currentStringValue substringToIndex:18]];
+  }
+}
+
+-(void)endElementPublicRepoCount {
+  
+  self.user.publicRepoCount = [currentStringValue intValue];
+}
+
+-(void)endElementPublicGistCount {
+  
+  self.user.publicGistCount = [currentStringValue intValue];
+}
+
+-(void)endElementFollowingCount {
+  
+  self.user.followingCount = [currentStringValue intValue];
+}
+
+-(void)endElementFollowersCount {
+  
+  self.user.followersCount = [currentStringValue intValue];
+}
+
+-(void)endElementType {
+  
+  self.user.type = currentStringValue;
+}
+
+-(void)endElementError {
+  
+  [self handleErrorWithCode:GitHubServerServerError];
+}
+
+#pragma mark -
+#pragma mark Super override implementation
+
++(void)initialize {
+  
+  localStartElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (startElementUser)], @"user",
+    nil] retain];
+  
+  localEndElement =
+  [[NSDictionary dictionaryWithObjectsAndKeys:
+    [NSValue valueWithPointer:@selector
+     (endElementUser)], @"user",
+    [NSValue valueWithPointer:@selector
+     (endElementName)], @"name",
+    [NSValue valueWithPointer:@selector
+     (endElementGravatarId)], @"gravatar-id",
+    [NSValue valueWithPointer:@selector
+     (endElementCompany)], @"company",
+    [NSValue valueWithPointer:@selector
+     (endElementLocation)], @"location",
+    [NSValue valueWithPointer:@selector
+     (endElementBlog)], @"blog",
+    [NSValue valueWithPointer:@selector
+     (endElementEmail)], @"email",
+    [NSValue valueWithPointer:@selector
+     (endElementLogin)], @"login",
+    [NSValue valueWithPointer:@selector
+     (endElementId)], @"id",
+    [NSValue valueWithPointer:@selector
+     (endElementCreatedAt)], @"created-at",
+    [NSValue valueWithPointer:@selector
+     (endElementPublicRepoCount)], @"public-repo-count",
+    [NSValue valueWithPointer:@selector
+     (endElementPublicGistCount)], @"public-gist-count",
+    [NSValue valueWithPointer:@selector
+     (endElementFollowingCount)], @"following-count",
+    [NSValue valueWithPointer:@selector
+     (endElementFollowersCount)], @"followers-count",
+    [NSValue valueWithPointer:@selector
+     (endElementType)], @"type",
+    [NSValue valueWithPointer:@selector
+     (endElementError)], @"error",
+    nil] retain];
 }
 
 #pragma mark -

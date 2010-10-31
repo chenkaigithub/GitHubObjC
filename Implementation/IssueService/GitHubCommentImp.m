@@ -36,7 +36,7 @@
 #pragma mark Interface implementation
 #pragma mark - Class
 
-+(GitHubCommentImp *)issue {
++(GitHubCommentImp *)comment {
   
   return [[[GitHubCommentImp alloc] init] autorelease];
 }

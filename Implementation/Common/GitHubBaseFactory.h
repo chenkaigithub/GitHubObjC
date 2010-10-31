@@ -19,6 +19,8 @@
   BOOL failSent;
   BOOL cancelling;
   id<GitHubServiceDelegate> delegate; 
+  NSDictionary *endElement;
+  NSDictionary *startElement;
 }
 
 @property (retain) NSMutableData* receivedData;
@@ -29,6 +31,8 @@
 @property (assign) BOOL failSent;
 @property (assign) BOOL cancelling;
 @property (retain) id<GitHubServiceDelegate> delegate;
+@property (readonly, retain) NSDictionary *endElement;
+@property (readonly, retain) NSDictionary *startElement;
 
 -(void)makeRequest:(NSString *) url;
 -(id<GitHubService>)initWithDelegate:(id<GitHubServiceDelegate>)newDelegate;
@@ -39,7 +43,3 @@
 +(NSString *)serverAddress;
 
 @end
-
-extern NSDictionary *endElement;
-
-extern NSDictionary *startElement;

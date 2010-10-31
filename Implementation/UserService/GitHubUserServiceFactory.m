@@ -8,8 +8,7 @@
 
 #import "GitHubUserServiceFactory.h"
 #import "GitHubUserFactory.h"
-#import "GitHubFollowerFactory.h"
-#import "GitHubLeaderFactory.h"
+#import "GitHubUserNameFactory.h"
 #import "GitHubUserSearchFactory.h"
 
 @implementation GitHubUserServiceFactory
@@ -41,8 +40,8 @@ delegate:(id<GitHubServiceGotUserDelegate>)delegate {
 +(id<GitHubService>)requestFollowersOfUser:(NSString *)name
 delegate:(id<GitHubServiceGotNameDelegate>)delegate {
   
-	GitHubFollowerFactory *service = [GitHubFollowerFactory
-                                    followerFactoryWithDelegate:delegate];
+	GitHubUserNameFactory *service = [GitHubUserNameFactory
+                                    userNameFactoryWithDelegate:delegate];
   
 	[service requestFollowersOfUser:name];
 	return service;
@@ -51,8 +50,8 @@ delegate:(id<GitHubServiceGotNameDelegate>)delegate {
 +(id<GitHubService>)requestLeadersByUser:(NSString *)name
 delegate:(id<GitHubServiceGotNameDelegate>)delegate {
   
-	GitHubLeaderFactory *service = [GitHubLeaderFactory
-                                  leaderFactoryWithDelegate:delegate];
+	GitHubUserNameFactory *service = [GitHubUserNameFactory
+                                  userNameFactoryWithDelegate:delegate];
   
 	[service requestLeadersOfUser:name];
 	return service;

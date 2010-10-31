@@ -22,7 +22,8 @@ static NSString * serverAddress = @"http://github.com";
 @synthesize request;
 
 //Retain
-@synthesize receivedData, currentStringValue, parser, connection, delegate;
+@synthesize receivedData, currentStringValue, parser, connection, delegate,
+endElement, startElement;
 
 //Assign
 @synthesize failSent, cancelling;
@@ -126,7 +127,7 @@ didStartElement:(NSString *)elementName
 qualifiedName:(NSString *)qName
    attributes:(NSDictionary *)attributeDict {
 
-  SEL aSel = [[startElement objectForKey:elementName] pointerValue];
+  SEL aSel = [[self.startElement objectForKey:elementName] pointerValue];
   
   if (aSel) {
     
@@ -140,7 +141,7 @@ qualifiedName:(NSString *)qName
   namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName {
   
-  SEL aSel = [[endElement objectForKey:elementName] pointerValue];
+  SEL aSel = [[self.endElement objectForKey:elementName] pointerValue];
   
   if (aSel) {
     
@@ -202,10 +203,6 @@ didReceiveResponse:(NSURLResponse *)response {
 #pragma mark -
 #pragma mark Interface implementation
 #pragma mark - Class
-
-NSDictionary *endElement;
-
-NSDictionary *startElement;
 
 NSString * const GitHubServerErrorDomain = @"GitHubServerErrorDomain";
 
