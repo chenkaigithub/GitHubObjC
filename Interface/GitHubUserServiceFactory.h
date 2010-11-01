@@ -18,7 +18,7 @@
 }
 
 /**
- * Creates and returns an initialized GitHubService will send
+ * Creates and returns an initialized GitHubService that will send
  * gitHubService:gotUser: with the resulting GitHubUser. The service will end
  * with sending gitHubServiceDone if service went well, or
  * gitHubService:didFailWithError: if service failed during execution.
@@ -27,7 +27,7 @@
  * gitHubService:didFailWithError:.
  * @param name The user name of the user to get data from.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestUserByName:(NSString *)name
 delegate:(id<GitHubServiceGotUserDelegate>)delegate;
@@ -42,7 +42,7 @@ delegate:(id<GitHubServiceGotUserDelegate>)delegate;
  * gitHubService:didFailWithError:.
  * @param email The email address of the user to get data from.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestUserByEmail:(NSString *)email
 delegate:(id<GitHubServiceGotUserDelegate>)delegate;
@@ -57,7 +57,7 @@ delegate:(id<GitHubServiceGotUserDelegate>)delegate;
  * gitHubService:didFailWithError:.
  * @param name The user name of the user to get followers from.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestFollowersOfUser:(NSString *)name
 delegate:(id<GitHubServiceGotNameDelegate>)delegate;
@@ -72,7 +72,7 @@ delegate:(id<GitHubServiceGotNameDelegate>)delegate;
  * gitHubService:didFailWithError:.
  * @param name The user name of the user to get leaders from.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestLeadersByUser:(NSString *)name
 delegate:(id<GitHubServiceGotNameDelegate>)delegate;
@@ -87,7 +87,7 @@ delegate:(id<GitHubServiceGotNameDelegate>)delegate;
  * gitHubService:didFailWithError:.
  * @param name The name to search for.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)searchUsersByName:(NSString *)name
 delegate:(id<GitHubServiceGotNameDelegate>)delegate;

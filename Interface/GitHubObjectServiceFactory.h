@@ -30,7 +30,7 @@
  * @param user The login name of the repository owner.
  * @param repository The name of the repository.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)
 requestTreeItemsByTreeSha:(NSString *)sha
@@ -53,7 +53,7 @@ delegate:(id<GitHubServiceGotTreeItemDelegate>)delegate;
  * @param repository The name of the repository.
  * @param path The path to the file to get the data for.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)
 requestBlobByTreeSha:(NSString *)sha
@@ -75,7 +75,7 @@ delegate:(id<GitHubServiceGotBlobDelegate>)delegate;
  * @param repository The name of the repository.
  * @param path The path to the file to get the data for.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)
 requestBlobWithDataByTreeSha:(NSString *)sha
@@ -97,7 +97,7 @@ delegate:(id<GitHubServiceGotBlobDelegate>)delegate;
  * @param user The login name of the repository owner.
  * @param repository The name of the repository.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)
 requestDataBySha:(NSString *)sha

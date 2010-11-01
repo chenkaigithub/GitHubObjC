@@ -31,7 +31,7 @@
  * @param user The login name of the repository owner.
  * @param repository The name of the repository.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)
 searchIssuesForTerm:(NSString *)term
@@ -52,7 +52,7 @@ delegate:(id<GitHubServiceGotIssueDelegate>)delegate;
  * @param user The login name of the repository owner.
  * @param repository The name of the repository.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)
 requestIssuesForState:(GitHubIssueState)state
@@ -72,7 +72,7 @@ delegate:(id<GitHubServiceGotIssueDelegate>)delegate;
  * @param user The login name of the repository owner.
  * @param repository The name of the repository.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)
 requestIssuesForLabel:(NSString *)label
@@ -92,7 +92,7 @@ delegate:(id<GitHubServiceGotIssueDelegate>)delegate;
  * @param user The login name of the repository owner.
  * @param repository The name of the repository.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)
 requestIssueForNumber:(NSUInteger)number
@@ -113,7 +113,7 @@ delegate:(id<GitHubServiceGotIssueDelegate>)delegate;
  * @param user The login name of the repository owner.
  * @param repository The name of the repository.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)
 requestCommentsForNumber:(NSUInteger)number
@@ -132,7 +132,7 @@ delegate:(id<GitHubServiceGotCommentDelegate>)delegate;
  * @param user The login name of the repository owner.
  * @param repository The name of the repository.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)
 requestLabelsForUser:(NSString *)user

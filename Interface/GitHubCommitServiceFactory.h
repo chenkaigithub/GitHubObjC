@@ -31,7 +31,7 @@
  * @param repository The name of the repository.
  * @param user The login name of the repository owner.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestCommitsOnBranch:(NSString *)branch 
                                 repository:(NSString *)repository
@@ -54,7 +54,7 @@ delegate:(id<GitHubServiceGotCommitDelegate>)delegate;
  * @param repository The name of the repository.
  * @param user The login name of the repository owner.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestCommitsOnBranch:(NSString *)branch
                                       path:(NSString *)path
@@ -74,7 +74,7 @@ delegate:(id<GitHubServiceGotCommitDelegate>)delegate;
  * @param repository The name of the repository.
  * @param user The login name of the repository owner.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestCommit:(NSString *)commitId
                        repository:(NSString *)repository

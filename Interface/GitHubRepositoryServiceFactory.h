@@ -31,7 +31,7 @@
  * @param name The name of the repository.
  * @param user The login name of the repository owner.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestRepositoriesInNetworkByName:(NSString *)name
                                                   user:(NSString *)user
@@ -48,7 +48,7 @@ delegate:(id<GitHubServiceGotRepositoryDelegate>)delegate;
  * @param name The name of the repository.
  * @param user The login name of the repository owner.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestRepositoryByName:(NSString *)name
                                        user:(NSString *)user
@@ -65,7 +65,7 @@ delegate:(id<GitHubServiceGotRepositoryDelegate>)delegate;
  * gitHubService:didFailWithError:.
  * @param user The name of the user to get watched repositories from.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestRepositoriesWatchedByUser:(NSString *)user
 delegate:(id<GitHubServiceGotRepositoryDelegate>)delegate;
@@ -80,7 +80,7 @@ delegate:(id<GitHubServiceGotRepositoryDelegate>)delegate;
  * gitHubService:didFailWithError:.
  * @param user The name of the user to get owned repositories from.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestRepositoriesOwnedByUser:(NSString *)user
 delegate:(id<GitHubServiceGotRepositoryDelegate>)delegate;
@@ -95,7 +95,7 @@ delegate:(id<GitHubServiceGotRepositoryDelegate>)delegate;
  * gitHubService:didFailWithError:.
  * @param name The repository name to search for.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)searchRepositoriesByName:(NSString *)name 
 delegate:(id<GitHubServiceGotRepositoryDelegate>)delegate;
@@ -112,7 +112,7 @@ delegate:(id<GitHubServiceGotRepositoryDelegate>)delegate;
  * @param name The name of the repository.
  * @param user The login name of the repository owner.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestCollaboratorsByName:(NSString *)name
                                           user:(NSString *)user
@@ -130,7 +130,7 @@ delegate:(id<GitHubServiceGotNameDelegate>)delegate;
  * @param name The name of the repository.
  * @param user The login name of the repository owner.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestContributorsByName:(NSString *)name
                                          user:(NSString *)user
@@ -148,7 +148,7 @@ delegate:(id<GitHubServiceGotContributorDelegate>)delegate;
  * @param name The name of the repository.
  * @param user The login name of the repository owner.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestWatchersByName:(NSString *)name
                                      user:(NSString *)user
@@ -165,7 +165,7 @@ delegate:(id<GitHubServiceGotNameDelegate>)delegate;
  * @param name The name of the repository.
  * @param user The login name of the repository owner.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestTagsByName:(NSString *)name
                                  user:(NSString *)user
@@ -182,7 +182,7 @@ delegate:(id<GitHubServiceGotTagDelegate>)delegate;
  * @param name The name of the repository.
  * @param user The login name of the repository owner.
  * @param delegate The delegate object for the service.
- * @return The service for the request. Returns nil if it can't be created.
+ * @return The service for the request.
  */
 +(id<GitHubService>)requestBranchesByName:(NSString *)name
                                      user:(NSString *)user
