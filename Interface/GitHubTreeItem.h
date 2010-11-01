@@ -10,6 +10,7 @@
 
 /**
  * Protocol for a git tree item in GitHub.
+ * See GitHub api documentation for details.
  */
 @protocol GitHubTreeItem <NSObject>
 

@@ -10,6 +10,7 @@
 
 /**
  * Protocol for a git contibutor in GitHub.
+ * See GitHub api documentation for details.
  */
 @protocol GitHubContributor <NSObject>
 

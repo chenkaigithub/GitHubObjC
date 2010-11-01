@@ -29,7 +29,7 @@
  * gitHubService:didFailWithError:.
  * @param branch The branch on the repository to list.
  * @param repository The name of the repository.
- * @param user The login name of the repository owner;
+ * @param user The login name of the repository owner.
  * @param delegate The delegate object for the service.
  * @return The service for the request. Returns nil if it can't be created.
  */
@@ -52,7 +52,7 @@ delegate:(id<GitHubServiceGotCommitDelegate>)delegate;
  * @param branch The branch on the repository to list.
  * @param path The path of the file to list.
  * @param repository The name of the repository.
- * @param user The login name of the repository owner;
+ * @param user The login name of the repository owner.
  * @param delegate The delegate object for the service.
  * @return The service for the request. Returns nil if it can't be created.
  */
@@ -72,7 +72,7 @@ delegate:(id<GitHubServiceGotCommitDelegate>)delegate;
  * gitHubService:didFailWithError:.
  * @param commitId The commit id to get data from.
  * @param repository The name of the repository.
- * @param user The login name of the repository owner;
+ * @param user The login name of the repository owner.
  * @param delegate The delegate object for the service.
  * @return The service for the request. Returns nil if it can't be created.
  */

@@ -10,6 +10,7 @@
 
 /**
  * Protocol for a git reference, a tag or a branch, in GitHub.
+ * See GitHub api documentation for details.
  */
 @protocol GitHubRef <NSObject>
 

@@ -10,6 +10,7 @@
 
 /**
  * Protocol for a git repository in GitHub.
+ * See GitHub api documentation for details.
  */
 @protocol GitHubRepository <NSObject>
 

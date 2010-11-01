@@ -10,6 +10,7 @@
 
 /**
  * Protocol for a GitHub user in GitHub.
+ * See GitHub api documentation for details.
  */
 @protocol GitHubUser <NSObject>
 

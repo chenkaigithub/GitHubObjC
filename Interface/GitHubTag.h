@@ -11,6 +11,7 @@
 
 /**
  * Protocol for a git tag in GitHub.
+ * See GitHub api documentation for details.
  */
 @protocol GitHubTag <GitHubRef>
 

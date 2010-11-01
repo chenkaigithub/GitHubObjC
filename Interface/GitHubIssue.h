@@ -18,6 +18,7 @@ typedef enum {
 
 /**
  * Protocol for a GitHub issue for a repository in GitHub.
+ * See GitHub api documentation for details.
  */
 @protocol GitHubIssue <NSObject>
 

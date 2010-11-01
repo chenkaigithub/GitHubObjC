@@ -11,6 +11,7 @@
 
 /**
  * Protocol for a git branch in GitHub.
+ * See GitHub api documentation for details.
  */
 @protocol GitHubBranch <GitHubRef>
 

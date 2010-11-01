@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 /**
- * Protocol for a git blob in GitHub.
+ * Protocol for a git blob in GitHub
+ * See GitHub api documentation for details.
  */
 @protocol GitHubBlob <NSObject>
 

@@ -10,6 +10,7 @@
 
 /**
  * Protocol for a git commit in GitHub.
+ * See GitHub api documentation for details.
  */
 @protocol GitHubCommit <NSObject>
 

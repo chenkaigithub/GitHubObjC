@@ -10,6 +10,7 @@
 
 /**
  * Protocol for a comment on an issue for a repository in GitHub.
+ * See GitHub api documentation for details.
  */
 @protocol GitHubComment <NSObject>
 
