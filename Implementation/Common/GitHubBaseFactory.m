@@ -331,7 +331,7 @@ NSString * const GitHubServerErrorDomain = @"GitHubServerErrorDomain";
   
   NSURL *url = [NSURL URLWithString:string];
   
-  if (!url.scheme) {
+  if (![string isEqual:@""] && !url.scheme) {
     
     url = [NSURL URLWithString:[NSString
                                 stringWithFormat:@"http://%@",
