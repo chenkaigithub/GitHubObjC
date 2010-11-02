@@ -14,12 +14,12 @@
 #pragma mark Memory and member management
 
 //Copy
-@synthesize name, commitId, userName, repositoryName;
+@synthesize name, sha, userName, repositoryName;
 
 -(void)dealloc {
   
   self.name = nil;
-  self.commitId = nil;
+  self.sha = nil;
   self.userName = nil;
   self.repositoryName = nil;
   [super dealloc];
@@ -33,13 +33,13 @@
   return [NSString
           stringWithFormat:@"\nSTART - GitHubTag\n"
           "Name:%@\n"
-          "CommitId:%@\n"
+          "sha:%@\n"
           "UserName:%@\n"
           "RepositoryName:%@\n"
           "END - GitHubTag\n"
           ,
           self.name,
-          self.commitId,
+          self.sha,
           self.userName,
           self.repositoryName
           ];

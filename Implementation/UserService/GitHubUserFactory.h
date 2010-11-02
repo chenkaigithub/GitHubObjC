@@ -21,6 +21,8 @@
 
 -(void)requestUserByEmail:(NSString *)email;
 
+-(void)requestUser;
+
 +(GitHubUserFactory *)userFactoryWithDelegate:
 (id<GitHubServiceGotUserDelegate>)delegate;
 

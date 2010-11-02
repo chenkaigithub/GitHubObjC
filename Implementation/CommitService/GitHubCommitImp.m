@@ -19,7 +19,7 @@ modifiedDiff;
 
 //Copy
 @synthesize authorName, authorEmail, authorLogin, committerName, committerEmail,
-committerLogin, commitId, tree, message;
+committerLogin, sha, tree, message;
 
 -(void)dealloc {
   
@@ -28,7 +28,7 @@ committerLogin, commitId, tree, message;
   self.authorEmail = nil;
   self.authorLogin = nil;
   self.url = nil;
-  self.commitId = nil;
+  self.sha = nil;
   self.committedDate = nil;
   self.authoredDate = nil;
   self.tree = nil;
@@ -61,7 +61,7 @@ committerLogin, commitId, tree, message;
           "AuthorEmail:%@\n"
           "AuthorLogin:%@\n"
           "URL:%@\n"
-          "CommitId:%@\n"
+          "Sha:%@\n"
           "CommitedDate:%@\n"
           "AuthoredDate:%@\n"
           "Tree:%@\n"
@@ -75,7 +75,7 @@ committerLogin, commitId, tree, message;
           self.authorEmail,
           self.authorLogin,
           self.url,
-          self.commitId,
+          self.sha,
           self.committedDate,
           self.authoredDate,
           self.tree,

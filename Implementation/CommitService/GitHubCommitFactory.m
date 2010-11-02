@@ -188,7 +188,7 @@ static NSDictionary *localStartElement;
     
   } else {
     
-    self.commit.commitId = self.currentStringValue;
+    self.commit.sha = self.currentStringValue;
   }
 }
 
@@ -376,14 +376,14 @@ static NSDictionary *localStartElement;
                      user, repository, branch, path]];
 }
 
--(void)requestCommit:(NSString *)commitId
-          repository:(NSString *)repository
-                user:(NSString *)user {
+-(void)requestCommitBySha:(NSString *)sha
+               repository:(NSString *)repository
+                     user:(NSString *)user {
   
   [self makeRequest:[NSString
                      stringWithFormat:@"%@/api/v2/xml/commits/show/%@/%@/%@",
                      [GitHubBaseFactory serverAddress],
-                     user, repository, commitId]];
+                     user, repository, sha]];
 }
 
 @end

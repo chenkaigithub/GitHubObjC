@@ -207,4 +207,11 @@ static NSDictionary *localStartElement;
                      [GitHubBaseFactory serverAddress], email]];
 }
 
+-(void)requestUser {
+  
+  [self makeRequest:[NSString
+                     stringWithFormat:@"%@/api/v2/xml/user/show",
+                     [GitHubBaseFactory serverAddress]]];
+}
+
 @end

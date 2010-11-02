@@ -39,7 +39,7 @@ delegate:(id<GitHubServiceGotCommitDelegate>)delegate {
 	return service;
 }
 
-+(id<GitHubService>)requestCommit:(NSString *)commitId
++(id<GitHubService>)requestCommitBySha:(NSString *)sha
                        repository:(NSString *)repository
                              user:(NSString *)user
 delegate:(id<GitHubServiceGotCommitDelegate>)delegate {
@@ -47,7 +47,7 @@ delegate:(id<GitHubServiceGotCommitDelegate>)delegate {
 	GitHubCommitFactory *service = [GitHubCommitFactory
                                   commitFactoryWithDelegate:delegate];
   
-	[service requestCommit:commitId repository:repository user:user];
+	[service requestCommitBySha:sha repository:repository user:user];
 	return service;
 }
 

@@ -66,7 +66,7 @@
         tag.name = [[tagStrings objectAtIndex:0]
                     stringByTrimmingCharactersInSet:characterSet];
         
-        tag.commitId = [[tagStrings objectAtIndex:1]
+        tag.sha = [[tagStrings objectAtIndex:1]
                         stringByTrimmingCharactersInSet:characterSet];
         
         tag.userName = self.user;

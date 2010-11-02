@@ -92,4 +92,18 @@ delegate:(id<GitHubServiceGotNameDelegate>)delegate;
 +(id<GitHubService>)searchUsersByName:(NSString *)name
 delegate:(id<GitHubServiceGotNameDelegate>)delegate;
 
+/**
+ * Creates and returns an initialized GitHubService that will send
+ * gitHubService:gotUser: for the default credential GitHubUser.
+ * The service will end with sending gitHubServiceDone if service went well, or
+ * gitHubService:didFailWithError: if service failed during execution.
+ * Can be cancelled using cancelRequest. If cancelled, no more message will be
+ * sent to the delegate, including gitHubServiceDone
+ * gitHubService:didFailWithError:.
+ * @param delegate The delegate object for the service.
+ * @return The service for the request.
+ */
++(id<GitHubService>)requestUserWithDelegate:
+(id<GitHubServiceGotUserDelegate>)delegate;
+
 @end

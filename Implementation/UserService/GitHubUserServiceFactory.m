@@ -67,4 +67,14 @@ delegate:(id<GitHubServiceGotNameDelegate>)delegate {
 	return service;
 }
 
++(id<GitHubService>)requestUserWithDelegate:
+(id<GitHubServiceGotUserDelegate>)delegate {
+  
+	GitHubUserFactory *service = [GitHubUserFactory
+                                userFactoryWithDelegate:delegate];
+  
+	[service requestUser];
+	return service;
+}
+
 @end

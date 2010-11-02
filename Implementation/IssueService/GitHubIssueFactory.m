@@ -178,11 +178,11 @@ static NSDictionary *localStartElement;
     [NSValue valueWithPointer:@selector
      (endElementGravatarId)], @"gravatar-id",
     [NSValue valueWithPointer:@selector
-     (endElementSha)], @"position",
+     (endElementPosition)], @"position",
     [NSValue valueWithPointer:@selector
-     (endElementMode)], @"number",
+     (endElementNumber)], @"number",
     [NSValue valueWithPointer:@selector
-     (endElementMimeType)], @"votes",
+     (endElementVotes)], @"votes",
     [NSValue valueWithPointer:@selector
      (endElementCreatedAt)], @"created-at",
     [NSValue valueWithPointer:@selector

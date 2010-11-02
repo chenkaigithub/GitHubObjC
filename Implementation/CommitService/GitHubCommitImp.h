@@ -15,7 +15,7 @@
   NSString *authorEmail;
   NSString *authorLogin;
   NSURL *url;
-  NSString *commitId;
+  NSString *sha;
   NSDate *committedDate;
   NSDate *authoredDate;
   NSString *tree;
@@ -34,7 +34,7 @@
 @property (copy) NSString *authorEmail;
 @property (copy) NSString *authorLogin;
 @property (retain) NSURL *url;
-@property (copy) NSString *commitId;
+@property (copy) NSString *sha;
 @property (retain) NSDate *committedDate;
 @property (retain) NSDate *authoredDate;
 @property (copy) NSString *tree;

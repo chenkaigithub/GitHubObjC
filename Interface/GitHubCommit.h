@@ -19,7 +19,7 @@
 @property (readonly, copy) NSString *authorEmail;
 @property (readonly, copy) NSString *authorLogin;
 @property (readonly, retain) NSURL *url;
-@property (readonly, copy) NSString *commitId;
+@property (readonly, copy) NSString *sha;
 @property (readonly, retain) NSDate *committedDate;
 @property (readonly, retain) NSDate *authoredDate;
 @property (readonly, copy) NSString *tree;

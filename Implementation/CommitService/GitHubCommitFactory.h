@@ -47,9 +47,9 @@
                    repository:(NSString *)repository
                          user:(NSString *)user;
 
--(void)requestCommit:(NSString *)commitId
-          repository:(NSString *)repository
-                user:(NSString *)user;
+-(void)requestCommitBySha:(NSString *)sha
+               repository:(NSString *)repository
+                     user:(NSString *)user;
 
 +(GitHubCommitFactory *)commitFactoryWithDelegate:
 (id<GitHubServiceGotCommitDelegate>)delegate;

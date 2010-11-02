@@ -55,12 +55,13 @@ static NSDictionary *localStartElement;
 
 -(void)endElementTree {
   
-  if (self.treeItem.name) {
+  if (self.treeItem) {
     
     [(id<GitHubServiceGotTreeItemDelegate>)self.delegate
      gitHubService:self
      gotTreeItem:self.treeItem];
   }
+  self.treeItem = nil;
 }
 
 -(void)endElementName {

@@ -13,7 +13,7 @@
 #pragma mark -
 #pragma mark Internal implementation declaration
 
-static NSString * serverAddress = @"http://github.com";
+static NSString * serverAddress = @"https://github.com";
 
 #pragma mark -
 #pragma mark Memory and member management
@@ -73,6 +73,93 @@ endElement, startElement;
 #pragma mark Internal implementation
 #pragma mark - Instance
 
+static char base64EncodingTable[64] = {
+  'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+  'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+  'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+  'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
+  'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+  'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+  'w', 'x', 'y', 'z', '0', '1', '2', '3',
+  '4', '5', '6', '7', '8', '9', '+', '/'
+};
+
+
+-(NSString *)base64StringFromData:(NSData *)data {
+  NSString *retVal= nil;
+  
+  int lentext = [data length]; 
+  
+  if (lentext > 0) {
+    
+    char *outbuf = malloc(lentext*4/3+4);
+    
+    if (outbuf) {
+      
+      const unsigned char *raw = [data bytes];
+      
+      int inp = 0;
+      int outp = 0;
+      int do_now = lentext - (lentext%3);
+      
+      for (outp = 0, inp = 0; inp < do_now; inp += 3) {
+        
+        outbuf[outp++] = base64EncodingTable[(raw[inp] & 0xFC) >> 2];
+        
+        outbuf[outp++] = 
+        base64EncodingTable[((raw[inp] & 0x03) << 4) |
+                            ((raw[inp+1] & 0xF0) >> 4)];
+        
+        outbuf[outp++] =
+        base64EncodingTable[((raw[inp+1] & 0x0F) << 2) |
+                            ((raw[inp+2] & 0xC0) >> 6)];
+        
+        outbuf[outp++] = base64EncodingTable[raw[inp+2] & 0x3F];
+      }
+      
+      if (do_now < lentext) {
+        
+        unsigned char tmpbuf[3] = {0,0,0};
+        int left = lentext%3;
+        
+        for (int i=0; i < left; i++) {
+          
+          tmpbuf[i] = raw[do_now+i];
+        }
+        raw = tmpbuf;
+        inp = 0;
+        outbuf[outp++] = base64EncodingTable[(raw[inp] & 0xFC) >> 2];
+        
+        outbuf[outp++] = base64EncodingTable[((raw[inp] & 0x03) << 4) |
+                                             ((raw[inp+1] & 0xF0) >> 4)];
+        
+        if (left == 2) {
+          
+          outbuf[outp++] =
+            base64EncodingTable[((raw[inp+1] & 0x0F) << 2) |
+                                ((raw[inp+2] & 0xC0) >> 6)];
+            
+        } else {
+          
+          outbuf[outp++] = '=';
+        }
+        outbuf[outp++] = '=';
+      }
+      
+      retVal =
+        [[[NSString alloc] initWithBytes:outbuf
+                                  length:outp
+                                encoding:NSASCIIStringEncoding] autorelease];
+      free(outbuf);
+    }
+  } else {
+    
+    retVal = @"";
+  }
+
+  return retVal;
+}
+
 -(id<GitHubService>)initWithDelegate:(id<GitHubServiceDelegate>)newDelegate {
   
   if (self = [super init]){
@@ -100,13 +187,39 @@ endElement, startElement;
 }
 
 -(void)makeRequest:(NSString *) url {
+    
+  self.request =
+  [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   
-  self.request = url;
+  NSURLProtectionSpace *space =
+  [[[NSURLProtectionSpace alloc] initWithHost:@"github.com"
+                                        port:0
+                                    protocol:@"https"
+                                       realm:nil
+                        authenticationMethod:NSURLAuthenticationMethodDefault]
+   autorelease];
   
-  NSURLRequest *theRequest=[NSURLRequest
-                            requestWithURL:[NSURL URLWithString:url]
+  NSURLCredentialStorage *storage =
+  [NSURLCredentialStorage sharedCredentialStorage];
+  NSURLCredential *credential = [storage defaultCredentialForProtectionSpace:space];
+
+  NSMutableURLRequest *theRequest= [NSMutableURLRequest
+                            requestWithURL:[NSURL URLWithString:self.request]
                             cachePolicy:NSURLRequestUseProtocolCachePolicy
-                            timeoutInterval:60.0];
+                            timeoutInterval:60.0]; 
+  
+  NSString *tmp = [NSString stringWithFormat:@"%@:%@",
+                   credential.user,
+                   credential.password];
+  
+  NSData *data = [tmp dataUsingEncoding:NSUTF8StringEncoding];
+  
+  tmp = [self base64StringFromData:data];
+  
+  [theRequest
+   addValue:[NSString stringWithFormat:@"Basic %@", tmp]
+   forHTTPHeaderField:@"Authorization"];
+  
   
   self.connection = [NSURLConnection connectionWithRequest:theRequest
                                                   delegate:self];

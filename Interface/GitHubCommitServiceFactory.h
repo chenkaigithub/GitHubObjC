@@ -70,15 +70,16 @@ delegate:(id<GitHubServiceGotCommitDelegate>)delegate;
  * Can be cancelled using cancelRequest. If cancelled, no more message will be
  * sent to the delegate, including gitHubServiceDone
  * gitHubService:didFailWithError:.
- * @param commitId The commit id to get data from.
+ * @param sha The commit sha to get data from.
  * @param repository The name of the repository.
  * @param user The login name of the repository owner.
  * @param delegate The delegate object for the service.
  * @return The service for the request.
  */
-+(id<GitHubService>)requestCommit:(NSString *)commitId
-                       repository:(NSString *)repository
-                             user:(NSString *)user
-                         delegate:(id<GitHubServiceGotCommitDelegate>)delegate;
++(id<GitHubService>)requestCommitBySha:(NSString *)sha
+                            repository:(NSString *)repository
+                                  user:(NSString *)user
+                              delegate:
+(id<GitHubServiceGotCommitDelegate>)delegate;
 
 @end

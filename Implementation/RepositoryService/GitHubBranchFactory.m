@@ -65,7 +65,7 @@
       branch.name = [[tagStrings objectAtIndex:0]
                   stringByTrimmingCharactersInSet:characterSet];
       
-      branch.commitId = [[tagStrings objectAtIndex:1]
+      branch.sha = [[tagStrings objectAtIndex:1]
                       stringByTrimmingCharactersInSet:characterSet];
       
       branch.userName = self.user;
