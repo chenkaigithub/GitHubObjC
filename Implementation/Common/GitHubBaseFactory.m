@@ -17,6 +17,8 @@ static NSString * serverAddress = @"https://github.com";
 
 static NSDateFormatter *localFormatter = nil;
 
+static NSURLProtectionSpace *localSpace = nil;
+
 #pragma mark -
 #pragma mark Memory and member management
 
@@ -193,17 +195,12 @@ static char base64EncodingTable[64] = {
   self.request =
   [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   
-  NSURLProtectionSpace *space =
-  [[[NSURLProtectionSpace alloc] initWithHost:@"github.com"
-                                        port:0
-                                    protocol:@"https"
-                                       realm:nil
-                        authenticationMethod:NSURLAuthenticationMethodDefault]
-   autorelease];
-  
+
   NSURLCredentialStorage *storage =
   [NSURLCredentialStorage sharedCredentialStorage];
-  NSURLCredential *credential = [storage defaultCredentialForProtectionSpace:space];
+  
+  NSURLCredential *credential =
+  [storage defaultCredentialForProtectionSpace:localSpace];
 
   NSMutableURLRequest *theRequest= [NSMutableURLRequest
                             requestWithURL:[NSURL URLWithString:self.request]
@@ -324,6 +321,17 @@ didReceiveResponse:(NSURLResponse *)response {
     
     localFormatter = [[NSDateFormatter alloc] init];
     [localFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+  }
+  
+  if (!localSpace) {
+    
+    localSpace =
+    [[NSURLProtectionSpace alloc]
+      initWithHost:@"github.com"
+      port:0
+      protocol:@"https"
+      realm:nil
+      authenticationMethod:NSURLAuthenticationMethodDefault];
   }
 }
 
