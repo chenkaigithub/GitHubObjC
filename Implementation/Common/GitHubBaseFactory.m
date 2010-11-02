@@ -15,6 +15,8 @@
 
 static NSString * serverAddress = @"https://github.com";
 
+static NSDateFormatter *localFormatter = nil;
+
 #pragma mark -
 #pragma mark Memory and member management
 
@@ -314,6 +316,18 @@ didReceiveResponse:(NSURLResponse *)response {
 }
 
 #pragma mark -
+#pragma mark Super override implementation
+
++(void)initialize {
+  
+  if (!localFormatter) {
+    
+    localFormatter = [[NSDateFormatter alloc] init];
+    [localFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+  }
+}
+
+#pragma mark -
 #pragma mark Interface implementation
 #pragma mark - Class
 
@@ -347,10 +361,7 @@ NSString * const GitHubServerErrorDomain = @"GitHubServerErrorDomain";
   
   if ([string length] > 18) {
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-    
-    retVal = [formatter dateFromString:[string substringToIndex:18]];
+    retVal = [localFormatter dateFromString:[string substringToIndex:18]];
   }
   return retVal;
 }
