@@ -239,37 +239,35 @@ static NSDictionary *localStartElement;
 -(void)searchRepositoriesByName:(NSString *)name {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/repos/search/%@",
-                     [GitHubBaseFactory serverAddress], name]];
+                     stringWithFormat:@"/api/v2/xml/repos/search/%@", name]];
 }
 
 -(void)requestRepositoriesInNetworkByName:(NSString *)name
                                      user:(NSString *)user {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/repos/show/%@/%@/network",
-                     [GitHubBaseFactory serverAddress], user ,name]];
+                     stringWithFormat:@"/api/v2/xml/repos/show/%@/%@/network",
+                     user ,name]];
 }
 
 -(void)requestRepositoryByName:(NSString *)name
                           user:(NSString *)user {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/repos/show/%@/%@",
-                     [GitHubBaseFactory serverAddress], user, name]];
+                     stringWithFormat:@"/api/v2/xml/repos/show/%@/%@",
+                     user, name]];
 }
 
 -(void)requestRepositoriesWatchedByUser:(NSString *)name {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/repos/watched/%@",
-                     [GitHubBaseFactory serverAddress], name]];
+                     stringWithFormat:@"/api/v2/xml/repos/watched/%@", name]];
 }
 
 -(void)requestRepositoriesOwnedByUser:(NSString *)name {
   
-  [self makeRequest:[NSString stringWithFormat:@"%@/api/v2/xml/repos/show/%@",
-                     [GitHubBaseFactory serverAddress], name]];
+  [self makeRequest:[NSString stringWithFormat:@"/api/v2/xml/repos/show/%@",
+                     name]];
 }
 
 @end

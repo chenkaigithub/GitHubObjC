@@ -51,6 +51,8 @@
 		F71F3EA7127CD2B900C96889 /* GitHubLabelFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F71F397C127B84F200C96889 /* GitHubLabelFactory.h */; };
 		F71F3EA8127CD2BA00C96889 /* GitHubLabelFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F71F397D127B84F200C96889 /* GitHubLabelFactory.m */; };
 		F71F3F0C127D953F00C96889 /* GitHubCommentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F71F3980127B84FD00C96889 /* GitHubCommentFactory.m */; };
+		F72D5B4A1280ADFF00A21815 /* GitHubServiceSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = F72D5B481280ADFF00A21815 /* GitHubServiceSettings.h */; };
+		F72D5B4B1280ADFF00A21815 /* GitHubServiceSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F72D5B491280ADFF00A21815 /* GitHubServiceSettings.m */; };
 		F7700DCF127B241A000D3D77 /* GitHubTreeItemImp.m in Sources */ = {isa = PBXBuildFile; fileRef = F7700C02127AE80C000D3D77 /* GitHubTreeItemImp.m */; };
 		F7700DD0127B241C000D3D77 /* GitHubObjectServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F7700C08127AE82D000D3D77 /* GitHubObjectServiceFactory.m */; };
 		F7700DD1127B241C000D3D77 /* GitHubDataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F7700C12127AEBB0000D3D77 /* GitHubDataFactory.m */; };
@@ -140,6 +142,8 @@
 		F71F397D127B84F200C96889 /* GitHubLabelFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubLabelFactory.m; sourceTree = "<group>"; };
 		F71F397F127B84FD00C96889 /* GitHubCommentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubCommentFactory.h; sourceTree = "<group>"; };
 		F71F3980127B84FD00C96889 /* GitHubCommentFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubCommentFactory.m; sourceTree = "<group>"; };
+		F72D5B481280ADFF00A21815 /* GitHubServiceSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubServiceSettings.h; sourceTree = "<group>"; };
+		F72D5B491280ADFF00A21815 /* GitHubServiceSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubServiceSettings.m; sourceTree = "<group>"; };
 		F7700C01127AE80C000D3D77 /* GitHubTreeItemImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubTreeItemImp.h; sourceTree = "<group>"; };
 		F7700C02127AE80C000D3D77 /* GitHubTreeItemImp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubTreeItemImp.m; sourceTree = "<group>"; };
 		F7700C04127AE819000D3D77 /* GitHubBlobImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubBlobImp.h; sourceTree = "<group>"; };
@@ -360,6 +364,7 @@
 			children = (
 				F7962458126E02620075205F /* GitHubBaseFactory.h */,
 				F7962459126E02620075205F /* GitHubBaseFactory.m */,
+				F72D5B491280ADFF00A21815 /* GitHubServiceSettings.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 		F796246C126E02620075205F /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				F72D5B481280ADFF00A21815 /* GitHubServiceSettings.h */,
 				F7962476126E02620075205F /* GitHubUserServiceFactory.h */,
 				F796246F126E02620075205F /* GitHubCommitServiceFactory.h */,
 				F7962472126E02620075205F /* GitHubRepositoryServiceFactory.h */,
@@ -555,6 +561,7 @@
 				F71F3973127B84B400C96889 /* GitHubIssueFactory.h in Headers */,
 				F71F3EA6127CD2B900C96889 /* GitHubCommentFactory.h in Headers */,
 				F71F3EA7127CD2B900C96889 /* GitHubLabelFactory.h in Headers */,
+				F72D5B4A1280ADFF00A21815 /* GitHubServiceSettings.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,6 +696,7 @@
 				F71F3974127B84B400C96889 /* GitHubIssueFactory.m in Sources */,
 				F71F3EA8127CD2BA00C96889 /* GitHubLabelFactory.m in Sources */,
 				F71F3F0C127D953F00C96889 /* GitHubCommentFactory.m in Sources */,
+				F72D5B4B1280ADFF00A21815 /* GitHubServiceSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -44,8 +44,7 @@
              repository:(NSString *)repository {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/blob/show/%@/%@/%@",
-                     [GitHubBaseFactory serverAddress],
+                     stringWithFormat:@"/api/v2/xml/blob/show/%@/%@/%@",
                      user, repository, sha]];
 }
 @end

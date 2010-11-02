@@ -112,8 +112,8 @@ static NSDictionary *localStartElement;
 -(void)requestContributorsByName:(NSString *)name user:(NSString *)user {
   
   [self makeRequest:
-   [NSString stringWithFormat:@"%@/api/v2/xml/repos/show/%@/%@/contributors",
-    [GitHubBaseFactory serverAddress], user, name]];
+   [NSString stringWithFormat:@"/api/v2/xml/repos/show/%@/%@/contributors",
+    user, name]];
 }
 
 @end

@@ -76,15 +76,15 @@ static NSDictionary *localStartElement;
 -(void)requestLeadersOfUser:(NSString *)name {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/user/show/%@/following",
-                     [GitHubBaseFactory serverAddress], name]];
+                     stringWithFormat:@"/api/v2/xml/user/show/%@/following",
+                     name]];
 }
 
 -(void)requestFollowersOfUser:(NSString *)name {
   
   [self makeRequest:[NSString 
-                     stringWithFormat:@"%@/api/v2/xml/user/show/%@/followers",
-                     [GitHubBaseFactory serverAddress], name]];
+                     stringWithFormat:@"/api/v2/xml/user/show/%@/followers",
+                     name]];
 }
 
 @end

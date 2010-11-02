@@ -78,8 +78,7 @@ static NSDictionary *localStartElement;
 
   [self makeRequest:[NSString
                      stringWithFormat:
-                     @"%@/api/v2/xml/issues/labels/%@/%@",
-                     [GitHubBaseFactory serverAddress],
+                     @"/api/v2/xml/issues/labels/%@/%@",
                      user, repository]];
 }
 

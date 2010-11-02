@@ -360,8 +360,7 @@ static NSDictionary *localStartElement;
                          user:(NSString *)user {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/commits/list/%@/%@/%@",
-                     [GitHubBaseFactory serverAddress],
+                     stringWithFormat:@"/api/v2/xml/commits/list/%@/%@/%@",
                      user, repository, branch]];
 }
 
@@ -371,8 +370,7 @@ static NSDictionary *localStartElement;
                          user:(NSString *)user {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/commits/list/%@/%@/%@/%@",
-                     [GitHubBaseFactory serverAddress],
+                     stringWithFormat:@"/api/v2/xml/commits/list/%@/%@/%@/%@",
                      user, repository, branch, path]];
 }
 
@@ -381,8 +379,7 @@ static NSDictionary *localStartElement;
                      user:(NSString *)user {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/commits/show/%@/%@/%@",
-                     [GitHubBaseFactory serverAddress],
+                     stringWithFormat:@"/api/v2/xml/commits/show/%@/%@/%@",
                      user, repository, sha]];
 }
 

@@ -116,8 +116,8 @@
   self.repository = newRepository;
   
   [self makeRequest:
-   [NSString stringWithFormat:@"%@/api/v2/yaml/repos/show/%@/%@/branches",
-    [GitHubBaseFactory serverAddress], newUser, newRepository]];
+   [NSString stringWithFormat:@"/api/v2/yaml/repos/show/%@/%@/branches",
+    newUser, newRepository]];
 }
 
 @end

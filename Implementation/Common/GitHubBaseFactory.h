@@ -41,7 +41,13 @@
 -(void)handleErrorWithCode:(GitHubServerError)code;
 -(NSDate *)createDateFromString:(NSString *)string;
 -(NSURL *)createURLFromString:(NSString *)string;
-+(void)setServerAddress:(NSString *)newServerAddress;
++(void)setServerAddress:(NSString *)serverAddress;
 +(NSString *)serverAddress;
++(void)setSecureServerAddress:(NSString *)secureServerAddress;
++(NSString *)secureServerAddress;
++(void)setCredential:(NSURLCredential *)credential;
++(NSURLCredential *)credential;
++(void)setSecureConnection:(BOOL)secureConnection;
++(BOOL)secureConnection;
 
 @end

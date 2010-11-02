@@ -147,8 +147,7 @@ static NSDictionary *localStartElement;
   
   [self makeRequest:[NSString
                      stringWithFormat:
-                     @"%@/api/v2/xml/blob/show/%@/%@/%@/%@?meta=1",
-                     [GitHubBaseFactory serverAddress],
+                     @"/api/v2/xml/blob/show/%@/%@/%@/%@?meta=1",
                      user, repository, sha, path]];
 }
 
@@ -158,8 +157,7 @@ static NSDictionary *localStartElement;
                                path:(NSString *)path {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/blob/show/%@/%@/%@/%@",
-                     [GitHubBaseFactory serverAddress],
+                     stringWithFormat:@"/api/v2/xml/blob/show/%@/%@/%@/%@",
                      user, repository, sha, path]];
 }
 

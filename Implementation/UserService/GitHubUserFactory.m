@@ -196,22 +196,18 @@ static NSDictionary *localStartElement;
 -(void)requestUserByName:(NSString *) name {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/user/show/%@",
-                     [GitHubBaseFactory serverAddress], name]];
+                     stringWithFormat:@"/api/v2/xml/user/show/%@", name]];
 }
 
 -(void)requestUserByEmail:(NSString *) email {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/user/email/%@",
-                     [GitHubBaseFactory serverAddress], email]];
+                     stringWithFormat:@"/api/v2/xml/user/email/%@", email]];
 }
 
 -(void)requestUser {
   
-  [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/user/show",
-                     [GitHubBaseFactory serverAddress]]];
+  [self makeRequest:@"/api/v2/xml/user/show"];
 }
 
 @end

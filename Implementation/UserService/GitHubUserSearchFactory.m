@@ -77,8 +77,7 @@ static NSDictionary *localStartElement;
 -(void)searchUsersByName:(NSString *)name {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/user/search/%@",
-                     [GitHubBaseFactory serverAddress], name]];
+                     stringWithFormat:@"/api/v2/xml/user/search/%@", name]];
 }
 
 @end

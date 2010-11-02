@@ -259,8 +259,7 @@ static NSDictionary *localStartElement;
   
   [self makeRequest:[NSString
                      stringWithFormat:
-                     @"%@/api/v2/xml/issues/list/%@/%@/%@",
-                     [GitHubBaseFactory serverAddress],
+                     @"/api/v2/xml/issues/list/%@/%@/%@",
                      user, repository, stateStr]];
 }
 
@@ -270,8 +269,7 @@ static NSDictionary *localStartElement;
   
   [self makeRequest:[NSString
                      stringWithFormat:
-                     @"%@/api/v2/xml/issues/list/%@/%@/label/%@",
-                     [GitHubBaseFactory serverAddress],
+                     @"/api/v2/xml/issues/list/%@/%@/label/%@",
                      user, repository, label]];
 }
 
@@ -281,8 +279,7 @@ static NSDictionary *localStartElement;
 
   [self makeRequest:[NSString
                      stringWithFormat:
-                     @"%@/api/v2/xml/issues/show/%@/%@/%i",
-                     [GitHubBaseFactory serverAddress],
+                     @"/api/v2/xml/issues/show/%@/%@/%i",
                      user, repository, number]];
 }
 

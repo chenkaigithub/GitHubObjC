@@ -148,8 +148,7 @@ static NSDictionary *localStartElement;
                       repository:(NSString *)repository {
   
   [self makeRequest:[NSString
-                     stringWithFormat:@"%@/api/v2/xml/tree/show/%@/%@/%@",
-                     [GitHubBaseFactory serverAddress],
+                     stringWithFormat:@"/api/v2/xml/tree/show/%@/%@/%@",
                      user, repository, sha]];
 }
 

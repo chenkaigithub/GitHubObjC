@@ -8,16 +8,28 @@
 
 #import "GitHubBaseFactory.h"
 
-@implementation GitHubBaseFactory
-
 #pragma mark -
 #pragma mark Internal implementation declaration
 
-static NSString * serverAddress = @"https://github.com";
+static NSString * localServerAddress = @"http://github.com";
+
+static NSString * localSecureServerAddress = @"https://github.com";
 
 static NSDateFormatter *localFormatter = nil;
 
-static NSURLProtectionSpace *localSpace = nil;
+static NSURLCredential *localCredential = nil;
+
+static NSString *localAuthorization = nil;
+
+static BOOL localSecureConnection = NO;
+
+@interface GitHubBaseFactory (hidden)
+
++(NSString *)base64StringFromData:(NSData *)data;
+
+@end
+
+@implementation GitHubBaseFactory
 
 #pragma mark -
 #pragma mark Memory and member management
@@ -64,13 +76,54 @@ endElement, startElement;
 
 +(void)setServerAddress:(NSString *)newServerAddress {
   
-  [serverAddress release];
-  serverAddress = [newServerAddress retain];
+  [localServerAddress release];
+  localServerAddress = [newServerAddress retain];
 }
 
 +(NSString *)serverAddress {
   
-  return serverAddress;
+  return localServerAddress;
+}
+
++(void)setSecureServerAddress:(NSString *)newSecureServerAddress {
+  
+  [localSecureServerAddress release];
+  localSecureServerAddress = [newSecureServerAddress retain];
+}
+
++(NSString *)secureServerAddress {
+  
+  return localSecureServerAddress;
+}
+
++(void)setCredential:(NSURLCredential *)credential {
+  
+  [localServerAddress release];
+  localCredential = [credential retain];
+  
+  localAuthorization = [NSString stringWithFormat:@"%@:%@",
+                                  credential.user,
+                                  credential.password];
+  
+  NSData *data = [localAuthorization dataUsingEncoding:NSUTF8StringEncoding];
+  
+  localAuthorization =
+  [NSString stringWithFormat:@"Basic %@",[GitHubBaseFactory base64StringFromData:data]];
+}
+
++(NSURLCredential *)credential {
+  
+  return localCredential;
+}
+
++(void)setSecureConnection:(BOOL)secureConnection {
+  
+  localSecureConnection = secureConnection;
+}
+
++(BOOL)secureConnection {
+  
+  return localSecureConnection;
 }
 
 #pragma mark -
@@ -89,7 +142,7 @@ static char base64EncodingTable[64] = {
 };
 
 
--(NSString *)base64StringFromData:(NSData *)data {
++(NSString *)base64StringFromData:(NSData *)data {
   NSString *retVal= nil;
   
   int lentext = [data length]; 
@@ -191,34 +244,32 @@ static char base64EncodingTable[64] = {
 }
 
 -(void)makeRequest:(NSString *) url {
+  
+  url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  
+  if (localSecureConnection) {
+
+    self.request =
+    [NSString stringWithFormat:@"%@%@", localSecureServerAddress, url];
     
-  self.request =
-  [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  } else {
+    
+    self.request =
+    [NSString stringWithFormat:@"%@%@", localServerAddress, url];
+    
+  }
   
-
-  NSURLCredentialStorage *storage =
-  [NSURLCredentialStorage sharedCredentialStorage];
-  
-  NSURLCredential *credential =
-  [storage defaultCredentialForProtectionSpace:localSpace];
-
   NSMutableURLRequest *theRequest= [NSMutableURLRequest
                             requestWithURL:[NSURL URLWithString:self.request]
                             cachePolicy:NSURLRequestUseProtocolCachePolicy
                             timeoutInterval:60.0]; 
   
-  NSString *tmp = [NSString stringWithFormat:@"%@:%@",
-                   credential.user,
-                   credential.password];
-  
-  NSData *data = [tmp dataUsingEncoding:NSUTF8StringEncoding];
-  
-  tmp = [self base64StringFromData:data];
-  
-  [theRequest
-   addValue:[NSString stringWithFormat:@"Basic %@", tmp]
-   forHTTPHeaderField:@"Authorization"];
-  
+  if (localAuthorization) {
+    
+    [theRequest
+     addValue:localAuthorization
+     forHTTPHeaderField:@"Authorization"];
+  }
   
   self.connection = [NSURLConnection connectionWithRequest:theRequest
                                                   delegate:self];
@@ -322,17 +373,7 @@ didReceiveResponse:(NSURLResponse *)response {
     localFormatter = [[NSDateFormatter alloc] init];
     [localFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
   }
-  
-  if (!localSpace) {
-    
-    localSpace =
-    [[NSURLProtectionSpace alloc]
-      initWithHost:@"github.com"
-      port:0
-      protocol:@"https"
-      realm:nil
-      authenticationMethod:NSURLAuthenticationMethodDefault];
-  }
+
 }
 
 #pragma mark -
