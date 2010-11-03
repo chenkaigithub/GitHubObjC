@@ -101,14 +101,22 @@ endElement, startElement;
   [localServerAddress release];
   localCredential = [credential retain];
   
-  localAuthorization = [NSString stringWithFormat:@"%@:%@",
-                                  credential.user,
-                                  credential.password];
-  
-  NSData *data = [localAuthorization dataUsingEncoding:NSUTF8StringEncoding];
-  
-  localAuthorization =
-  [NSString stringWithFormat:@"Basic %@",[GitHubBaseFactory base64StringFromData:data]];
+  if (localCredential) {
+    
+    localAuthorization = [NSString stringWithFormat:@"%@:%@",
+                                    credential.user,
+                                    credential.password];
+    
+    NSData *data = [localAuthorization dataUsingEncoding:NSUTF8StringEncoding];
+    
+    localAuthorization =
+    [NSString stringWithFormat:@"Basic %@",
+     [GitHubBaseFactory base64StringFromData:data]];
+    
+  } else {
+    
+    localAuthorization = nil;
+  }
 }
 
 +(NSURLCredential *)credential {
