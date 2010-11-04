@@ -59,22 +59,22 @@ static NSDictionary *localStartElement;
 
 -(void)endElementName {
   
-  self.user.name = currentStringValue;
+  self.user.name = self.currentStringValue;
 }
 
 -(void)endElementGravatarId {
   
-  self.user.gravatarId = currentStringValue;
+  self.user.gravatarId = self.currentStringValue;
 }
 
 -(void)endElementCompany {
   
-  self.user.company = currentStringValue;
+  self.user.company = self.currentStringValue;
 }
 
 -(void)endElementLocation {
   
-  self.user.location = currentStringValue;
+  self.user.location = self.currentStringValue;
 }
 
 -(void)endElementBlog {
@@ -84,17 +84,17 @@ static NSDictionary *localStartElement;
 
 -(void)endElementEmail {
   
-  self.user.email = currentStringValue;
+  self.user.email = self.currentStringValue;
 }
 
 -(void)endElementLogin {
   
-  self.user.login = currentStringValue;
+  self.user.login = self.currentStringValue;
 }
 
 -(void)endElementId {
   
-  self.user.ID = currentStringValue;
+  self.user.ID = self.currentStringValue;
 }
 
 -(void)endElementCreatedAt {
@@ -105,27 +105,27 @@ static NSDictionary *localStartElement;
 
 -(void)endElementPublicRepoCount {
   
-  self.user.publicRepoCount = [currentStringValue intValue];
+  self.user.publicRepoCount =  [self.currentStringValue intValue];
 }
 
 -(void)endElementPublicGistCount {
   
-  self.user.publicGistCount = [currentStringValue intValue];
+  self.user.publicGistCount =  [self.currentStringValue intValue];
 }
 
 -(void)endElementFollowingCount {
   
-  self.user.followingCount = [currentStringValue intValue];
+  self.user.followingCount =  [self.currentStringValue intValue];
 }
 
 -(void)endElementFollowersCount {
   
-  self.user.followersCount = [currentStringValue intValue];
+  self.user.followersCount =  [self.currentStringValue intValue];
 }
 
 -(void)endElementType {
   
-  self.user.type = currentStringValue;
+  self.user.type = self.currentStringValue;
 }
 
 -(void)endElementError {

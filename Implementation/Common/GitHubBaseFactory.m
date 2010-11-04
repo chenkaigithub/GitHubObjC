@@ -62,22 +62,40 @@ endElement, startElement;
 
 -(void)setParser:(NSXMLParser *)newParser {
   
-  [parser abortParsing];
-  [parser release];
-  parser = [newParser retain];
+  @synchronized(self) {
+    
+    if (parser != newParser) {
+      
+      [parser abortParsing];
+      [parser release];
+      parser = [newParser retain];
+    }
+  }
 }
 
 -(void)setConnection:(NSURLConnection *)newConnection {
   
-  [connection cancel];
-  [connection release];
-  connection = [newConnection retain];
+  @synchronized(self) {
+   
+    if (connection != newConnection) {
+      
+      [connection cancel];
+      [connection release];
+      connection = [newConnection retain];
+    }
+  }
 }
 
 +(void)setServerAddress:(NSString *)newServerAddress {
   
-  [localServerAddress release];
-  localServerAddress = [newServerAddress retain];
+  @synchronized(self) {
+    
+    if (localServerAddress != newServerAddress) {
+      
+      [localServerAddress release];
+      localServerAddress = [newServerAddress copy];
+    }
+  }
 }
 
 +(NSString *)serverAddress {
@@ -87,8 +105,14 @@ endElement, startElement;
 
 +(void)setSecureServerAddress:(NSString *)newSecureServerAddress {
   
-  [localSecureServerAddress release];
-  localSecureServerAddress = [newSecureServerAddress retain];
+  @synchronized(self) {
+    
+    if (localSecureServerAddress != newSecureServerAddress) {
+      
+      [localSecureServerAddress release];
+      localSecureServerAddress = [newSecureServerAddress copy];
+    }
+  }
 }
 
 +(NSString *)secureServerAddress {
@@ -98,24 +122,34 @@ endElement, startElement;
 
 +(void)setCredential:(NSURLCredential *)credential {
   
-  [localServerAddress release];
-  localCredential = [credential retain];
-  
-  if (localCredential) {
+  @synchronized(self) {
     
-    localAuthorization = [NSString stringWithFormat:@"%@:%@",
-                                    credential.user,
-                                    credential.password];
-    
-    NSData *data = [localAuthorization dataUsingEncoding:NSUTF8StringEncoding];
-    
-    localAuthorization =
-    [NSString stringWithFormat:@"Basic %@",
-     [GitHubBaseFactory base64StringFromData:data]];
-    
-  } else {
-    
-    localAuthorization = nil;
+    if (localCredential != credential) {
+      
+      [localCredential release];
+      localCredential = [credential retain];
+      
+      if (localCredential) {
+        
+        [localAuthorization release];
+        localAuthorization = nil;
+        
+        NSString *tmp = [NSString stringWithFormat:@"%@:%@",
+                                        credential.user,
+                                        credential.password];
+        
+        NSData *data = [tmp dataUsingEncoding:NSUTF8StringEncoding];
+        
+        localAuthorization =
+        [[NSString alloc] initWithFormat:@"Basic %@",
+         [GitHubBaseFactory base64StringFromData:data]];
+        
+      } else {
+        
+        [localAuthorization release];
+        localAuthorization = nil;
+      }
+    }
   }
 }
 
@@ -126,7 +160,10 @@ endElement, startElement;
 
 +(void)setSecureConnection:(BOOL)secureConnection {
   
-  localSecureConnection = secureConnection;
+  @synchronized(self) {
+    
+    localSecureConnection = secureConnection;
+  }
 }
 
 +(BOOL)secureConnection {
@@ -300,11 +337,15 @@ qualifiedName:(NSString *)qName
 
   SEL aSel = [[self.startElement objectForKey:elementName] pointerValue];
   
+  if (aSel || [[self.endElement objectForKey:elementName] pointerValue]) {
+    
+    self.currentStringValue = [NSMutableString stringWithCapacity:100];
+  }
+  
   if (aSel) {
     
     [self performSelector:aSel withObject:elementName withObject:attributeDict];
   }
-  self.currentStringValue = [NSMutableString stringWithCapacity:100];
 }
 
 -(void)parser:(NSXMLParser *)parser
@@ -317,8 +358,8 @@ qualifiedName:(NSString *)qName
   if (aSel) {
     
     [self performSelector:aSel withObject:elementName];
+    self.currentStringValue = nil;
   }
-  self.currentStringValue = nil;
 }
 
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
