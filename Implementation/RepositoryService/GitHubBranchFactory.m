@@ -50,9 +50,7 @@
   NSArray *lines = [string componentsSeparatedByString:@"\n"];
   BOOL tagsStarted = NO;
   
-  for (int i = 0; i < [lines count]; i++) {
-    
-    NSString *line = [lines objectAtIndex:i];
+  for (NSString *line in lines) {
     
     if (tagsStarted && ![line isEqualToString:@""]) {
       

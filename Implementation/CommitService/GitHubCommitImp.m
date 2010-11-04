@@ -50,9 +50,9 @@ committerLogin, sha, tree, message;
   
   NSMutableString *parentsString = [NSMutableString string];
   
-  for (int i = 0; i < [self.parents count]; i++) {
+  for (NSString *parent in self.parents) {
     
-    [parentsString appendFormat:@"%@, ", [self.parents objectAtIndex:i]];
+    [parentsString appendFormat:@"%@, ", parent];
   }
   return [NSString
           stringWithFormat:@"\nSTART - GitHubCommit\n"
