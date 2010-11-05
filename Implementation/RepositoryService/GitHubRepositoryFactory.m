@@ -197,6 +197,8 @@ static NSDictionary *localStartElement;
     [NSValue valueWithPointer:@selector
      (endElementWatchers)], @"watchers",
     [NSValue valueWithPointer:@selector
+     (endElementWatchers)], @"watcher-count",
+    [NSValue valueWithPointer:@selector
      (endElementForks)], @"forks",
     [NSValue valueWithPointer:@selector
      (endElementFork)], @"fork",

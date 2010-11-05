@@ -21,4 +21,7 @@
 +(void)setServerAddress:(NSString *)serverAddress;
 +(NSString *)serverAddress;
 
++(void)setSecureServerAddress:(NSString *)secureServerAddress;
++(NSString *)secureServerAddress;
+
 @end

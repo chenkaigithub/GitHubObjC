@@ -102,6 +102,7 @@
 		F796276E126E2D5B0075205F /* GitHubUserNameFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F796276C126E2D5B0075205F /* GitHubUserNameFactory.m */; };
 		F7962775126E2D9E0075205F /* GitHubUserSearchFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F7962773126E2D9E0075205F /* GitHubUserSearchFactory.h */; };
 		F7962776126E2D9E0075205F /* GitHubUserSearchFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F7962774126E2D9E0075205F /* GitHubUserSearchFactory.m */; };
+		F7EA0BC212845E9A006302F9 /* TestGitHubRepoServer.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA0BC012845E9A006302F9 /* TestGitHubRepoServer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,6 +220,8 @@
 		F7962847126E37A60075205F /* TestGitHubUserServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGitHubUserServer.h; sourceTree = "<group>"; };
 		F7962848126E37A60075205F /* TestGitHubUserServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestGitHubUserServer.m; sourceTree = "<group>"; };
 		F7962A6C126E460C0075205F /* UnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTest-Info.plist"; sourceTree = "<group>"; };
+		F7EA0BC012845E9A006302F9 /* TestGitHubRepoServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestGitHubRepoServer.m; sourceTree = "<group>"; };
+		F7EA0BC112845E9A006302F9 /* TestGitHubRepoServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGitHubRepoServer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -490,6 +493,8 @@
 		F7962845126E375E0075205F /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				F7EA0BC112845E9A006302F9 /* TestGitHubRepoServer.h */,
+				F7EA0BC012845E9A006302F9 /* TestGitHubRepoServer.m */,
 				F7962847126E37A60075205F /* TestGitHubUserServer.h */,
 				F7962848126E37A60075205F /* TestGitHubUserServer.m */,
 			);
@@ -705,6 +710,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F71F3E93127CD24F00C96889 /* TestGitHubUserServer.m in Sources */,
+				F7EA0BC212845E9A006302F9 /* TestGitHubRepoServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repositories type="array">
+  <repository>
+    <name>Crash</name>
+    <size type="integer">1616</size>
+    <followers type="integer">2</followers>
+    <fork type="boolean">false</fork>
+    <username>bzbhorizon</username>
+    <language>Java</language>
+    <id>repo-587359</id>
+    <type>repo</type>
+    <pushed>2010-04-28T10:01:55Z</pushed>
+    <repo-id type="integer">587359</repo-id>
+    <forks type="integer">1</forks>
+    <description>Exploring uses for mobiles in accident situations</description>
+    <score type="float">5.265157</score>
+    <record>
+      <cfg-wiki type="NilClass">gollum</cfg-wiki>
+      <cfg-wiki type="NilClass">gollum</cfg-wiki>
+      <created-at type="datetime">2010-03-30T14:09:41-07:00</created-at>
+      <deleted type="boolean">false</deleted>
+      <deploy-key nil="true"></deploy-key>
+      <description>Exploring uses for mobiles in accident situations</description>
+      <disk-usage type="integer">1616</disk-usage>
+      <has-downloads type="boolean">true</has-downloads>
+      <has-issues type="boolean">true</has-issues>
+      <has-wiki type="boolean">true</has-wiki>
+      <homepage></homepage>
+      <id type="integer">587359</id>
+      <integrate-branch nil="true"></integrate-branch>
+      <locked type="boolean">false</locked>
+      <master-branch>master</master-branch>
+      <name>Crash</name>
+      <organization-id type="integer" nil="true"></organization-id>
+      <owner-id type="integer">189485</owner-id>
+      <parent-id type="integer" nil="true"></parent-id>
+      <plan-owner-id type="integer">189485</plan-owner-id>
+      <pledgie type="integer" nil="true"></pledgie>
+      <postreceive-urls type="yaml">--- []
+
+</postreceive-urls>
+      <primary-language-name-id type="integer">158</primary-language-name-id>
+      <public type="boolean">true</public>
+      <public-fork-count type="integer">1</public-fork-count>
+      <public-push type="boolean" nil="true"></public-push>
+      <pull-request-auto-response nil="true"></pull-request-auto-response>
+      <pushed-at type="datetime">2010-04-28T03:01:55-07:00</pushed-at>
+      <sandbox type="boolean" nil="true"></sandbox>
+      <source-id type="integer">587359</source-id>
+      <updated-at type="datetime">2010-09-13T21:21:09-07:00</updated-at>
+      <watcher-count type="integer">2</watcher-count>
+    </record>
+    <created>2010-03-30T21:09:41Z</created>
+  </repository>
+  <repository>
+    <name>CrashReporterDemo</name>
+    <size type="integer">4287</size>
+    <followers type="integer">92</followers>
+    <language>PHP</language>
+    <fork type="boolean">false</fork>
+    <username>TheRealKerni</username>
+    <id>repo-253952</id>
+    <type>repo</type>
+    <pushed>2010-10-21T13:09:10Z</pushed>
+    <repo-id type="integer">253952</repo-id>
+    <forks type="integer">8</forks>
+    <description>Manage crash reports of your iPhone and Mac OS X apps during development, beta phase and after rollout, follow news on Twitter via @crashreporter</description>
+    <score type="float">5.7869153</score>
+    <record>
+      <cfg-wiki type="NilClass">gollum</cfg-wiki>
+      <cfg-wiki type="NilClass">gollum</cfg-wiki>
+      <created-at type="datetime">2009-07-17T14:30:58-07:00</created-at>
+      <deleted type="boolean">false</deleted>
+      <deploy-key nil="true"></deploy-key>
+      <description>Manage crash reports of your iPhone and Mac OS X apps during development, beta phase and after rollout, follow news on Twitter via @crashreporter</description>
+      <disk-usage type="integer">4287</disk-usage>
+      <has-downloads type="boolean">true</has-downloads>
+      <has-issues type="boolean">true</has-issues>
+      <has-wiki type="boolean">true</has-wiki>
+      <homepage>http://macdevcrashreports.com</homepage>
+      <id type="integer">253952</id>
+      <integrate-branch nil="true"></integrate-branch>
+      <locked type="boolean">false</locked>
+      <master-branch>master</master-branch>
+      <name>CrashReporterDemo</name>
+      <organization-id type="integer" nil="true"></organization-id>
+      <owner-id type="integer">42185</owner-id>
+      <parent-id type="integer" nil="true"></parent-id>
+      <plan-owner-id type="integer">42185</plan-owner-id>
+      <pledgie type="integer" nil="true"></pledgie>
+      <postreceive-urls type="yaml">--- []
+
+</postreceive-urls>
+      <primary-language-name-id type="integer">151</primary-language-name-id>
+      <public type="boolean">true</public>
+      <public-fork-count type="integer">8</public-fork-count>
+      <public-push type="boolean" nil="true"></public-push>
+      <pull-request-auto-response nil="true"></pull-request-auto-response>
+      <pushed-at type="datetime">2010-10-21T06:09:10-07:00</pushed-at>
+      <sandbox type="boolean" nil="true"></sandbox>
+      <source-id type="integer">253952</source-id>
+      <updated-at type="datetime">2010-11-02T12:57:43-07:00</updated-at>
+      <watcher-count type="integer">92</watcher-count>
+    </record>
+    <created>2009-07-17T21:30:58Z</created>
+  </repository>
+  <repository>
+    <name>CrashKit</name>
+    <size type="integer">108</size>
+    <followers type="integer">53</followers>
+    <language>Objective-C</language>
+    <fork type="boolean">false</fork>
+    <username>kaler</username>
+    <id>repo-830264</id>
+    <type>repo</type>
+    <pushed>2010-08-11T03:35:11Z</pushed>
+    <repo-id type="integer">830264</repo-id>
+    <forks type="integer">5</forks>
+    <description>CrashKit catches uncaught exceptions, traps signals, and sends them to developers by email or straight to your bug database.</description>
+    <score type="float">5.960835</score>
+    <record>
+      <cfg-wiki type="NilClass">gollum</cfg-wiki>
+      <cfg-wiki type="NilClass">gollum</cfg-wiki>
+      <created-at type="datetime">2010-08-10T20:34:31-07:00</created-at>
+      <deleted type="boolean">false</deleted>
+      <deploy-key nil="true"></deploy-key>
+      <description>CrashKit catches uncaught exceptions, traps signals, and sends them to developers by email or straight to your bug database.</description>
+      <disk-usage type="integer">108</disk-usage>
+      <has-downloads type="boolean">true</has-downloads>
+      <has-issues type="boolean">true</has-issues>
+      <has-wiki type="boolean">true</has-wiki>
+      <homepage>http://parveenkaler.com/2010/08/11/crashkit-helping-your-iphone-apps-suck-less/</homepage>
+      <id type="integer">830264</id>
+      <integrate-branch nil="true"></integrate-branch>
+      <locked type="boolean">false</locked>
+      <master-branch>master</master-branch>
+      <name>CrashKit</name>
+      <organization-id type="integer" nil="true"></organization-id>
+      <owner-id type="integer">191003</owner-id>
+      <parent-id type="integer" nil="true"></parent-id>
+      <plan-owner-id type="integer">191003</plan-owner-id>
+      <pledgie type="integer" nil="true"></pledgie>
+      <postreceive-urls type="yaml">--- []
+
+</postreceive-urls>
+      <primary-language-name-id type="integer">156</primary-language-name-id>
+      <public type="boolean">true</public>
+      <public-fork-count type="integer">5</public-fork-count>
+      <public-push type="boolean" nil="true"></public-push>
+      <pull-request-auto-response nil="true"></pull-request-auto-response>
+      <pushed-at type="datetime">2010-08-10T20:35:11-07:00</pushed-at>
+      <sandbox type="boolean" nil="true"></sandbox>
+      <source-id type="integer">830264</source-id>
+      <updated-at type="datetime">2010-10-31T10:10:51-07:00</updated-at>
+      <watcher-count type="integer">53</watcher-count>
+    </record>
+    <created>2010-08-11T03:34:31Z</created>
+  </repository>
+  <repository>
+    <name>SFBCrashReporter</name>
+    <size type="integer">1224</size>
+    <followers type="integer">24</followers>
+    <fork type="boolean">false</fork>
+    <username>sbooth</username>
+    <language>Objective-C</language>
+    <id>repo-290977</id>
+    <type>repo</type>
+    <pushed>2010-07-08T19:27:13Z</pushed>
+    <repo-id type="integer">290977</repo-id>
+    <forks type="integer">4</forks>
+    <description>A crash reporting app for OS X</description>
+    <score type="float">0.66145194</score>
+    <record>
+      <cfg-wiki type="NilClass">gollum</cfg-wiki>
+      <cfg-wiki type="NilClass">gollum</cfg-wiki>
+      <created-at type="datetime">2009-08-28T08:24:34-07:00</created-at>
+      <deleted type="boolean">false</deleted>
+      <deploy-key nil="true"></deploy-key>
+      <description>A crash reporting app for OS X</description>
+      <disk-usage type="integer">1224</disk-usage>
+      <has-downloads type="boolean">true</has-downloads>
+      <has-issues type="boolean">true</has-issues>
+      <has-wiki type="boolean">true</has-wiki>
+      <homepage></homepage>
+      <id type="integer">290977</id>
+      <integrate-branch nil="true"></integrate-branch>
+      <locked type="boolean">false</locked>
+      <master-branch>master</master-branch>
+      <name>SFBCrashReporter</name>
+      <organization-id type="integer" nil="true"></organization-id>
+      <owner-id type="integer">9965</owner-id>
+      <parent-id type="integer" nil="true"></parent-id>
+      <plan-owner-id type="integer">9965</plan-owner-id>
+      <pledgie type="integer" nil="true"></pledgie>
+      <postreceive-urls type="yaml">--- []
+
+</postreceive-urls>
+      <primary-language-name-id type="integer">156</primary-language-name-id>
+      <public type="boolean">true</public>
+      <public-fork-count type="integer">4</public-fork-count>
+      <public-push type="boolean" nil="true"></public-push>
+      <pull-request-auto-response nil="true"></pull-request-auto-response>
+      <pushed-at type="datetime">2010-07-08T12:27:13-07:00</pushed-at>
+      <sandbox type="boolean" nil="true"></sandbox>
+      <source-id type="integer">290977</source-id>
+      <updated-at type="datetime">2010-10-03T14:08:07-07:00</updated-at>
+      <watcher-count type="integer">24</watcher-count>
+    </record>
+    <created>2009-08-28T15:24:34Z</created>
+  </repository>
+</repositories>
