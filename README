@@ -1,3 +1,3 @@
-GravatarIDObjC
+GitHubObjC
 =============
 An objective-c implementation of the GitHub API, implementing most of the read parts of the API. Write is so far not supported.
