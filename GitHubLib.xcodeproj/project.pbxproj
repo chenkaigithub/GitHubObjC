@@ -10,6 +10,10 @@
 		AA747D9F0F9514B9006C5449 /* GitHubLib_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* GitHubLib_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		F704E3F8126E5E3C00587F90 /* libGitHubLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libGitHubLib.a */; };
+		F707BDB31285A8100050239D /* GitHubUserPoster.h in Headers */ = {isa = PBXBuildFile; fileRef = F707BDB11285A8100050239D /* GitHubUserPoster.h */; };
+		F707BDB41285A8100050239D /* GitHubUserPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = F707BDB21285A8100050239D /* GitHubUserPoster.m */; };
+		F707BDB71285A9380050239D /* GitHubRepositoryPoster.h in Headers */ = {isa = PBXBuildFile; fileRef = F707BDB51285A9380050239D /* GitHubRepositoryPoster.h */; };
+		F707BDB81285A9380050239D /* GitHubRepositoryPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = F707BDB61285A9380050239D /* GitHubRepositoryPoster.m */; };
 		F71F3905127B832300C96889 /* GitHubUserServiceFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F7962476126E02620075205F /* GitHubUserServiceFactory.h */; };
 		F71F3906127B832300C96889 /* GitHubCommitServiceFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F796246F126E02620075205F /* GitHubCommitServiceFactory.h */; };
 		F71F3907127B832300C96889 /* GitHubRepositoryServiceFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F7962472126E02620075205F /* GitHubRepositoryServiceFactory.h */; };
@@ -126,6 +130,10 @@
 		F704E70E126E8C2800587F90 /* testSearchUser4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testSearchUser4; sourceTree = "<group>"; };
 		F704E986126EC15200587F90 /* testSearchUser5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testSearchUser5; sourceTree = "<group>"; };
 		F704E9F8126EF30D00587F90 /* testSearchUser6 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testSearchUser6; sourceTree = "<group>"; };
+		F707BDB11285A8100050239D /* GitHubUserPoster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubUserPoster.h; sourceTree = "<group>"; };
+		F707BDB21285A8100050239D /* GitHubUserPoster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubUserPoster.m; sourceTree = "<group>"; };
+		F707BDB51285A9380050239D /* GitHubRepositoryPoster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubRepositoryPoster.h; sourceTree = "<group>"; };
+		F707BDB61285A9380050239D /* GitHubRepositoryPoster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubRepositoryPoster.m; sourceTree = "<group>"; };
 		F70B0461127597D500F671B9 /* GitHubRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubRef.h; sourceTree = "<group>"; };
 		F71F38E0127B79EA00C96889 /* GitHubIssueServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubIssueServiceFactory.m; sourceTree = "<group>"; };
 		F71F38E2127B7A2200C96889 /* GitHubIssueServiceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubIssueServiceFactory.h; sourceTree = "<group>"; };
@@ -431,6 +439,8 @@
 				F7962628126E1C720075205F /* GitHubBranchFactory.m */,
 				F796262B126E1C7D0075205F /* GitHubTagFactory.h */,
 				F796262C126E1C7D0075205F /* GitHubTagFactory.m */,
+				F707BDB51285A9380050239D /* GitHubRepositoryPoster.h */,
+				F707BDB61285A9380050239D /* GitHubRepositoryPoster.m */,
 				F7962463126E02620075205F /* GitHubRepositoryServiceFactory.m */,
 			);
 			path = RepositoryService;
@@ -447,6 +457,8 @@
 				F796276C126E2D5B0075205F /* GitHubUserNameFactory.m */,
 				F7962773126E2D9E0075205F /* GitHubUserSearchFactory.h */,
 				F7962774126E2D9E0075205F /* GitHubUserSearchFactory.m */,
+				F707BDB11285A8100050239D /* GitHubUserPoster.h */,
+				F707BDB21285A8100050239D /* GitHubUserPoster.m */,
 				F7962469126E02620075205F /* GitHubUserServiceFactory.m */,
 			);
 			path = UserService;
@@ -567,6 +579,8 @@
 				F71F3EA6127CD2B900C96889 /* GitHubCommentFactory.h in Headers */,
 				F71F3EA7127CD2B900C96889 /* GitHubLabelFactory.h in Headers */,
 				F72D5B4A1280ADFF00A21815 /* GitHubServiceSettings.h in Headers */,
+				F707BDB31285A8100050239D /* GitHubUserPoster.h in Headers */,
+				F707BDB71285A9380050239D /* GitHubRepositoryPoster.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,6 +716,8 @@
 				F71F3EA8127CD2BA00C96889 /* GitHubLabelFactory.m in Sources */,
 				F71F3F0C127D953F00C96889 /* GitHubCommentFactory.m in Sources */,
 				F72D5B4B1280ADFF00A21815 /* GitHubServiceSettings.m in Sources */,
+				F707BDB41285A8100050239D /* GitHubUserPoster.m in Sources */,
+				F707BDB81285A9380050239D /* GitHubRepositoryPoster.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

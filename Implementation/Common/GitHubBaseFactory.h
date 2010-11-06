@@ -34,6 +34,7 @@
 @property (readonly, retain) NSDictionary *endElement;
 @property (readonly, retain) NSDictionary *startElement;
 
+-(void)makePostRequest:(NSString *)url body:(NSString *)body;
 -(void)makeRequest:(NSString *) url;
 -(id<GitHubService>)initWithDelegate:(id<GitHubServiceDelegate>)newDelegate;
 -(void)cancelRequest;

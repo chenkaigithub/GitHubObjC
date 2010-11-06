@@ -188,4 +188,35 @@ delegate:(id<GitHubServiceGotTagDelegate>)delegate;
                                      user:(NSString *)user
 delegate:(id<GitHubServiceGotBranchDelegate>)delegate;
 
+/**
+ * Creates and returns an initialized GitHubService that will add the specified
+ * repository to the watch list for the default credential GitHubUser.
+ * The service will end with sending gitHubServiceDone if service went well, or
+ * gitHubService:didFailWithError: if service failed during execution.
+ * Can be cancelled using cancelRequest. If cancelled, no more message will be
+ * sent to the delegate, including gitHubServiceDone
+ * gitHubService:didFailWithError:.
+ * @param name The name of the repository to watch
+ * @param delegate The delegate object for the service.
+ * @return The service for the request.
+ */
++(id<GitHubService>)watchRepository:(NSString *)name
+                           delegate:(id<GitHubServiceDelegate>)delegate;
+
+/**
+ * Creates and returns an initialized GitHubService that will remove the
+ * specified repository from the watch list for the default credential
+ * GitHubUser.
+ * The service will end with sending gitHubServiceDone if service went well, or
+ * gitHubService:didFailWithError: if service failed during execution.
+ * Can be cancelled using cancelRequest. If cancelled, no more message will be
+ * sent to the delegate, including gitHubServiceDone
+ * gitHubService:didFailWithError:.
+ * @param name The name of the repositoroy to unwatch
+ * @param delegate The delegate object for the service.
+ * @return The service for the request.
+ */
++(id<GitHubService>)unwatchRepository:(NSString *)name
+                             delegate:(id<GitHubServiceDelegate>)delegate;
+
 @end

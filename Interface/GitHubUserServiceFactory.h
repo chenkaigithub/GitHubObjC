@@ -106,4 +106,34 @@ delegate:(id<GitHubServiceGotNameDelegate>)delegate;
 +(id<GitHubService>)requestUserWithDelegate:
 (id<GitHubServiceGotUserDelegate>)delegate;
 
+/**
+ * Creates and returns an initialized GitHubService that will add the specified
+ * user to the follow list for the default credential GitHubUser.
+ * The service will end with sending gitHubServiceDone if service went well, or
+ * gitHubService:didFailWithError: if service failed during execution.
+ * Can be cancelled using cancelRequest. If cancelled, no more message will be
+ * sent to the delegate, including gitHubServiceDone
+ * gitHubService:didFailWithError:.
+ * @param name The name of the user to follow
+ * @param delegate The delegate object for the service.
+ * @return The service for the request.
+ */
++(id<GitHubService>)followUser:(NSString *)name
+                      delegate:(id<GitHubServiceDelegate>)delegate;
+
+/**
+ * Creates and returns an initialized GitHubService that will remove the
+ * specified user to the follow list for the default credential GitHubUser.
+ * The service will end with sending gitHubServiceDone if service went well, or
+ * gitHubService:didFailWithError: if service failed during execution.
+ * Can be cancelled using cancelRequest. If cancelled, no more message will be
+ * sent to the delegate, including gitHubServiceDone
+ * gitHubService:didFailWithError:.
+ * @param name The name of the user to follow
+ * @param delegate The delegate object for the service.
+ * @return The service for the request.
+ */
++(id<GitHubService>)unfollowUser:(NSString *)name
+                        delegate:(id<GitHubServiceDelegate>)delegate;
+
 @end

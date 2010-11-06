@@ -13,6 +13,7 @@
 #import "GitHubContributorFactory.h"
 #import "GitHubTagFactory.h"
 #import "GitHubBranchFactory.h"
+#import "GitHubRepositoryPoster.h"
 
 @implementation GitHubRepositoryServiceFactory
 
@@ -126,6 +127,28 @@ delegate:(id<GitHubServiceGotBranchDelegate>)delegate {
                                   branchFactoryWithDelegate:delegate];
   
 	[service requestBranchesByName:name user:user];
+	return service;
+}
+
++(id<GitHubService>)watchRepository:(NSString *)name
+                      delegate:(id<GitHubServiceDelegate>)delegate {
+  
+  
+	GitHubRepositoryPoster *service = [GitHubRepositoryPoster
+                               repositoryPosterWithDelegate:delegate];
+  
+	[service watchRepository:name];
+	return service;
+}
+
+
++(id<GitHubService>)unwatchRepository:(NSString *)name
+                        delegate:(id<GitHubServiceDelegate>)delegate {
+  
+	GitHubRepositoryPoster *service = [GitHubRepositoryPoster
+                               repositoryPosterWithDelegate:delegate];
+  
+	[service unwatchRepository:name];
 	return service;
 }
 

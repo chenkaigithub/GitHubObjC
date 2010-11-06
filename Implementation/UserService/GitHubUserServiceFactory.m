@@ -8,6 +8,7 @@
 
 #import "GitHubUserServiceFactory.h"
 #import "GitHubUserFactory.h"
+#import "GitHubUserPoster.h"
 #import "GitHubUserNameFactory.h"
 #import "GitHubUserSearchFactory.h"
 
@@ -74,6 +75,28 @@ delegate:(id<GitHubServiceGotNameDelegate>)delegate {
                                 userFactoryWithDelegate:delegate];
   
 	[service requestUser];
+	return service;
+}
+
++(id<GitHubService>)followUser:(NSString *)name
+                      delegate:(id<GitHubServiceDelegate>)delegate {
+  
+  
+	GitHubUserPoster *service = [GitHubUserPoster
+                                userPosterWithDelegate:delegate];
+  
+	[service followUser:name];
+	return service;
+}
+
+
++(id<GitHubService>)unfollowUser:(NSString *)name
+                        delegate:(id<GitHubServiceDelegate>)delegate {
+  
+	GitHubUserPoster *service = [GitHubUserPoster
+                               userPosterWithDelegate:delegate];
+  
+	[service unfollowUser:name];
 	return service;
 }
 

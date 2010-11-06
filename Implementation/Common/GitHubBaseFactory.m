@@ -325,6 +325,46 @@ static char base64EncodingTable[64] = {
   }
 }
 
+-(void)makePostRequest:(NSString *)url body:(NSString *)body {
+
+  
+  url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  
+  if (localSecureConnection) {
+    
+    self.request =
+    [NSString stringWithFormat:@"%@%@", localSecureServerAddress, url];
+    
+  } else {
+    
+    self.request =
+    [NSString stringWithFormat:@"%@%@", localServerAddress, url];
+  }
+  
+  NSMutableURLRequest *theRequest =
+  [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] 
+                          cachePolicy:NSURLRequestReloadIgnoringLocalCacheData 
+                      timeoutInterval:60.0]; 
+  
+  [theRequest setHTTPMethod:@"POST"]; 
+  
+  [theRequest setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+  
+  if (localAuthorization) {
+    
+    [theRequest
+     addValue:localAuthorization
+     forHTTPHeaderField:@"Authorization"];
+  }
+  
+  self.connection = [NSURLConnection connectionWithRequest:theRequest
+                                                  delegate:self];
+  if (self.connection) {
+    
+    self.receivedData = [NSMutableData data];
+  }
+}
+
 #pragma mark -
 #pragma mark Delegate protocol implementation
 #pragma mark - NSXMLParserDelegate
