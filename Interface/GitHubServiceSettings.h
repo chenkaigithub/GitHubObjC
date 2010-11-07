@@ -12,6 +12,8 @@
 @interface GitHubServiceSettings : NSObject {
 }
 
++(void)hidePrivateRepositories:(BOOL)hidePrivateRepositories;
+
 +(void)setCredential:(NSURLCredential *)credential;
 +(NSURLCredential *)credential;
 

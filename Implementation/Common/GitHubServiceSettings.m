@@ -8,8 +8,14 @@
 
 #import "GitHubServiceSettings.h"
 #import "GitHubBaseFactory.h"
+#import "GitHubRepositoryFactory.h"
 
 @implementation GitHubServiceSettings
+
++(void)hidePrivateRepositories:(BOOL)hidePrivateRepositories {
+  
+  [GitHubRepositoryFactory hidePrivateRepositories:hidePrivateRepositories];
+}
 
 +(void)setCredential:(NSURLCredential *)credential {
   

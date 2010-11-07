@@ -34,4 +34,6 @@
 +(GitHubRepositoryFactory *)repositoryFactoryWithDelegate:
 (id<GitHubServiceGotRepositoryDelegate>)delegate;
 
++(void)hidePrivateRepositories:(BOOL)hidePrivateRepositories;
+
 @end

@@ -9,7 +9,7 @@
 #import "TestGitHubRepoServer.h"
 #import "GitHubRepositoryServiceFactory.h"
 #import "GitHubService.h"
-#import "GitHubBaseFactory.h"
+#import "GitHubServiceSettings.h"
 
 @implementation TestGitHubRepoServer
 
@@ -18,7 +18,7 @@ done;
 
 -(void)initTestCase:(NSString *)name {
   
-  [GitHubBaseFactory
+  [GitHubServiceSettings
    setServerAddress:[NSString stringWithFormat:@"file://%@/TestData", SRCROOT]];
   
   self.testCase = name;
@@ -30,9 +30,24 @@ done;
 
 //Read repositories from file
 -(void)testSearchRepo1 {
-  
+  [GitHubServiceSettings hidePrivateRepositories:YES];
   [self initTestCase:NSStringFromSelector(_cmd)];
   [GitHubRepositoryServiceFactory searchRepositoriesByName:@"testSearchRepo1" delegate:self];
+  
+  while (self.testCaseLock) {
+    
+    [[NSRunLoop currentRunLoop]
+     runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
+  }
+  STAssertFalse(self.doneWithErrors, @"Done with errors sent");
+  STAssertTrue(self.done, @"Done not sent");
+}
+
+//Test filtering of private repos
+-(void)testSearchRepo2 {
+  
+  [self initTestCase:NSStringFromSelector(_cmd)];
+  [GitHubRepositoryServiceFactory searchRepositoriesByName:@"testSearchRepo2" delegate:self];
   
   while (self.testCaseLock) {
     
@@ -262,6 +277,12 @@ done;
         STFail(@"Search Count Index Error, count is %@", self.repoSearchCount);
         break;
     }
+  } else if ([self.testCase isEqualToString:@"testSearchRepo2"]) {
+    
+      if (repository.private) {
+        
+        STFail(@"Listed private repository");
+      }
   }
 }
 
@@ -270,8 +291,13 @@ done;
   if ([self.testCase isEqualToString:@"testSearchRepo1"]) {
     
     STAssertEquals(4, self.repoSearchCount,
-                   @"User count should be 4, is %@", self.repoSearchCount);
+                   @"Repo count should be 4, is %i", self.repoSearchCount);
     
+  } else if ([self.testCase isEqualToString:@"testSearchRepo2"]) {
+    
+    STAssertEquals(3, self.repoSearchCount,
+                   @"Repo count should be 3, is %i", self.repoSearchCount);
+   [GitHubServiceSettings hidePrivateRepositories:NO]; 
   }
   self.testCaseLock = NO;
   self.done = YES;
@@ -283,6 +309,10 @@ done;
     
     STFail(@"Got done with errors");
     
+  } else if ([self.testCase isEqualToString:@"testSearchRepo2"]) {
+    
+    STFail(@"Got done with errors");
+    [GitHubServiceSettings hidePrivateRepositories:NO];
   }
   self.testCaseLock = NO;
   self.doneWithErrors = YES;

@@ -228,6 +228,8 @@
 		F7962847126E37A60075205F /* TestGitHubUserServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGitHubUserServer.h; sourceTree = "<group>"; };
 		F7962848126E37A60075205F /* TestGitHubUserServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestGitHubUserServer.m; sourceTree = "<group>"; };
 		F7962A6C126E460C0075205F /* UnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTest-Info.plist"; sourceTree = "<group>"; };
+		F7CD904712875F8E0005E885 /* testSearchRepo1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testSearchRepo1; sourceTree = "<group>"; };
+		F7CD904812875F8E0005E885 /* testSearchRepo2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testSearchRepo2; sourceTree = "<group>"; };
 		F7EA0BC012845E9A006302F9 /* TestGitHubRepoServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestGitHubRepoServer.m; sourceTree = "<group>"; };
 		F7EA0BC112845E9A006302F9 /* TestGitHubRepoServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGitHubRepoServer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -319,6 +321,7 @@
 		F704E708126E8C2800587F90 /* xml */ = {
 			isa = PBXGroup;
 			children = (
+				F7CD904512875F8E0005E885 /* repos */,
 				F704E709126E8C2800587F90 /* user */,
 			);
 			path = xml;
@@ -511,6 +514,23 @@
 				F7962848126E37A60075205F /* TestGitHubUserServer.m */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		F7CD904512875F8E0005E885 /* repos */ = {
+			isa = PBXGroup;
+			children = (
+				F7CD904612875F8E0005E885 /* search */,
+			);
+			path = repos;
+			sourceTree = "<group>";
+		};
+		F7CD904612875F8E0005E885 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				F7CD904712875F8E0005E885 /* testSearchRepo1 */,
+				F7CD904812875F8E0005E885 /* testSearchRepo2 */,
+			);
+			path = search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

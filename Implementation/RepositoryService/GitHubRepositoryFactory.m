@@ -17,6 +17,7 @@ static NSDictionary *localEndElement;
 
 static NSDictionary *localStartElement;
 
+static BOOL localHidePrivateRepositories = NO;
 
 #pragma mark -
 #pragma mark Memory and member management
@@ -68,9 +69,12 @@ static NSDictionary *localStartElement;
 }
 
 -(void)endElementRepository {
-  [(id<GitHubServiceGotRepositoryDelegate>)self.delegate
-   gitHubService:self
-   gotRepository:self.repository];
+  if (!(localHidePrivateRepositories && self.repository.private)) {
+    
+    [(id<GitHubServiceGotRepositoryDelegate>)self.delegate
+     gitHubService:self
+     gotRepository:self.repository];
+  }
 }
 
 -(void)endElementNetwork {
@@ -229,6 +233,11 @@ static NSDictionary *localStartElement;
   
   return [[[GitHubRepositoryFactory alloc]
            initWithDelegate:delegate] autorelease]; 
+}
+
++(void)hidePrivateRepositories:(BOOL)hidePrivateRepositories {
+  
+  localHidePrivateRepositories = hidePrivateRepositories;
 }
 
 #pragma mark - Instance
