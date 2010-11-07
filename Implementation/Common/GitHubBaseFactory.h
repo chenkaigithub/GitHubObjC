@@ -39,7 +39,7 @@
 -(id<GitHubService>)initWithDelegate:(id<GitHubServiceDelegate>)newDelegate;
 -(void)cancelRequest;
 -(void)cleanUp;
--(void)handleErrorWithCode:(GitHubServerError)code;
+-(void)handleErrorWithCode:(GitHubServerError)code message:(NSString *)message;
 -(NSDate *)createDateFromString:(NSString *)string;
 -(NSURL *)createURLFromString:(NSString *)string;
 +(void)setServerAddress:(NSString *)serverAddress;

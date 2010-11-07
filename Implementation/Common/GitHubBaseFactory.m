@@ -272,7 +272,12 @@ static char base64EncodingTable[64] = {
   return self;
 }
 
--(void)handleErrorWithCode:(GitHubServerError)code {
+-(void)endElementError {
+  [self handleErrorWithCode:GitHubServerServerError
+                    message:self.currentStringValue];
+}
+
+-(void)handleErrorWithCode:(GitHubServerError)code message:(NSString *)message {
 
   if (!self.cancelling && !self.failSent) {
     
@@ -282,7 +287,9 @@ static char base64EncodingTable[64] = {
                 didFailWithError:[NSError
                                   errorWithDomain:GitHubServerErrorDomain
                                   code:code
-                                  userInfo:nil]];
+                                  userInfo:[NSDictionary
+                                            dictionaryWithObject:message
+                                            forKey:NSLocalizedDescriptionKey]]];
     
     [self cleanUp];
   }
@@ -409,7 +416,7 @@ qualifiedName:(NSString *)qName
 
 -(void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
   
-  [self handleErrorWithCode:GitHubServerParserError];
+  [self handleErrorWithCode:GitHubServerParserError message:@""];
 }
 
 -(void)parserDidEndDocument:(NSXMLParser *)parser {
@@ -438,7 +445,7 @@ didReceiveResponse:(NSURLResponse *)response {
 -(void)connection:(NSURLConnection *)connection
  didFailWithError:(NSError *)error {
   
-  [self handleErrorWithCode:GitHubServerConnectionError];
+  [self handleErrorWithCode:GitHubServerConnectionError message:@""];
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {

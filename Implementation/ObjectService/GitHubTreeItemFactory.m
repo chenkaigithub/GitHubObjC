@@ -94,11 +94,6 @@ static NSDictionary *localStartElement;
   self.treeItem.size = [self.currentStringValue intValue];
 }
 
--(void)endElementError {
-  
-  [self handleErrorWithCode:GitHubServerServerError];
-}
-
 #pragma mark -
 #pragma mark Super override implementation
 

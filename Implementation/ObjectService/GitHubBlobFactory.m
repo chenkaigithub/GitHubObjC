@@ -91,11 +91,6 @@ static NSDictionary *localStartElement;
   self.blob.size = [self.currentStringValue intValue];
 }
 
--(void)endElementError {
-  
-  [self handleErrorWithCode:GitHubServerServerError];
-}
-
 #pragma mark -
 #pragma mark Super override implementation
 

@@ -128,11 +128,6 @@ static NSDictionary *localStartElement;
   self.user.type = self.currentStringValue;
 }
 
--(void)endElementError {
-  
-  [self handleErrorWithCode:GitHubServerServerError];
-}
-
 #pragma mark -
 #pragma mark Super override implementation
 

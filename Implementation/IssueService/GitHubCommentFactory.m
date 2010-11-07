@@ -92,10 +92,6 @@ static NSDictionary *localStartElement;
   self.comment.user = self.currentStringValue;
 }
 
--(void)endElementError {
-  
-  [self handleErrorWithCode:GitHubServerServerError];
-}
 
 #pragma mark -
 #pragma mark Super override implementation

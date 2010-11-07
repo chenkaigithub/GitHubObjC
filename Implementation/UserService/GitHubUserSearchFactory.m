@@ -40,11 +40,6 @@ static NSDictionary *localStartElement;
    gotName:self.currentStringValue];
 }
 
--(void)endElementError {
-  
-  [self handleErrorWithCode:GitHubServerServerError];
-}
-
 #pragma mark -
 #pragma mark Super override implementation
 

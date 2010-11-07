@@ -151,11 +151,6 @@ static NSDictionary *localStartElement;
   }  
 } 
 
--(void)endElementError {
-  
-  [self handleErrorWithCode:GitHubServerServerError];
-}
-
 #pragma mark -
 #pragma mark Super override implementation
 

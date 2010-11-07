@@ -67,11 +67,6 @@ static NSDictionary *localStartElement;
   self.contributor.contributions = [self.currentStringValue intValue];
 }
 
--(void)endElementError {
-  
-  [self handleErrorWithCode:GitHubServerServerError];
-}
-
 #pragma mark -
 #pragma mark Super override implementation
 

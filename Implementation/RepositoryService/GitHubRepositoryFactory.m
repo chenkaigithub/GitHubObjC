@@ -162,11 +162,6 @@ static NSDictionary *localStartElement;
   self.repository.openIssues = [self.currentStringValue intValue];
 }
 
--(void)endElementError {
-  
-  [self handleErrorWithCode:GitHubServerServerError];
-}
-
 #pragma mark -
 #pragma mark Super override implementation
 

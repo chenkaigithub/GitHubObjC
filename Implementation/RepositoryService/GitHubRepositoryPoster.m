@@ -31,14 +31,6 @@ static NSDictionary *localStartElement;
 }
 
 #pragma mark -
-#pragma mark Internal implementation declaration
-
--(void)endElementError {
-  
-  [self handleErrorWithCode:GitHubServerServerError];
-}
-
-#pragma mark -
 #pragma mark Super override implementation
 
 +(void)initialize {

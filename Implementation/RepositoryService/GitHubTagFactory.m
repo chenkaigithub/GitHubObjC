@@ -84,7 +84,7 @@
                 [NSCharacterSet whitespaceCharacterSet]]
                                      isEqualToString:@"error:"]) {
       
-      [self handleErrorWithCode:GitHubServerServerError];
+      [self handleErrorWithCode:GitHubServerServerError message:@""];
     }
   }
   self.connection = nil;
