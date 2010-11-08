@@ -264,7 +264,10 @@ static char base64EncodingTable[64] = {
 
 -(id<GitHubService>)initWithDelegate:(id<GitHubServiceDelegate>)newDelegate {
   
-  if (self = [super init]){
+  [super init];
+  
+  if (self) {
+    
     self.delegate = newDelegate;
     self.cancelling = NO;
     self.failSent = NO;

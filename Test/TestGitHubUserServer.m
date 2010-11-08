@@ -90,6 +90,12 @@ done;
 
 //Cancelled service, should have no response
 //(2 seconds as estimate for infinity)
+
+-(void)timeOut {
+  
+  self.testCaseLock = NO;
+}
+
 -(void)testSearchUser5 {
   
   [self initTestCase:NSStringFromSelector(_cmd)];
@@ -129,11 +135,6 @@ done;
   }
   STAssertFalse(self.doneWithErrors, @"Done with errors sent");
   STAssertFalse(self.done, @"Done sent");
-}
-
--(void)timeOut {
-  
-  self.testCaseLock = NO;
 }
 
 -(void)gitHubService:(id<GitHubService>)gitHubService

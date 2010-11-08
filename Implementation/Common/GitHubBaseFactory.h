@@ -42,6 +42,7 @@
 -(void)handleErrorWithCode:(GitHubServerError)code message:(NSString *)message;
 -(NSDate *)createDateFromString:(NSString *)string;
 -(NSURL *)createURLFromString:(NSString *)string;
+-(void)endElementError;
 +(void)setServerAddress:(NSString *)serverAddress;
 +(NSString *)serverAddress;
 +(void)setSecureServerAddress:(NSString *)secureServerAddress;
