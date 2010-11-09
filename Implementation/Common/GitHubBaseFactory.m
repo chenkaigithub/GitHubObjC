@@ -286,6 +286,11 @@ static char base64EncodingTable[64] = {
     
     self.failSent = YES;
     
+    if (!message) {
+      
+      message = @"";
+    }
+    
     [self.delegate gitHubService:self
                 didFailWithError:[NSError
                                   errorWithDomain:GitHubServerErrorDomain
