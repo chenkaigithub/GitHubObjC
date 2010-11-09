@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AA747D9F0F9514B9006C5449 /* GitHubLib_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* GitHubLib_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		F704E3F8126E5E3C00587F90 /* libGitHubLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libGitHubLib.a */; };
 		F707BDB31285A8100050239D /* GitHubUserPoster.h in Headers */ = {isa = PBXBuildFile; fileRef = F707BDB11285A8100050239D /* GitHubUserPoster.h */; };
 		F707BDB41285A8100050239D /* GitHubUserPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = F707BDB21285A8100050239D /* GitHubUserPoster.m */; };
 		F707BDB71285A9380050239D /* GitHubRepositoryPoster.h in Headers */ = {isa = PBXBuildFile; fileRef = F707BDB51285A9380050239D /* GitHubRepositoryPoster.h */; };
@@ -57,6 +56,7 @@
 		F71F3F0C127D953F00C96889 /* GitHubCommentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F71F3980127B84FD00C96889 /* GitHubCommentFactory.m */; };
 		F72D5B4A1280ADFF00A21815 /* GitHubServiceSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = F72D5B481280ADFF00A21815 /* GitHubServiceSettings.h */; };
 		F72D5B4B1280ADFF00A21815 /* GitHubServiceSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F72D5B491280ADFF00A21815 /* GitHubServiceSettings.m */; };
+		F76D21EB12897A8200C951C3 /* GitHubCommentImp.h in Headers */ = {isa = PBXBuildFile; fileRef = F71F38E8127B7F1400C96889 /* GitHubCommentImp.h */; };
 		F7700DCF127B241A000D3D77 /* GitHubTreeItemImp.m in Sources */ = {isa = PBXBuildFile; fileRef = F7700C02127AE80C000D3D77 /* GitHubTreeItemImp.m */; };
 		F7700DD0127B241C000D3D77 /* GitHubObjectServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F7700C08127AE82D000D3D77 /* GitHubObjectServiceFactory.m */; };
 		F7700DD1127B241C000D3D77 /* GitHubDataFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F7700C12127AEBB0000D3D77 /* GitHubDataFactory.m */; };
@@ -106,16 +106,17 @@
 		F796276E126E2D5B0075205F /* GitHubUserNameFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F796276C126E2D5B0075205F /* GitHubUserNameFactory.m */; };
 		F7962775126E2D9E0075205F /* GitHubUserSearchFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = F7962773126E2D9E0075205F /* GitHubUserSearchFactory.h */; };
 		F7962776126E2D9E0075205F /* GitHubUserSearchFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F7962774126E2D9E0075205F /* GitHubUserSearchFactory.m */; };
+		F7C7B78E1289AA5D00771105 /* libGitHubLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libGitHubLib.a */; };
 		F7EA0BC212845E9A006302F9 /* TestGitHubRepoServer.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA0BC012845E9A006302F9 /* TestGitHubRepoServer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F704E579126E7E5800587F90 /* PBXContainerItemProxy */ = {
+		F7C7B77C1289A93100771105 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = GitHubLib;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D /* GitHubiOSStatic */;
+			remoteInfo = GitHubiOSStatic;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -247,7 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F704E3F8126E5E3C00587F90 /* libGitHubLib.a in Frameworks */,
+				F7C7B78E1289AA5D00771105 /* libGitHubLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +602,7 @@
 				F72D5B4A1280ADFF00A21815 /* GitHubServiceSettings.h in Headers */,
 				F707BDB31285A8100050239D /* GitHubUserPoster.h in Headers */,
 				F707BDB71285A9380050239D /* GitHubRepositoryPoster.h in Headers */,
+				F76D21EB12897A8200C951C3 /* GitHubCommentImp.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,7 +638,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				F704E57A126E7E5800587F90 /* PBXTargetDependency */,
+				F7C7B77D1289A93100771105 /* PBXTargetDependency */,
 			);
 			name = UnitTest;
 			productName = UnitTest;
@@ -753,10 +755,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F704E57A126E7E5800587F90 /* PBXTargetDependency */ = {
+		F7C7B77D1289A93100771105 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* GitHubiOSStatic */;
-			targetProxy = F704E579126E7E5800587F90 /* PBXContainerItemProxy */;
+			targetProxy = F7C7B77C1289A93100771105 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -772,7 +774,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = GitHubLib_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = GitHubLib;
@@ -800,8 +802,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
@@ -822,7 +824,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
@@ -872,10 +874,13 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "UnitTest-Info.plist";
 				OTHER_CFLAGS = "-D'SRCROOT=@\"${SRCROOT}\"'";
 				OTHER_LDFLAGS = (
+					"-lgcov",
 					"-framework",
 					Foundation,
 					"-framework",
